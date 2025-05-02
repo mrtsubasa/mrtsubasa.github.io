@@ -1365,7 +1365,105 @@ footer {
   position: relative;
   overflow: hidden;
   
- 
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: $border-radius;
+    --webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba($primary-color, 0.2);
+    animation: fadeIn 1s ease-out;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, $primary-color, $secondary-color, $accent-color);
+      border-radius: calc(#{$border-radius} + 2px);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    &:hover::before {
+      opacity: 0.3;
+    }
+  }
+  
+  .hero-title {
+    font-family: 'Cyber', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, $primary-color, $secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, $primary-color, $secondary-color);
+      border-radius: 2px;
+    }
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: $text-color;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out 0.3s forwards;
+  }
+  
+  .profile-picture {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 2rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba($primary-color, 0.3);
+    animation: float 3s ease-in-out infinite;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, $primary-color, $secondary-color);
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotate 3s linear infinite;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
   
   .glitch-container {
     position: relative;
