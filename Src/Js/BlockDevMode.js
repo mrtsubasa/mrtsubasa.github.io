@@ -31,21 +31,6 @@ document.addEventListener('contextmenu', function(e) {
     return false;
 });
 
-// Bloquer les DevTools quand ils sont ouverts
-setInterval(function() {
-    const devtools = /./;
-    devtools.toString = function() {
-        this.opened = true;
-    }
-    
-    console.log('%c', devtools);
-    
-    if (devtools.opened) {
-        // Rediriger ou afficher un message
-        document.body.innerHTML = 'Les outils de développement sont désactivés sur ce site.';
-    }
-}, 1000);
-
 // Message d'avertissement dans la console
 console.log('%cAttention!', 'color: red; font-size: 30px; font-weight: bold;');
 console.log('%cCe site est protégé contre l\'utilisation des outils de développement.', 'font-size: 20px;');
