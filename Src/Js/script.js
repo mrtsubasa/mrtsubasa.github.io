@@ -521,30 +521,6 @@ const addParticlesEffect = () => {
   
   addParticlesEffect();
 
-const addParallaxEffect = () => {
-    const images = document.querySelectorAll('.project-image img, .design-image img');
-    
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-      
-      images.forEach(image => {
-        const container = image.parentElement;
-        const containerTop = container.getBoundingClientRect().top + window.pageYOffset;
-        const containerHeight = container.offsetHeight;
-        
-        // Calculer la position relative de l'image par rapport au défilement
-        if (scrollPosition + window.innerHeight > containerTop && 
-            scrollPosition < containerTop + containerHeight) {
-          const relativeScroll = (scrollPosition + window.innerHeight - containerTop) / (window.innerHeight + containerHeight);
-          const translateY = (relativeScroll - 0.5) * 30; // Ajuster l'intensité de l'effet
-          
-          image.style.transform = `translateY(${translateY}px) scale(1.1)`;
-        }
-      });
-    });
-  };
-  
-  addParallaxEffect();
 // Effet de dévoilement progressif pour les cartes
 const staggeredReveal = () => {
     const projectCards = document.querySelectorAll('.project-card');
