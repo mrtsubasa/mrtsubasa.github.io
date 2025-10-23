@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.cursor');
 
     if (cursor) {
-        // Position initiale du curseur
-        cursor.style.opacity = '0';
-
         // Animation du curseur
         document.addEventListener('mousemove', (e) => {
             // Utilisation de transform au lieu de left/top pour de meilleures performances
@@ -140,21 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Animation des cartes de design
         const designItems = document.querySelectorAll('.design-item');
 
-        designItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                const overlay = item.querySelector('.design-overlay');
-                if (overlay) {
-                    overlay.style.opacity = '1';
-                }
-            });
-
-            item.addEventListener('mouseleave', () => {
-                const overlay = item.querySelector('.design-overlay');
-                if (overlay) {
-                    overlay.style.opacity = '0.7';
-                }
-            });
-        });
     };
 
     addHoverEffects();
@@ -177,16 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 mix-blend-mode: difference;
             }
             
-            .section-hidden {
-                opacity: 0;
-                transform: translateY(50px);
-                transition: opacity 0.8s ease, transform 0.8s ease;
-            }
-            
-            .section-visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
             
             .hovered {
                 transform: scale(1.05);
@@ -220,14 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             .skills-tags span {
                 transition: opacity 0.5s ease, transform 0.5s ease;
-                transform: translateY(20px);
             }
-            
+
             .soft-skill {
                 transition: opacity 0.5s ease, transform 0.5s ease;
-                transform: translateX(-20px);
             }
-            
+
             .project-item, .design-item, .team-member {
                 transition: opacity 0.6s ease, transform 0.6s ease;
             }
