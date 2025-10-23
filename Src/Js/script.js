@@ -85,40 +85,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== EFFET PARALLAXE SUR LA SECTION HERO =====
 
 
-    // ===== ANIMATION DU TEXTE DE CONTACT =====
-    const contactText = document.querySelector('.contact-text');
+    // ===== ANIMATION DU TEXTE DE CONTACT - DÉSACTIVÉ =====
+    // const contactText = document.querySelector('.contact-text');
 
-    if (contactText) {
-        const paragraphs = contactText.querySelectorAll('p');
+    // if (contactText) {
+    //     const paragraphs = contactText.querySelectorAll('p');
 
-        // Masquer initialement les paragraphes
-        paragraphs.forEach(p => {
-            p.style.opacity = '0';
-            p.style.transform = 'translateX(-20px)';
-        });
+    //     // Masquer initialement les paragraphes
+    //     paragraphs.forEach(p => {
+    //         p.style.opacity = '0';
+    //         p.style.transform = 'translateX(-20px)';
+    //     });
 
-        // Fonction d'animation
-        const revealText = (entries, observer) => {
-            if (entries[0].isIntersecting) {
-                paragraphs.forEach((paragraph, index) => {
-                    setTimeout(() => {
-                        paragraph.style.opacity = '1';
-                        paragraph.style.transform = 'translateX(0)';
-                    }, 200 * index);
-                });
+    //     // Fonction d'animation
+    //     const revealText = (entries, observer) => {
+    //         if (entries[0].isIntersecting) {
+    //             paragraphs.forEach((paragraph, index) => {
+    //                 setTimeout(() => {
+    //                     paragraph.style.opacity = '1';
+    //                     paragraph.style.transform = 'translateX(0)';
+    //                 }, 200 * index);
+    //             });
 
-                observer.unobserve(contactText);
-            }
-        };
+    //             observer.unobserve(contactText);
+    //         }
+    //     };
 
-        // Création de l'observateur
-        const textObserver = new IntersectionObserver(revealText, {
-            threshold: 0.5
-        });
+    //     // Création de l'observateur
+    //     const textObserver = new IntersectionObserver(revealText, {
+    //         threshold: 0.5
+    //     });
 
-        // Observation du conteneur
-        textObserver.observe(contactText);
-    }
+    //     // Observation du conteneur
+    //     textObserver.observe(contactText);
+    // }
 
     // ===== ANIMATION DES ÉLÉMENTS AU SURVOL =====
     const addHoverEffects = () => {
@@ -388,37 +388,37 @@ const addParticlesEffect = () => {
 
   addParticlesEffect();
 
-// Effet de dévoilement progressif pour les cartes
-const staggeredReveal = () => {
-    const projectCards = document.querySelectorAll('.project-card');
-    const designCards = document.querySelectorAll('.design-card');
+// Effet de dévoilement progressif pour les cartes - DÉSACTIVÉ
+// const staggeredReveal = () => {
+//     const projectCards = document.querySelectorAll('.project-card');
+//     const designCards = document.querySelectorAll('.design-card');
 
-    const revealCards = (cards) => {
-      cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        card.style.transitionDelay = `${index * 0.1}s`;
-      });
+//     const revealCards = (cards) => {
+//       cards.forEach((card, index) => {
+//         card.style.opacity = '0';
+//         card.style.transform = 'translateY(50px)';
+//         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+//         card.style.transitionDelay = `${index * 0.1}s`;
+//       });
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
+//       const observer = new IntersectionObserver(entries => {
+//         entries.forEach(entry => {
+//           if (entry.isIntersecting) {
+//             entry.target.style.opacity = '1';
+//             entry.target.style.transform = 'translateY(0)';
+//             observer.unobserve(entry.target);
+//           }
+//         });
+//       }, { threshold: 0.1 });
 
-      cards.forEach(card => observer.observe(card));
-    };
+//       cards.forEach(card => observer.observe(card));
+//     };
 
-    revealCards(projectCards);
-    revealCards(designCards);
-  };
+//     revealCards(projectCards);
+//     revealCards(designCards);
+//   };
 
-  staggeredReveal();
+//   staggeredReveal();
 
   // Effet de texte néon clignotant
 const addNeonTextEffect = () => {
