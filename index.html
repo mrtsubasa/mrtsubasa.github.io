@@ -4,2478 +4,668 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='icon' href='./favicon.ico'>
-    <title>MrTsubasa | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'rimuru-blue': '#4FC3F7',
-                        'rimuru-cyan': '#26C6DA',
-                        'rimuru-dark-blue': '#0277BD',
-                        'rimuru-silver': '#B0BEC5',
-                        'deep-dark': '#0D1117',
-                        'card-dark': '#161B22',
-                        'border-dark': '#30363D',
-                        'text-gray': '#8B949E',
-                        'soft-glow': '#4FC3F740',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'display': ['Poppins', 'system-ui', 'sans-serif'],
-                        'cyber': ['Orbitron', 'monospace'],
-                    },
-                    animation: {
-                        'gentle-float': 'gentleFloat 4s ease-in-out infinite',
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'slide-up': 'slideUp 0.6s ease-out',
-                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                        'blob': 'blob 7s infinite',
-                    },
-                    keyframes: {
-                        gentleFloat: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' }
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        glowPulse: {
-                            '0%, 100%': {
-                                boxShadow: '0 0 20px rgba(79, 195, 247, 0.3)',
-                                textShadow: '0 0 10px rgba(79, 195, 247, 0.5)'
-                            },
-                            '50%': {
-                                boxShadow: '0 0 30px rgba(79, 195, 247, 0.5)',
-                                textShadow: '0 0 20px rgba(79, 195, 247, 0.8)'
-                            }
-                        },
-                        shimmer: {
-                            '0%': { transform: 'translateX(-100%)' },
-                            '100%': { transform: 'translateX(100%)' }
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>MrTsubasa | Portfolio - Fusion des Légendes</title>
+    <link rel="stylesheet" href="./Src/Css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Smooth scrolling enhancement */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Improved glassmorphism */
-        .rimuru-glass {
-            background: rgba(22, 27, 34, 0.75);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(79, 195, 247, 0.15);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        /* Enhanced card design */
-        .rimuru-card {
-            background: linear-gradient(145deg, rgba(22, 27, 34, 0.85), rgba(48, 54, 61, 0.45));
-            border: 1px solid rgba(79, 195, 247, 0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rimuru-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(79, 195, 247, 0.05), transparent 50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .rimuru-card:hover::before {
-            opacity: 1;
-        }
-
-        .rimuru-card:hover {
-            border-color: rgba(79, 195, 247, 0.5);
-            box-shadow: 0 12px 40px rgba(79, 195, 247, 0.15),
-                        0 0 0 1px rgba(79, 195, 247, 0.1) inset;
-            transform: translateY(-6px) scale(1.02);
-        }
-
-        /* Enhanced glow effect */
-        .rimuru-glow {
-            box-shadow: 0 0 30px rgba(79, 195, 247, 0.4),
-                        0 0 60px rgba(79, 195, 247, 0.2);
-        }
-
-        /* Improved skill bubbles */
-        .skill-bubble {
-            background: linear-gradient(135deg, rgba(79, 195, 247, 0.12), rgba(38, 198, 218, 0.12));
-            border: 1px solid rgba(79, 195, 247, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-bubble::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(79, 195, 247, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.4s ease, height 0.4s ease;
-        }
-
-        .skill-bubble:hover::before {
-            width: 200%;
-            height: 200%;
-        }
-
-        .skill-bubble:hover {
-            background: linear-gradient(135deg, rgba(79, 195, 247, 0.25), rgba(38, 198, 218, 0.25));
-            border-color: rgba(79, 195, 247, 0.7);
-            transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 4px 12px rgba(79, 195, 247, 0.3);
-        }
-
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #4FC3F7, #26C6DA, #81C784);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Enhanced blob animation with parallax */
-        .rimuru-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.25;
-            animation: blob 10s infinite ease-in-out;
-            will-change: transform;
-        }
-
-        /* Improved shimmer effect */
-        .shimmer-effect {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .shimmer-effect::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(79, 195, 247, 0.3),
-                transparent);
-            animation: shimmer 2.5s infinite;
-        }
-
-        /* Enhanced text gradient */
-        .text-gradient-rimuru {
-            background: linear-gradient(135deg, #4FC3F7 0%, #26C6DA 50%, #81C784 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-shift 3s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Section divider with animation */
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.6), transparent);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-divider::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: divider-shine 3s infinite;
-        }
-
-        @keyframes divider-shine {
-            0% { left: -100%; }
-            100% { left: 200%; }
-        }
-
-        /* Smooth nav scroll effect */
-        nav.scrolled {
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(20px) saturate(180%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Enhanced button styles */
-        .btn-primary {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .btn-primary:hover::after {
-            width: 300%;
-            height: 300%;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 10px 40px rgba(79, 195, 247, 0.4);
-        }
-
-        /* Image zoom effect enhancement */
-        .image-container {
-            overflow: hidden;
-            border-radius: inherit;
-        }
-
-        .image-zoom {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .image-container:hover .image-zoom {
-            transform: scale(1.15) rotate(2deg);
-        }
-
-        /* Scroll reveal animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom selection */
-        ::selection {
-            background: rgba(79, 195, 247, 0.3);
-            color: white;
-        }
-
-        /* Improved scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #0D1117;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #4FC3F7, #26C6DA);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #26C6DA, #4FC3F7);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-deep-dark text-white font-sans leading-relaxed overflow-x-hidden">
-<!-- Background Blobs -->
-<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="rimuru-blob w-96 h-96 bg-rimuru-blue top-10 -left-20 opacity-30"></div>
-    <div class="rimuru-blob w-[500px] h-[500px] bg-rimuru-cyan bottom-20 -right-32 opacity-25" style="animation-delay: 2s;"></div>
-    <div class="rimuru-blob w-80 h-80 bg-rimuru-dark-blue top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20" style="animation-delay: 4s;"></div>
-    <div class="rimuru-blob w-64 h-64 bg-gradient-to-r from-rimuru-blue to-rimuru-cyan top-1/3 right-1/4 opacity-15" style="animation-delay: 6s;"></div>
-</div>
+<body>
+    <!-- Canvas pour les effets de particules -->
+    <canvas id="particles-canvas"></canvas>
+    <canvas id="stars-canvas"></canvas>
+    <canvas id="constellation-canvas"></canvas>
 
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 rimuru-glass">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-            <div class="font-cyber text-2xl font-bold text-rimuru-blue animate-glow-pulse">
-                MrTsubasa
+    <!-- Navigation -->
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <span class="logo-text">MrTsubasa</span>
+                <span class="logo-subtitle">Fusion of Legends</span>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-white/80 hover:text-rimuru-cyan transition-colors duration-300 font-medium relative group">
-                    Accueil
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rimuru-cyan transition-all duration-300 group-hover:w-full"></span>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À Propos</a></li>
+                <li><a href="#skills" class="nav-link">Compétences</a></li>
+                <li><a href="#projects" class="nav-link">Projets</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="fire-particle" style="--delay: 0s; --duration: 3s;"></div>
+            <div class="fire-particle" style="--delay: 0.5s; --duration: 3.5s;"></div>
+            <div class="fire-particle" style="--delay: 1s; --duration: 4s;"></div>
+            <div class="fire-particle" style="--delay: 1.5s; --duration: 3.2s;"></div>
+            <div class="fire-particle" style="--delay: 2s; --duration: 3.8s;"></div>
+            <div class="slime-blob slime-blob-1"></div>
+            <div class="slime-blob slime-blob-2"></div>
+            <div class="slime-blob slime-blob-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-stars-container">
+                <i class="hero-star fas fa-star"></i>
+                <i class="hero-star fas fa-star"></i>
+                <i class="hero-star fas fa-star"></i>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="title-line" data-text="Bienvenue dans">Bienvenue dans</span>
+                <span class="title-line main-title" data-text="Mon Univers">Mon Univers</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Où la <span class="highlight-seiya">Détermination</span>,
+                l'<span class="highlight-ayanokoji">Intelligence</span>,
+                l'<span class="highlight-rimuru">Adaptabilité</span>,
+                la <span class="highlight-natsu">Passion</span> et
+                le <span class="highlight-aqua">Mystère</span> se rencontrent
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-fire"></i>
+                    Voir mes Projets
                 </a>
-                <a href="#about" class="text-white/80 hover:text-rimuru-cyan transition-colors duration-300 font-medium relative group">
-                    À propos
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rimuru-cyan transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#projects" class="text-white/80 hover:text-rimuru-cyan transition-colors duration-300 font-medium relative group">
-                    Projets
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rimuru-cyan transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#designs" class="text-white/80 hover:text-rimuru-cyan transition-colors duration-300 font-medium relative group">
-                    Designs
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rimuru-cyan transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#team" class="text-white/80 hover:text-rimuru-cyan transition-colors duration-300 font-medium relative group">
-                    Équipe
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rimuru-cyan transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#contact" class="text-white/80 hover:text-rimuru-cyan transition-colors duration-300 font-medium relative group">
-                    Contact
-                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-rimuru-cyan transition-all duration-300 group-hover:w-full"></span>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-star"></i>
+                    Me Contacter
                 </a>
             </div>
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-btn" class="text-rimuru-cyan">
-                    <i class="fas fa-bars text-xl"></i>
+
+            <div class="hero-scroll">
+                <span>Découvrir</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">
+                    <span class="title-icon"><i class="fas fa-user-circle"></i></span>
+                    À Propos de Moi
+                </h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="about-content">
+                <div class="about-image-container">
+                    <div class="about-image-frame">
+                        <img src="https://via.placeholder.com/400x500/1a1a2e/fff?text=Profile" alt="Profile" class="about-image">
+                        <div class="image-glow"></div>
+                    </div>
+                    <div class="constellation-decoration">
+                        <div class="constellation-point"></div>
+                        <div class="constellation-point"></div>
+                        <div class="constellation-point"></div>
+                        <div class="constellation-line"></div>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <h3 class="about-subtitle">Stratège · Créateur · Visionnaire</h3>
+
+                    <div class="personality-traits">
+                        <div class="trait-card trait-seiya">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Déterminé comme Seiya</span>
+                        </div>
+                        <div class="trait-card trait-ayanokoji">
+                            <i class="fas fa-brain"></i>
+                            <span>Stratégique comme Ayanokoji</span>
+                        </div>
+                        <div class="trait-card trait-rimuru">
+                            <i class="fas fa-water"></i>
+                            <span>Adaptable comme Rimuru</span>
+                        </div>
+                        <div class="trait-card trait-natsu">
+                            <i class="fas fa-fire-alt"></i>
+                            <span>Passionné comme Natsu</span>
+                        </div>
+                        <div class="trait-card trait-aqua">
+                            <i class="fas fa-star"></i>
+                            <span>Mystérieux comme Aqua</span>
+                        </div>
+                    </div>
+
+                    <p class="about-description">
+                        Comme Seiya qui protège Athéna, je défends chaque projet avec détermination.
+                        Tel Ayanokoji qui calcule chaque mouvement, j'approche le développement avec stratégie.
+                        À l'image de Rimuru qui évolue constamment, je m'adapte aux nouvelles technologies.
+                        Avec la passion de Natsu pour ses amis, je mets mon cœur dans chaque création.
+                        Et comme Aqua Hoshino qui cache ses véritables intentions, mes projets révèlent des profondeurs inattendues.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="50">0</span>
+                            <span class="stat-label">Projets Réalisés</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">Années d'Expérience</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span class="stat-label">% Engagement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">
+                    <span class="title-icon"><i class="fas fa-code"></i></span>
+                    Compétences & Évolution
+                </h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="skills-intro">
+                <p>Comme Rimuru qui absorbe de nouvelles capacités, mes compétences évoluent constamment</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Seiya - Front-End -->
+                <div class="skill-category category-seiya">
+                    <div class="category-header">
+                        <i class="fas fa-crown"></i>
+                        <h3>Front-End - Le Chevalier</h3>
+                        <p>Noble et protecteur de l'expérience utilisateur</p>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">HTML5 / CSS3</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript / TypeScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React / Next.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ayanokoji - Back-End -->
+                <div class="skill-category category-ayanokoji">
+                    <div class="category-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>Back-End - Le Stratège</h3>
+                        <p>Calculateur et architecte de systèmes</p>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js / Express</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python / Django</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Bases de données</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rimuru - Full-Stack -->
+                <div class="skill-category category-rimuru">
+                    <div class="category-header">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>Full-Stack - L'Adaptable</h3>
+                        <p>Fluide entre toutes les technologies</p>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Architecture & Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">API REST / GraphQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="87"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">DevOps / CI/CD</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Natsu - Creative -->
+                <div class="skill-category category-natsu">
+                    <div class="category-header">
+                        <i class="fas fa-palette"></i>
+                        <h3>Design - Le Passionné</h3>
+                        <p>Énergique dans la création visuelle</p>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">UI/UX Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Figma / Adobe XD</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Animation / Motion</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aqua - Special Skills -->
+            <div class="special-skills">
+                <h3 class="special-title">
+                    <i class="fas fa-star"></i>
+                    Compétences Spéciales - Le Mystère
+                </h3>
+                <div class="special-tags">
+                    <span class="tag tag-aqua">Problem Solving</span>
+                    <span class="tag tag-aqua">Leadership</span>
+                    <span class="tag tag-aqua">Communication</span>
+                    <span class="tag tag-aqua">Travail d'Équipe</span>
+                    <span class="tag tag-aqua">Gestion de Projet</span>
+                    <span class="tag tag-aqua">Mentorat</span>
+                    <span class="tag tag-aqua">Innovation</span>
+                    <span class="tag tag-aqua">Résilience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">
+                    <span class="title-icon"><i class="fas fa-rocket"></i></span>
+                    Mes Créations
+                </h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Tous
+                </button>
+                <button class="filter-btn" data-filter="web">
+                    <i class="fas fa-globe"></i> Web
+                </button>
+                <button class="filter-btn" data-filter="app">
+                    <i class="fas fa-mobile-alt"></i> Application
+                </button>
+                <button class="filter-btn" data-filter="design">
+                    <i class="fas fa-paint-brush"></i> Design
                 </button>
             </div>
-        </div>
-    </div>
-</nav>
 
-<!-- Hero Section -->
-<section id="home" class="min-h-screen flex items-center justify-center relative z-10 pt-20">
-    <div class="max-w-5xl mx-auto text-center px-6">
-        <!-- Main Title -->
-        <div class="mb-8">
-            <h1 class="text-7xl md:text-9xl font-cyber font-bold text-gradient-rimuru mb-4 animate-fade-in tracking-tight leading-none">
-                MrTsubasa
-            </h1>
-            <div class="w-32 h-1 mx-auto bg-gradient-to-r from-transparent via-rimuru-cyan to-transparent rounded-full"></div>
-        </div>
-
-        <!-- Subtitle -->
-        <p class="text-2xl md:text-3xl text-rimuru-silver mb-10 font-light animate-slide-up tracking-wide">
-            Concepteur Développeur D'Application
-        </p>
-
-        <p class="text-lg md:text-xl text-text-gray mb-16 max-w-2xl mx-auto animate-slide-up leading-relaxed">
-            Comme Rimuru, j'absorbe les connaissances et les transforme en solutions élégantes et puissantes ✨
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16 animate-fade-in">
-            <a href="#projects" class="btn-primary px-10 py-5 bg-gradient-to-r from-rimuru-blue to-rimuru-cyan text-deep-dark font-bold rounded-2xl relative shimmer-effect group shadow-lg shadow-rimuru-blue/30">
-                <span class="relative z-10 flex items-center gap-2">
-                    <i class="fas fa-rocket"></i>
-                    Découvrir mes créations
-                </span>
-            </a>
-            <a href="#contact" class="btn-primary px-10 py-5 border-2 border-rimuru-cyan text-rimuru-cyan font-bold rounded-2xl relative group hover:bg-rimuru-cyan/10 shadow-lg shadow-rimuru-cyan/20">
-                <span class="relative z-10 flex items-center gap-2">
-                    <i class="fas fa-handshake"></i>
-                    Collaborons ensemble
-                </span>
-            </a>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="animate-bounce text-rimuru-cyan/70">
-            <span class="block text-sm mb-2 font-light">Explorez mon univers</span>
-            <i class="fas fa-chevron-down text-xl"></i>
-        </div>
-    </div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="py-20 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">À propos de moi</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver max-w-3xl mx-auto">
-                Développeur passionné inspiré par l'adaptabilité et la sagesse de Rimuru Tempest
-            </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Profile Section -->
-            <div class="rimuru-card rounded-3xl p-8">
-                <div class="text-center mb-8">
-                    <div class="w-64 h-64 mx-auto rounded-3xl overflow-hidden border-2 border-rimuru-cyan/20 mb-6 relative group">
-                        <img src="Src/Assets/Images/Team/tsubasa.gif" alt="MrTsubasa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <h3 class="text-2xl font-display font-bold text-rimuru-cyan mb-4">Qui suis-je ?</h3>
-                    <p class="text-rimuru-silver leading-relaxed mb-6">
-                        Passionné par le développement et le design, je crée des expériences numériques uniques qui combinent esthétique moderne et fonctionnalité optimale.
-                    </p>
-                    <p class="text-text-gray">
-                        Mon approche privilégie l'élégance, la performance et l'innovation continue.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Skills Section -->
-            <div class="space-y-8">
-                <!-- Hard Skills -->
-                <div class="rimuru-card rounded-3xl p-8">
-                    <h4 class="text-2xl font-display font-bold text-rimuru-blue mb-6 flex items-center">
-                        <i class="fas fa-code mr-3 text-rimuru-cyan"></i>
-                        Compétences Techniques
-                    </h4>
-
-                    <!-- Frontend -->
-                    <div class="mb-6">
-                        <h5 class="text-lg font-semibold text-rimuru-cyan mb-3 flex items-center">
-                            <i class="fas fa-palette mr-2"></i>Frontend
-                        </h5>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">HTML</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">CSS</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">JavaScript</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">TypeScript</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">React</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Tailwind</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">SCSS</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Bootstrap</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">jQuery</span>
-                        </div>
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="mb-6">
-                        <h5 class="text-lg font-semibold text-rimuru-cyan mb-3 flex items-center">
-                            <i class="fas fa-server mr-2"></i>Backend
-                        </h5>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Bun.js</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Deno.js</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Node.js</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">PHP</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Laravel</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Python</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Go</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Symfony</span>
-                        </div>
-                    </div>
-
-                    <!-- Databases -->
-                    <div>
-                        <h5 class="text-lg font-semibold text-rimuru-cyan mb-3 flex items-center">
-                            <i class="fas fa-database mr-2"></i>Bases de données
-                        </h5>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">PostgreSQL</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">MySQL</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">MongoDB</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Sequelize</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Prisma</span>
-                            <span class="skill-bubble px-4 py-2 rounded-full text-sm font-medium">Supabase</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Soft Skills - Style Rimuru -->
-                <div class="rimuru-card rounded-3xl p-8">
-                    <h4 class="text-2xl font-display font-bold text-rimuru-blue mb-6 flex items-center">
-                        <i class="fas fa-heart mr-3 text-rimuru-cyan"></i>
-                        Qualités Rimuru
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-xl flex items-center justify-center">
-                                <i class="fas fa-magic text-white"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-semibold text-white">Adaptable</h5>
-                                <p class="text-sm text-text-gray">Solutions flexibles</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-gradient-to-br from-rimuru-cyan to-rimuru-blue rounded-xl flex items-center justify-center">
-                                <i class="fas fa-brain text-white"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-semibold text-white">Sage</h5>
-                                <p class="text-sm text-text-gray">Décisions réfléchies</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-xl flex items-center justify-center">
-                                <i class="fas fa-users text-white"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-semibold text-white">Leader</h5>
-                                <p class="text-sm text-text-gray">Guide l'équipe</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-10 h-10 bg-gradient-to-br from-rimuru-cyan to-rimuru-blue rounded-xl flex items-center justify-center">
-                                <i class="fas fa-infinity text-white"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-semibold text-white">Évolutif</h5>
-                                <p class="text-sm text-text-gray">Amélioration continue</p>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/FFD700/000?text=Projet+1" alt="Projet 1">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                <a href="#" class="project-icon"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-icon"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="py-20 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">Mes Créations</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver max-w-3xl mx-auto">
-                Découvrez mes projets, chacun étant une évolution de mes compétences
-            </p>
-        </div>
-
-        <!-- Projets principaux (3 colonnes) -->
-        <div class="grid lg:grid-cols-3 gap-8 mb-12">
-            <!-- Clarity Project -->
-            <div class="rimuru-card rounded-3xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Projects/Clarity.gif" alt="Clarity" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-dark/80 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <span class="inline-block px-3 py-1 bg-rimuru-blue/20 text-rimuru-cyan rounded-full text-xs border border-rimuru-blue/30">
-                            🚀 En Production
-                        </span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-3">Clarity</h3>
-                    <p class="text-text-gray text-sm mb-4 leading-relaxed">
-                        Plateforme de développement complète offrant des services de création de bots Discord, sites web et applications.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Node.js</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">TypeScript</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Discord.js</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">PostgreSQL</span>
-                    </div>
-                    <div class="flex gap-3">
-                        <a href="https://www.clarity-corp.com" class="flex-1 bg-gradient-to-r from-rimuru-blue to-rimuru-cyan text-deep-dark py-2 px-4 rounded-xl text-center text-sm font-semibold hover:scale-105 transition-transform">
-                            Explorer
-                        </a>
-                        <a href="https://discord.gg/claritycorp" class="flex-1 border border-rimuru-cyan text-rimuru-cyan py-2 px-4 rounded-xl text-center text-sm font-medium hover:bg-rimuru-cyan/10 transition-colors">
-                            Discord
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- iHorizon Project -->
-            <div class="rimuru-card rounded-3xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Projects/ihorizon.png" alt="iHorizon" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-dark/80 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <span class="inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs border border-green-500/30">
-                            ✨ Open Source
-                        </span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-3">iHorizon</h3>
-                    <p class="text-text-gray text-sm mb-4 leading-relaxed">
-                        Bot Discord polyvalent révolutionnaire avec modération avancée, divertissement et fonctionnalités communautaires.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Node.js</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">TypeScript</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Discord.js</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">PostgreSQL</span>
-                    </div>
-                    <div class="flex gap-3">
-                        <a href="https://ihorizon.org" class="flex-1 bg-gradient-to-r from-rimuru-blue to-rimuru-cyan text-deep-dark py-2 px-4 rounded-xl text-center text-sm font-semibold hover:scale-105 transition-transform">
-                            Découvrir
-                        </a>
-                        <a href="https://discord.gg/ihorizon" class="flex-1 border border-rimuru-cyan text-rimuru-cyan py-2 px-4 rounded-xl text-center text-sm font-medium hover:bg-rimuru-cyan/10 transition-colors">
-                            Rejoindre
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Infinity Radio Project -->
-            <div class="rimuru-card rounded-3xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Projects/infinity.png" alt="Infinity Radio" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-dark/80 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <span class="inline-block px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs border border-orange-500/30">
-                            🔮 En Développement
-                        </span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-3">Infinity Radio</h3>
-                    <p class="text-text-gray text-sm mb-4 leading-relaxed">
-                        Station de radio futuriste offrant une expérience musicale immersive avec interface élégante et intuitive.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Node.js</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">TypeScript</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">React</span>
-                    </div>
-                    <div class="flex gap-3">
-                        <button class="flex-1 bg-border-dark text-text-gray py-2 px-4 rounded-xl text-center text-sm font-medium cursor-not-allowed">
-                            Bientôt disponible
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ligne 2 -->
-            <div class="grid md:grid-cols-2 gap-8 xl:col-span-2">
-                <!-- StreamLive Pro Project (NOUVEAU) -->
-                <div class="rimuru-card rounded-3xl overflow-hidden group">
-                    <div class="relative overflow-hidden">
-                        <img src="Src/Assets/Images/Projects/Shidastream.jpg" alt="Infinity Radio" class="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-deep-dark/80 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-                            <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs border border-purple-500/30">
-                                🎥 Client Project
-                            </span>
-                            <div class="flex items-center space-x-1">
-                                <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                                <span class="text-xs text-red-400">LIVE</span>
-                            </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">MongoDB</span>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-3">Shida Stream</h3>
-                        <p class="text-text-gray text-sm mb-4 leading-relaxed">
-                            Plateforme de streaming personnalisée d'anime pour les amateurs de la culture japonaise.
+                        <h3 class="project-title">Application E-Commerce Complète</h3>
+                        <p class="project-description">
+                            Une plateforme e-commerce moderne avec gestion des stocks, paiements sécurisés et interface admin.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="skill-bubble px-3 py-1 rounded-full text-xs">Bun.js</span>
-                            <span class="skill-bubble px-3 py-1 rounded-full text-xs">Vue.JS</span>
-                            <span class="skill-bubble px-3 py-1 rounded-full text-xs">Tailwind CSS</span>
-                            <span class="skill-bubble px-3 py-1 rounded-full text-xs">Prisma</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-xl text-center text-sm font-semibold hover:scale-105 transition-transform">
-                                🎬 Voir le stream
-                            </a>
-                            <button class="flex-1 border border-purple-400 text-purple-400 py-2 px-4 rounded-xl text-center text-sm font-medium hover:bg-purple-400/10 transition-colors">
-                                📊 Stats
-                            </button>
-                            <button class="flex-1 bg-border-dark text-text-gray py-2 px-4 rounded-xl text-center text-sm font-medium cursor-not-allowed">
-                                Bientôt disponible
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
->
-
-        <!-- Section Projet France (mise en avant) -->
-        <div class="mb-12">
-            <div class="text-center mb-8">
-                <div class="flex items-center justify-center mb-4">
-                    <div class="w-8 h-6 bg-blue-600 mr-3 rounded-sm"></div>
-                    <h3 class="text-2xl font-display font-bold text-white">Projets France</h3>
-                    <div class="w-8 h-6 bg-red-600 ml-3 rounded-sm"></div>
-                </div>
-                <p class="text-rimuru-silver">Solutions dédiées à l'écosystème français 🇫🇷</p>
-            </div>
-
-            <!-- Signale France - Projet featured -->
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Signale France (2 colonnes) -->
-                <div class="lg:col-span-2 rimuru-card rounded-3xl overflow-hidden group">
-                    <div class="relative overflow-hidden">
-                        <div class="w-full h-64 bg-gradient-to-br from-blue-600 via-white to-red-600 flex items-center justify-center relative">
-                            <div class="text-center z-10">
-                                <div class="text-6xl mb-4">🇫🇷</div>
-                                <div class="text-3xl font-bold text-deep-dark font-display">Signale France</div>
-                                <div class="text-sm text-deep-dark/70 mt-2">Plateforme Citoyenne</div>
-                            </div>
-                            <!-- Pattern overlay -->
-                            <div class="absolute inset-0 opacity-10">
-                                <div class="w-full h-full" style="background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"%23000\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>');"></div>
-                        </div>
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-deep-dark/80 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
-                            <span class="inline-block px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs border border-blue-600/30">
-                                🇫🇷 Made in France
-                            </span>
-                        <div class="flex space-x-1">
-                            <span class="w-4 h-3 bg-blue-600 rounded-sm"></span>
-                            <span class="w-4 h-3 bg-white border border-gray-300 rounded-sm"></span>
-                            <span class="w-4 h-3 bg-red-600 rounded-sm"></span>
+                        <div class="project-character">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Développé avec la détermination de Seiya</span>
                         </div>
                     </div>
                 </div>
-                <div class="p-6">
-                    <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-3">Signale France</h3>
-                    <p class="text-text-gray text-sm mb-4 leading-relaxed">
-                        Plateforme de signalement citoyenne dédiée aux problématiques françaises.
-                        Une solution moderne pour améliorer notre quotidien et faciliter les démarches administratives.
-                    </p>
 
-                    <!-- Fonctionnalités -->
-                    <div class="mb-6">
-                        <h4 class="text-sm font-semibold text-rimuru-cyan mb-3">🎯 Fonctionnalités principales :</h4>
-                        <div class="grid grid-cols-2 gap-2 text-xs text-text-gray">
-                            <div class="flex items-center">
-                                <i class="fas fa-exclamation-triangle text-orange-400 mr-2"></i>
-                                Signalements citoyens
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-red-400 mr-2"></i>
-                                Géolocalisation précise
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-users text-blue-400 mr-2"></i>
-                                Interface admin
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-chart-line text-green-400 mr-2"></i>
-                                Suivi en temps réel
+                <!-- Project 2 -->
+                <div class="project-card" data-category="app">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/00E5FF/000?text=Projet+2" alt="Projet 2">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                <a href="#" class="project-icon"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-icon"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Php</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Ajax</span>
-                        <span class="skill-bubble px-3 py-1 rounded-full text-xs">Sqlite</span>
-                    </div>
-
-                    <div class="flex gap-3">
-                        <a href="#" class="flex-1 bg-gradient-to-r from-blue-600 to-red-600 text-white py-2 px-4 rounded-xl text-center text-sm font-semibold hover:scale-105 transition-transform shimmer-effect">
-                            <span class="relative z-10">🚀 Découvrir</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats et autres projets France -->
-            <div class="space-y-6">
-                <!-- Stats France -->
-                <div class="rimuru-card rounded-2xl p-6 bg-gradient-to-br from-blue-600/10 to-red-600/10 border-2 border-blue-400/20">
-                    <h4 class="text-lg font-display font-bold text-white mb-4 flex items-center">
-                        🇫🇷 Impact France
-                    </h4>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-blue-400">1</div>
-                            <div class="text-xs text-text-gray">Projet actif</div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Vue.js</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">PWA</span>
                         </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-red-400">100%</div>
-                            <div class="text-xs text-text-gray">Made in FR</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-white">Paris</div>
-                            <div class="text-xs text-text-gray">Basé à</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-blue-300">2025</div>
-                            <div class="text-xs text-text-gray">Lancé en</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projets futurs -->
-                <div class="rimuru-card rounded-2xl p-6 group hover:scale-105 transition-all duration-300">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg font-display font-bold text-rimuru-cyan">EcoFrance Bot</h3>
-                        <span class="text-2xl">♻️</span>
-                    </div>
-                    <p class="text-text-gray text-sm mb-4">
-                        Bot Discord éco-responsable pour sensibiliser aux enjeux environnementaux français.
-                    </p>
-                    <div class="flex items-center justify-between">
-                            <span class="text-xs text-orange-400 flex items-center">
-                                <i class="fas fa-clock mr-1"></i>En concept
-                            </span>
-                        <div class="flex space-x-1">
-                            <span class="w-3 h-2 bg-blue-600 rounded-sm"></span>
-                            <span class="w-3 h-2 bg-white border border-gray-400 rounded-sm"></span>
-                            <span class="w-3 h-2 bg-red-600 rounded-sm"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="rimuru-card rounded-2xl p-6 bg-gradient-to-r from-blue-600/5 to-red-600/5 border border-blue-400/20 text-center">
-                    <h4 class="text-lg font-display font-bold text-white mb-2">
-                        Projet français ?
-                    </h4>
-                    <p class="text-xs text-rimuru-silver mb-4">
-                        Collaborons pour l'écosystème français
-                    </p>
-                    <a href="#contact" class="inline-block px-4 py-2 bg-gradient-to-r from-blue-600 to-red-600 text-white font-semibold rounded-xl text-xs hover:scale-105 transition-transform">
-                        💬 Discutons
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-
-
-<!-- Designs Section -->
-<section id="designs" class="py-20 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">Créations Visuelles</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver max-w-3xl mx-auto">
-                Mes designs inspirés par l'esthétique anime et la créativité moderne
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Design Card -->
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/hao_final.png" alt="Bannière Blue Blox" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/hao_final.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Bannière Blue Blox</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-user mr-2 text-rimuru-blue"></i>Hao</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Design Card 2 -->
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/MaBannerByMe.png" alt="Bannière Oshi No Ko" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/MaBannerByMe.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Bannière Oshi No Ko</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Design Card 3 -->
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/Coco_Final.png" alt="Bannière Emilia" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/Coco_Final.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Bannière Emilia [Re:Zero]</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-user mr-2 text-rimuru-blue"></i>Cocolennon</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/Coco_Final_2.png" alt="Bannière Emilia" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/Coco_Final_2.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Bannière Emilia [Re:Zero]</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-user mr-2 text-rimuru-blue"></i>Cocolennon</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/Spoiler_Sxjic-Banner.png" alt="Bannière Ryu Ilion" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/Spoiler_Sxjic-Banner.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Ryuu lLion [Dan Machi]</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-user mr-2 text-rimuru-blue"></i>Sxjic</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/SPOILER_Kaulder_Final.png" alt="Bannière J.C" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/SPOILER_Kaulder_Final.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere J.C</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-user mr-2 text-rimuru-blue"></i>Kaulder</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Religion</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/SPOILER_final_MaBanner.png" alt="Bannière Yoh Asakura" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/SPOILER_final_MaBanner.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Yoh Asakura</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/TsuNewBannerYohAsakura.png" alt="Bannière Yoh Asakura" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/TsuNewBannerYohAsakura.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Yoh Asakura</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/NewBannerYoh.png" alt="Bannière Yoh Asakura" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/NewBannerYoh.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Yoh Asakura</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/LucyBannerExemple.png" alt="Bannière Lucy HeartFilia" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/LucyBannerExemple.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Lucy HeartFilia</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Personne</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/AishuBannerByTsu.png" alt="Bannière Anime Waifu" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/AishuBannerByTsu.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Anime Waifu</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Aishu</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/Drizz_No_BS.png" alt="Bannière Akari" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/Drizz_No_BS.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Akari</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Drizz</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/SPOILER_final-drizz.png" alt="Bannière Akari" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/SPOILER_final-drizz.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Akari [V2]</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Drizz</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/Kiyo_Banner.png" alt="Bannière JJK" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/Kiyo_Banner.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Jujutsu Kaisen</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Kiyo</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/MianzoBanner.png" alt="Bannière Platinum End" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/MianzoBanner.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Platinum End</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Mianzo</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/TheWorldMinia.png" alt="Miniature youtube" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/TheWorldMinia.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Miniature Youtube</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/EsdeathbannerEirinByTsu.png" alt="Banniere Esdeath" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/EsdeathbannerEirinByTsu.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Esdeath</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Eirin</span>
-                        <span class="flex items-center"><i class="fas fa-heart mr-2 text-red-400"></i>Anime</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/PpGilgaMeshTsu.png" alt="pp gilgamesh" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/PpGilgaMeshTsu.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Photo de profil Gilgamesh</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="rimuru-card rounded-2xl overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="Src/Assets/Images/Designs/GilgameshTsuBanner.png" alt="Banniere gilgamesh" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-deep-dark/0 group-hover:bg-deep-dark/60 transition-all duration-300 flex items-center justify-center">
-                        <a href="Src/Assets/Images/Designs/GilgameshTsuBanner.png.png" class="opacity-0 group-hover:opacity-100 bg-rimuru-blue text-deep-dark px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shimmer-effect" target="_blank">
-                            <i class="fas fa-expand-alt mr-2"></i>Agrandir
-                        </a>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Banniere Gilgamesh</h3>
-                    <div class="flex items-center justify-between text-sm text-text-gray">
-                        <span class="flex items-center"><i class="fas fa-star mr-2 text-yellow-400"></i>Tsubasa</span>
-                        <span class="flex items-center"><i class="fas fa-image mr-2 text-rimuru-cyan"></i>Personnel</span>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <!-- Plus de designs peuvent être ajoutés... -->
-        </div>
-
-        <div class="text-center mt-12">
-            <button class="px-8 py-3 border-2 border-rimuru-cyan text-rimuru-cyan font-medium rounded-2xl hover:bg-rimuru-cyan/10 transition-all duration-300 relative overflow-hidden shimmer-effect">
-                <span class="relative z-10">Voir toute la galerie</span>
-            </button>
-        </div>
-    </div>
-</section>
-
-<!-- Team Section -->
-<section id="team" class="py-20 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">Mon Équipe</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver max-w-3xl mx-auto">
-                Une équipe unie comme la famille de Rimuru, chacun avec ses talents uniques
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Tsubasa (Leader) -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300 border-2 border-rimuru-cyan/30">
-                <div class="relative mb-4">
-                    <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-3 border-rimuru-cyan group-hover:border-rimuru-blue transition-colors relative">
-                        <img src="Src/Assets/Images/Team/tsubasa.gif" alt="Tsubasa" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                        <i class="fas fa-crown text-white text-xs"></i>
-                    </div>
-                    <!-- Badge discret cœur rose -->
-                    <div class="absolute -bottom-1 -left-1 w-6 h-6 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-heart text-white text-xs"></i>
-                    </div>
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Tsubasa</h3>
-                <p class="text-sm text-rimuru-cyan font-medium mb-1">Leader Multi-Talent</p>
-                <p class="text-xs text-text-gray mb-4">FullStack • Backend • Designer • Visionnaire</p>
-
-                <!-- Compétences avec cœur subtil -->
-                <div class="flex justify-center space-x-2 mb-4">
-                    <div class="w-7 h-7 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-lg flex items-center justify-center">
-                        <i class="fas fa-code text-white text-xs"></i>
-                    </div>
-                    <div class="w-7 h-7 bg-gradient-to-br from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-heart text-white text-xs"></i>
-                    </div>
-                    <div class="w-7 h-7 bg-gradient-to-br from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-server text-white text-xs"></i>
-                    </div>
-                    <div class="w-7 h-7 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-star text-white text-xs"></i>
-                    </div>
-                </div>
-
-                <div class="flex justify-center space-x-3 mb-4">
-                    <a href="https://github.com/mrtsubasa" class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray hover:bg-rimuru-blue hover:text-white transition-colors">
-                        <i class="fab fa-github text-sm"></i>
-                    </a>
-                    <a href="https://x.com/_1Tsubasa" class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray hover:bg-rimuru-cyan hover:text-white transition-colors">
-                        <i class="fab fa-twitter text-sm"></i>
-                    </a>
-                </div>
-                <div class="text-xs text-gradient-rimuru font-semibold">
-                    🌟 Fondateur • Architecte • Créateur
-                </div>
-            </div>
-
-            <!-- Mikky (avec connexion visuelle subtile) -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300 border-2 border-pink-400/30">
-                <div class="relative mb-4">
-                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-3 border-pink-400 group-hover:border-pink-500 transition-colors">
-                        <img src="Src/Assets/Images/Team/Mikky.gif" alt="Mikky" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Cœur assorti à Tsubasa -->
-                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-heart text-white text-xs"></i>
-                    </div>
-                    <!-- Petite étoile qui fait écho au badge de Tsubasa -->
-                    <div class="absolute -bottom-1 -left-1 w-5 h-5 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-star text-white text-xs"></i>
-                    </div>
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Mikky</h3>
-                <p class="text-sm text-pink-400 font-medium mb-1">Designer Visuel</p>
-                <p class="text-xs text-text-gray mb-4">Créatrice d'Univers Magiques</p>
-                <div class="flex justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-magic text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-heart text-sm text-pink-400"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-wand-magic-sparkles text-sm"></i>
-                    </div>
-                </div>
-                <div class="text-xs text-rimuru-silver">
-                    ✨ Architecte Créative
-                </div>
-            </div>
-
-            <!-- Aelialou (avec connexion amicale subtile) -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300 border-2 border-blue-400/30">
-                <div class="relative mb-4">
-                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-3 border-blue-400 group-hover:border-blue-500 transition-colors">
-                        <img src="Src/Assets/Images/Team/Aelialou.jpg" alt="Aelialou" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Même étoile que Tsubasa mais en bleu -->
-                    <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-star text-white text-xs"></i>
-                    </div>
-                    <!-- Badge amitié subtil -->
-                    <div class="absolute -bottom-1 -left-1 w-5 h-5 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-handshake text-white text-xs"></i>
-                    </div>
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Aelialou</h3>
-                <p class="text-sm text-blue-400 font-medium mb-1">Artist & Designeuse</p>
-                <p class="text-xs text-text-gray mb-4">Créative et méthodique</p>
-                <div class="flex justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-palette text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-star text-sm text-blue-400"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-paintbrush text-sm"></i>
-                    </div>
-                </div>
-                <div class="text-xs text-rimuru-silver">
-                    🎨 Magie Visuelle
-                </div>
-            </div>
-
-            <!-- Sparrow (Meilleur Ami) -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300 border-2 border-green-400/30">
-                <div class="relative mb-4">
-                    <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-3 border-green-400 group-hover:border-green-500 transition-colors">
-                        <img src="Src/Assets/Images/Team/Sparrow.png" alt="Sparrow" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Badge Meilleur Ami -->
-                    <div class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-star text-white text-sm"></i>
-                    </div>
-                    <!-- Badge BFF -->
-                    <div class="absolute -bottom-1 -left-1 w-6 h-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center border-2 border-deep-dark">
-                        <i class="fas fa-fist-raised text-white text-xs"></i>
-                    </div>
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Sparrow</h3>
-                <p class="text-sm text-green-400 font-medium mb-1">Développeur FullStack & Meilleur Ami</p>
-                <p class="text-xs text-text-gray mb-2">Spécialiste Backend</p>
-                <div class="text-xs text-green-400 mb-3 flex items-center justify-center">
-                    <i class="fas fa-user-friends mr-1"></i>
-                    <span>Meilleur Ami de Tsubasa</span>
-                    <i class="fas fa-user-friends ml-1"></i>
-                </div>
-                <div class="flex justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-code text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-server text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-star text-sm text-green-400"></i>
-                    </div>
-                </div>
-                <div class="text-xs text-rimuru-silver">
-                    🚀 Moteur Backend & Bro de Confiance
-                </div>
-            </div>
-
-
-            <!-- Swammy -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300">
-                <div class="w-20 h-20 mx-auto rounded-full overflow-hidden mb-4 border-2 border-orange-400/30 group-hover:border-orange-400 transition-colors">
-                    <img src="Src/Assets/Images/Team/Swammy.jpg" alt="Swammy" class="w-full h-full object-cover">
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Swammy</h3>
-                <p class="text-sm text-orange-400 font-medium mb-1">Admin Sys & Réseaux</p>
-                <p class="text-xs text-text-gray mb-4">Designer & Créatrice</p>
-                <div class="flex justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-network-wired text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-video text-sm"></i>
-                    </div>
-                </div>
-                <div class="text-xs text-rimuru-silver">
-                    🔧 Maîtresse Infrastructure
-                </div>
-            </div>
-
-            <!-- Cocolennon -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300">
-                <div class="w-20 h-20 mx-auto rounded-full overflow-hidden mb-4 border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors">
-                    <img src="Src/Assets/Images/Team/Cocolennon.png" alt="Cocolennon" class="w-full h-full object-cover">
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Cocolennon</h3>
-                <p class="text-sm text-indigo-400 font-medium mb-1">Game Developer</p>
-                <p class="text-xs text-text-gray mb-4">Développeur orienté logique</p>
-                <div class="flex justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-gamepad text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-cube text-sm"></i>
-                    </div>
-                </div>
-                <div class="text-xs text-rimuru-silver">
-                    🎮 Architecte Gaming
-                </div>
-            </div>
-
-            <!-- Mianzo -->
-            <div class="rimuru-card rounded-3xl p-6 text-center group hover:scale-105 transition-all duration-300">
-                <div class="w-20 h-20 mx-auto rounded-full overflow-hidden mb-4 border-2 border-red-400/30 group-hover:border-red-400 transition-colors">
-                    <img src="Src/Assets/Images/Team/Mianzo.jpg" alt="Mianzo" class="w-full h-full object-cover">
-                </div>
-                <h3 class="text-xl font-display font-semibold text-rimuru-blue mb-2">Mianzo</h3>
-                <p class="text-sm text-red-400 font-medium mb-1">FullStack & Pentester</p>
-                <p class="text-xs text-text-gray mb-4">Admin Système</p>
-                <div class="flex justify-center space-x-3 mb-4">
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fas fa-shield-alt text-sm"></i>
-                    </div>
-                    <div class="w-8 h-8 bg-border-dark rounded-xl flex items-center justify-center text-text-gray">
-                        <i class="fab fa-osi text-sm"></i>
-                    </div>
-                </div>
-                <div class="text-xs text-rimuru-silver">
-                    🛡️ Guardian Security
-                </div>
-            </div>
-        </div>
-
-        <!-- Stats de l'équipe -->
-        <div class="mt-16 grid md:grid-cols-3 gap-8">
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="text-3xl font-cyber font-bold text-rimuru-blue mb-2">8</div>
-                <p class="text-rimuru-silver font-medium">Membres Actifs</p>
-                <div class="text-xs text-text-gray mt-1">Une vraie famille</div>
-            </div>
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="text-3xl font-cyber font-bold text-rimuru-cyan mb-2">15+</div>
-                <p class="text-rimuru-silver font-medium">Compétences Uniques</p>
-                <div class="text-xs text-text-gray mt-1">Diversité de talents</div>
-            </div>
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="text-3xl font-cyber font-bold text-gradient-rimuru mb-2">100%</div>
-                <p class="text-rimuru-silver font-medium">Passion Partagée</p>
-                <div class="text-xs text-text-gray mt-1">Unis par la tech</div>
-            </div>
-        </div>
-
-        <!-- Citation d'équipe -->
-        <div class="mt-12 text-center">
-            <div class="rimuru-card rounded-3xl p-8 max-w-4xl mx-auto bg-gradient-to-r from-rimuru-blue/5 to-rimuru-cyan/5 border border-rimuru-blue/20">
-                <div class="text-4xl text-rimuru-cyan mb-4">💙</div>
-                <h3 class="text-2xl font-display font-bold text-white mb-4">
-                    "Comme Rimuru et sa famille, nous grandissons ensemble"
-                </h3>
-                <p class="text-rimuru-silver leading-relaxed">
-                    Chaque membre apporte sa magie unique à notre quête commune : créer des expériences numériques extraordinaires.
-                    Ensemble, nous transformons les idées en réalité, une ligne de code à la fois.
-                </p>
-                <div class="mt-6">
-                    <span class="text-sm text-text-gray">— L'équipe MrTsubasa ✨</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Stats Section -->
-<section id="stats" class="py-20 px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">Évolution</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver">Mon parcours en chiffres, comme les niveaux de Rimuru</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="rimuru-card rounded-3xl p-8 text-center group hover:scale-105 transition-all duration-300">
-                <div class="text-5xl md:text-6xl font-cyber font-bold text-rimuru-blue mb-4 counter animate-glow-pulse" data-target="7">0</div>
-                <p class="text-rimuru-silver font-medium">Projets Accomplis</p>
-                <div class="mt-2 text-xs text-text-gray">Chaque projet, une évolution</div>
-            </div>
-            <div class="rimuru-card rounded-3xl p-8 text-center group hover:scale-105 transition-all duration-300">
-                <div class="text-5xl md:text-6xl font-cyber font-bold text-rimuru-cyan mb-4 counter animate-glow-pulse" data-target="10" style="animation-delay: 0.5s;">0</div>
-                <p class="text-rimuru-silver font-medium">Alliés Satisfaits</p>
-                <div class="mt-2 text-xs text-text-gray">Relations durables</div>
-            </div>
-            <div class="rimuru-card rounded-3xl p-8 text-center group hover:scale-105 transition-all duration-300">
-                <div class="text-5xl md:text-6xl font-cyber font-bold text-gradient-rimuru mb-4 counter animate-glow-pulse" data-target="2" style="animation-delay: 1s;">0</div>
-                <p class="text-rimuru-silver font-medium">Années d'Aventure</p>
-                <div class="mt-2 text-xs text-text-gray">Sagesse accumulée</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Section Relations & Connexions -->
-<section id="relationships" class="py-16 px-6 relative z-10">
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-16">
-            <h3 class="text-3xl md:text-4xl font-display font-bold text-gradient-rimuru mb-4">Relations & Connexions</h3>
-            <div class="section-divider w-20 mx-auto mb-6"></div>
-            <p class="text-lg text-rimuru-silver max-w-2xl mx-auto">
-                Les liens qui unissent notre équipe et créent notre force collective
-            </p>
-        </div>
-
-        <!-- Graphique de relations interactif -->
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Relations visuelles -->
-            <div class="relative">
-                <div class="rimuru-card rounded-3xl p-8 bg-gradient-to-br from-rimuru-blue/5 to-rimuru-cyan/5">
-                    <h4 class="text-xl font-display font-bold text-white mb-6 text-center">Carte des Relations</h4>
-
-                    <!-- Centre : Tsubasa -->
-                    <div class="relative flex items-center justify-center mb-8">
-                        <div class="w-20 h-20 rounded-full overflow-hidden border-3 border-rimuru-cyan relative z-10 group">
-                            <img src="Src/Assets/Images/Team/tsubasa.gif" alt="Tsubasa" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-rimuru-blue/0 group-hover:bg-rimuru-blue/20 transition-colors"></div>
-                        </div>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center z-20">
-                            <i class="fas fa-crown text-white text-xs"></i>
-                        </div>
-                        <div class="absolute -bottom-6 text-center">
-                            <span class="text-sm font-semibold text-rimuru-cyan">Tsubasa</span>
-                        </div>
-                    </div>
-
-                    <!-- Connexions (maintenant 3 connexions principales) -->
-                    <div class="grid grid-cols-3 gap-4">
-                        <!-- Mikky (Couple) -->
-                        <div class="relative">
-                            <div class="flex flex-col items-center">
-                                <!-- Ligne de connexion -->
-                                <div class="absolute top-0 left-1/2 w-0.5 h-6 bg-gradient-to-b from-pink-500 to-transparent transform -translate-x-1/2 -translate-y-6"></div>
-                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-pink-400 relative group">
-                                    <img src="Src/Assets/Images/Team/Mikky.gif" alt="Mikky" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-pink-500/0 group-hover:bg-pink-500/20 transition-colors"></div>
-                                </div>
-                                <div class="mt-2 text-center">
-                                    <span class="text-xs font-semibold text-pink-400">Mikky</span>
-                                    <div class="flex items-center justify-center mt-1">
-                                        <i class="fas fa-heart text-pink-400 text-xs mr-1"></i>
-                                        <span class="text-xs text-text-gray">Duo de travail</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Aelialou (Meilleure Amie) -->
-                        <div class="relative">
-                            <div class="flex flex-col items-center">
-                                <!-- Ligne de connexion -->
-                                <div class="absolute top-0 left-1/2 w-0.5 h-6 bg-gradient-to-b from-blue-400 to-transparent transform -translate-x-1/2 -translate-y-6"></div>
-                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-blue-400 relative group">
-                                    <img src="Src/Assets/Images/Team/Aelialou.jpg" alt="Aelialou" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-blue-400/0 group-hover:bg-blue-400/20 transition-colors"></div>
-                                </div>
-                                <div class="mt-2 text-center">
-                                    <span class="text-xs font-semibold text-blue-400">Aelialou</span>
-                                    <div class="flex items-center justify-center mt-1">
-                                        <i class="fas fa-star text-blue-400 text-xs mr-1"></i>
-                                        <span class="text-xs text-text-gray">Meilleure Amie</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sparrow (Meilleur Ami) -->
-                        <div class="relative">
-                            <div class="flex flex-col items-center">
-                                <!-- Ligne de connexion -->
-                                <div class="absolute top-0 left-1/2 w-0.5 h-6 bg-gradient-to-b from-green-400 to-transparent transform -translate-x-1/2 -translate-y-6"></div>
-                                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-green-400 relative group">
-                                    <img src="Src/Assets/Images/Team/Sparrow.png" alt="Sparrow" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-green-400/0 group-hover:bg-green-400/20 transition-colors"></div>
-                                </div>
-                                <div class="mt-2 text-center">
-                                    <span class="text-xs font-semibold text-green-400">Sparrow</span>
-                                    <div class="flex items-center justify-center mt-1">
-                                        <i class="fas fa-star text-green-400 text-xs mr-1"></i>
-                                        <span class="text-xs text-text-gray">Meilleur Ami</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Détails des relations -->
-            <div class="space-y-6">
-                <!-- Relation de couple -->
-                <div class="rimuru-card rounded-2xl p-6 border-l-4 border-pink-400">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-heart text-white"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h5 class="text-lg font-display font-semibold text-pink-400 mb-2">Relation de Couple</h5>
-                            <div class="flex items-center space-x-2 mb-3">
-                                <span class="text-sm text-white">Tsubasa</span>
-                                <i class="fas fa-heart text-pink-400 text-xs"></i>
-                                <span class="text-sm text-pink-400">Mikky</span>
-                            </div>
-                            <p class="text-sm text-text-gray leading-relaxed">
-                                Union parfaite entre la logique du code et la magie du design.
-                                Ensemble, ils créent des projets qui allient technique et esthétique.
-                            </p>
-                            <div class="flex space-x-2 mt-3">
-                                <span class="px-2 py-1 bg-pink-400/20 text-pink-400 rounded-full text-xs">💕 Couple</span>
-                                <span class="px-2 py-1 bg-purple-400/20 text-purple-400 rounded-full text-xs">🎨 Creative Duo</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Meilleures amitiés -->
-                <div class="rimuru-card rounded-2xl p-6 border-l-4 border-cyan-400">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-user-friends text-white"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h5 class="text-lg font-display font-semibold text-cyan-400 mb-2">Meilleures Amitiés</h5>
-                            <div class="space-y-2 mb-3">
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm text-white">Tsubasa</span>
-                                    <i class="fas fa-star text-blue-400 text-xs"></i>
-                                    <span class="text-sm text-blue-400">Aelialou</span>
-                                    <span class="text-xs text-text-gray">(Meilleure Amie)</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm text-white">Tsubasa</span>
-                                    <i class="fas fa-star text-green-400 text-xs"></i>
-                                    <span class="text-sm text-green-400">Sparrow</span>
-                                    <span class="text-xs text-text-gray">(Meilleur Ami)</span>
-                                </div>
-                            </div>
-                            <p class="text-sm text-text-gray leading-relaxed">
-                                Deux amitiés profondes et complémentaires. Aelialou et Sparrow représentent
-                                des liens de confiance absolue et de complicité qui transcendent le professionnel.
-                            </p>
-                            <div class="flex space-x-2 mt-3">
-                                <span class="px-2 py-1 bg-blue-400/20 text-blue-400 rounded-full text-xs">👫 BFF</span>
-                                <span class="px-2 py-1 bg-green-400/20 text-green-400 rounded-full text-xs">🤝 Bros</span>
-                                <span class="px-2 py-1 bg-cyan-400/20 text-cyan-400 rounded-full text-xs">🌟 Confidents</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Relations d'équipe -->
-                <div class="rimuru-card rounded-2xl p-6 border-l-4 border-rimuru-cyan">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-users text-white"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h5 class="text-lg font-display font-semibold text-rimuru-cyan mb-2">Amis de Confiance</h5>
-                            <div class="flex items-center space-x-2 mb-3">
-                                <span class="text-sm text-white">Tsubasa</span>
-                                <i class="fas fa-arrow-right text-rimuru-cyan text-xs"></i>
-                                <span class="text-sm text-rimuru-cyan">Reste de l'équipe</span>
-                            </div>
-                            <p class="text-sm text-text-gray leading-relaxed">
-                                Chaque autre membre de l'équipe est un ami proche en qui j'ai une confiance absolue.
-                                Ces relations solides sont la base de notre succès collectif.
-                            </p>
-                            <div class="flex space-x-2 mt-3">
-                                <span class="px-2 py-1 bg-rimuru-cyan/20 text-rimuru-cyan rounded-full text-xs">🤝 Amis Proches</span>
-                                <span class="px-2 py-1 bg-green-400/20 text-green-400 rounded-full text-xs">💎 Confiance</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Membres de l'équipe avec relations -->
-        <div class="mt-16">
-            <h4 class="text-2xl font-display font-bold text-white mb-8 text-center">Mes Amis de Confiance</h4>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-                <!-- Swammy -->
-                <div class="rimuru-card rounded-2xl p-4 text-center group hover:scale-105 transition-all duration-300">
-                    <div class="w-16 h-16 mx-auto rounded-full overflow-hidden mb-3 border-2 border-orange-400/30 group-hover:border-orange-400 transition-colors">
-                        <img src="Src/Assets/Images/Team/Swammy.jpg" alt="Swammy" class="w-full h-full object-cover">
-                    </div>
-                    <h5 class="text-lg font-display font-semibold text-orange-400 mb-1">Swammy</h5>
-                    <p class="text-xs text-text-gray mb-2">Admin Sys & Designer</p>
-                    <div class="flex items-center justify-center">
-                        <i class="fas fa-handshake text-orange-400 text-xs mr-1"></i>
-                        <span class="text-xs text-orange-400">Ami de confiance</span>
-                    </div>
-                </div>
-
-
-                <!-- Cocolennon -->
-                <div class="rimuru-card rounded-2xl p-4 text-center group hover:scale-105 transition-all duration-300">
-                    <div class="w-16 h-16 mx-auto rounded-full overflow-hidden mb-3 border-2 border-indigo-400/30 group-hover:border-indigo-400 transition-colors">
-                        <img src="Src/Assets/Images/Team/Cocolennon.png" alt="Cocolennon" class="w-full h-full object-cover">
-                    </div>
-                    <h5 class="text-lg font-display font-semibold text-indigo-400 mb-1">Cocolennon</h5>
-                    <p class="text-xs text-text-gray mb-2">Game Developer</p>
-                    <div class="flex items-center justify-center">
-                        <i class="fas fa-handshake text-indigo-400 text-xs mr-1"></i>
-                        <span class="text-xs text-indigo-400">Ami de confiance</span>
-                    </div>
-                </div>
-
-                <!-- Mianzo -->
-                <div class="rimuru-card rounded-2xl p-4 text-center group hover:scale-105 transition-all duration-300">
-                    <div class="w-16 h-16 mx-auto rounded-full overflow-hidden mb-3 border-2 border-red-400/30 group-hover:border-red-400 transition-colors">
-                        <img src="Src/Assets/Images/Team/Mianzo.jpg" alt="Mianzo" class="w-full h-full object-cover">
-                    </div>
-                    <h5 class="text-lg font-display font-semibold text-red-400 mb-1">Mianzo</h5>
-                    <p class="text-xs text-text-gray mb-2">FullStack & Pentester</p>
-                    <div class="flex items-center justify-center">
-                        <i class="fas fa-handshake text-red-400 text-xs mr-1"></i>
-                        <span class="text-xs text-red-400">Ami de confiance</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Statistiques des relations mises à jour -->
-        <div class="mt-16 grid md:grid-cols-4 gap-6">
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="w-12 h-12 bg-pink-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fas fa-heart text-pink-400"></i>
-                </div>
-                <div class="text-2xl font-cyber font-bold text-pink-400 mb-1">1</div>
-                <div class="text-xs text-text-gray">Couple</div>
-            </div>
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="w-12 h-12 bg-cyan-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fas fa-star text-cyan-400"></i>
-                </div>
-                <div class="text-2xl font-cyber font-bold text-cyan-400 mb-1">2</div>
-                <div class="text-xs text-text-gray">Meilleurs Amis</div>
-            </div>
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="w-12 h-12 bg-rimuru-cyan/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fas fa-users text-rimuru-cyan"></i>
-                </div>
-                <div class="text-2xl font-cyber font-bold text-rimuru-cyan mb-1">5</div>
-                <div class="text-xs text-text-gray">Amis de Confiance</div>
-            </div>
-            <div class="rimuru-card rounded-2xl p-6 text-center">
-                <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fas fa-shield-heart text-white"></i>
-                </div>
-                <div class="text-2xl font-cyber font-bold text-gradient-rimuru mb-1">100%</div>
-                <div class="text-xs text-text-gray">Confiance</div>
-            </div>
-        </div>
-
-        <!-- Citation finale mise à jour -->
-        <div class="mt-12 text-center">
-            <div class="rimuru-card rounded-3xl p-8 max-w-4xl mx-auto bg-gradient-to-r from-rimuru-blue/5 to-rimuru-cyan/5 border border-rimuru-blue/20">
-                <div class="flex justify-center space-x-2 text-4xl mb-4">
-                    <span>💙</span>
-                    <span>💕</span>
-                    <span>👫</span>
-                    <span>🤝</span>
-                    <span>🌟</span>
-                </div>
-                <h3 class="text-2xl font-display font-bold text-white mb-4">
-                    "Une famille unie par la confiance et l'amitié"
-                </h3>
-                <p class="text-rimuru-silver leading-relaxed mb-4">
-                    Avec Mikky à mes côtés, Aelialou et Sparrow comme meilleurs amis, et une équipe d'amis proches en qui j'ai une confiance absolue,
-                    nous créons ensemble bien plus que des projets : nous bâtissons des rêves et des souvenirs durables.
-                </p>
-                <div class="mt-6">
-                    <span class="text-sm text-text-gray">— Une famille unie par la confiance et la passion ✨</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- Section Citations -->
-<section id="quotes" class="py-20 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">Citations & Philosophie</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver max-w-3xl mx-auto">
-                Les mots qui guident ma vision et inspirent ma créativité
-            </p>
-        </div>
-
-        <!-- Citations principales -->
-        <div class="grid lg:grid-cols-2 gap-8 mb-16">
-            <!-- Citation personnelle -->
-            <div class="rimuru-card rounded-3xl p-8 bg-gradient-to-br from-rimuru-blue/10 to-rimuru-cyan/10 border border-rimuru-blue/20 relative overflow-hidden">
-                <div class="absolute top-6 left-6 text-6xl text-rimuru-cyan/20 font-serif">"</div>
-                <div class="relative z-10 pt-8">
-                    <blockquote class="text-xl md:text-2xl font-display text-white leading-relaxed mb-6 italic">
-                        "Comme Rimuru, j'absorbe constamment de nouvelles compétences pour créer des expériences numériques uniques."
-                    </blockquote>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-rimuru-cyan">
-                            <img src="Src/Assets/Images/Team/tsubasa.gif" alt="Tsubasa" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <div class="text-rimuru-cyan font-semibold">Tsubasa</div>
-                            <div class="text-sm text-text-gray">Fondateur & Développeur Multi-Talent</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute bottom-4 right-6 text-4xl text-rimuru-cyan/20">⭐</div>
-            </div>
-
-            <!-- Citation d'équipe -->
-            <div class="rimuru-card rounded-3xl p-8 bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-400/20 relative overflow-hidden">
-                <div class="absolute top-6 left-6 text-6xl text-pink-400/20 font-serif">"</div>
-                <div class="relative z-10 pt-8">
-                    <blockquote class="text-xl md:text-2xl font-display text-white leading-relaxed mb-6 italic">
-                        "Plus qu'une équipe, nous sommes une famille unie par la passion et la confiance."
-                    </blockquote>
-                    <div class="flex items-center space-x-4">
-                        <div class="flex -space-x-2">
-                            <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-pink-400">
-                                <img src="Src/Assets/Images/Team/tsubasa.gif" alt="Tsubasa" class="w-full h-full object-cover">
-                            </div>
-                            <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-pink-400">
-                                <img src="Src/Assets/Images/Team/Mikky.gif" alt="Mikky" class="w-full h-full object-cover">
-                            </div>
-                            <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-pink-400">
-                                <img src="Src/Assets/Images/Team/Aelialou.jpg" alt="Aelialou" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="text-pink-400 font-semibold">L'Équipe</div>
-                            <div class="text-sm text-text-gray">Une famille créative</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute bottom-4 right-6 text-4xl text-pink-400/20">💫</div>
-            </div>
-        </div>
-
-        <!-- Citations inspirantes -->
-        <div class="mb-16">
-            <h3 class="text-2xl font-display font-bold text-white mb-8 text-center">Sources d'Inspiration</h3>
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Citation 1 -->
-                <div class="rimuru-card rounded-2xl p-6 text-center group hover:scale-105 transition-all duration-300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-code text-white text-2xl"></i>
-                    </div>
-                    <blockquote class="text-lg text-white mb-4 italic leading-relaxed">
-                        "Le code, c'est de la poésie que seuls les machines comprennent."
-                    </blockquote>
-                    <div class="text-sm text-rimuru-cyan font-medium">Philosophie du Développement</div>
-                </div>
-
-                <!-- Citation 2 -->
-                <div class="rimuru-card rounded-2xl p-6 text-center group hover:scale-105 transition-all duration-300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-palette text-white text-2xl"></i>
-                    </div>
-                    <blockquote class="text-lg text-white mb-4 italic leading-relaxed">
-                        "Le design, c'est l'âme d'une création humaine."
-                    </blockquote>
-                    <div class="text-sm text-purple-400 font-medium">Steve Jobs</div>
-                </div>
-
-                <!-- Citation 3 -->
-                <div class="rimuru-card rounded-2xl p-6 text-center group hover:scale-105 transition-all duration-300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-users text-white text-2xl"></i>
-                    </div>
-                    <blockquote class="text-lg text-white mb-4 italic leading-relaxed">
-                        "Seul on va plus vite, ensemble on va plus loin."
-                    </blockquote>
-                    <div class="text-sm text-green-400 font-medium">Proverbe Africain</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Citations de Rimuru -->
-        <div class="mb-16">
-            <h3 class="text-2xl font-display font-bold text-white mb-8 text-center flex items-center justify-center">
-                <span class="mr-3">🔵</span>
-                Sagesse de Rimuru
-                <span class="ml-3">⭐</span>
-            </h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Citation Rimuru 1 -->
-                <div class="rimuru-card rounded-3xl p-6 bg-gradient-to-br from-rimuru-blue/5 to-rimuru-cyan/5 border-l-4 border-rimuru-cyan">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-2xl flex items-center justify-center text-2xl">
-                            🔵
-                        </div>
-                        <div class="flex-1">
-                            <blockquote class="text-lg text-white mb-3 italic leading-relaxed">
-                                "Il n'y a pas de problème qu'on ne puisse résoudre en réfléchissant calmement."
-                            </blockquote>
-                            <div class="text-sm text-rimuru-cyan font-medium">Rimuru Tempest</div>
-                            <div class="text-xs text-text-gray">Tensei Shitara Slime Datta Ken</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Citation Rimuru 2 -->
-                <div class="rimuru-card rounded-3xl p-6 bg-gradient-to-br from-rimuru-blue/5 to-rimuru-cyan/5 border-l-4 border-rimuru-cyan">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-2xl flex items-center justify-center text-2xl">
-                            ⭐
-                        </div>
-                        <div class="flex-1">
-                            <blockquote class="text-lg text-white mb-3 italic leading-relaxed">
-                                "Ce qui compte, c'est de protéger ce qui nous est cher."
-                            </blockquote>
-                            <div class="text-sm text-rimuru-cyan font-medium">Rimuru Tempest</div>
-                            <div class="text-xs text-text-gray">Tensei Shitara Slime Datta Ken</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ma philosophie -->
-        <div class="text-center">
-            <div class="rimuru-card rounded-3xl p-8 max-w-4xl mx-auto bg-gradient-to-r from-rimuru-blue/10 to-rimuru-cyan/10 border border-rimuru-blue/20">
-                <h3 class="text-3xl font-display font-bold text-gradient-rimuru mb-6">Ma Philosophie de Développement</h3>
-                <div class="grid md:grid-cols-3 gap-6 text-left">
-                    <!-- Pilier 1 -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-rimuru-cyan rounded-lg flex items-center justify-center">
-                                <i class="fas fa-heart text-white text-sm"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold text-rimuru-cyan">Passion</h4>
-                        </div>
-                        <p class="text-sm text-text-gray leading-relaxed">
-                            Chaque ligne de code est écrite avec amour et dévouement.
-                            La passion transforme le travail en art.
+                        <h3 class="project-title">Application de Gestion de Tâches</h3>
+                        <p class="project-description">
+                            Une application progressive pour organiser vos projets avec système de priorités intelligent.
                         </p>
-                    </div>
-
-                    <!-- Pilier 2 -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-rimuru-cyan rounded-lg flex items-center justify-center">
-                                <i class="fas fa-users text-white text-sm"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold text-rimuru-cyan">Équipe</h4>
+                        <div class="project-character">
+                            <i class="fas fa-brain"></i>
+                            <span>Conçu avec la stratégie d'Ayanokoji</span>
                         </div>
-                        <p class="text-sm text-text-gray leading-relaxed">
-                            Les plus grands projets naissent de la collaboration.
-                            Ensemble, nous créons l'impossible.
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/26C6DA/000?text=Projet+3" alt="Projet 3">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                <a href="#" class="project-icon"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">GraphQL</span>
+                        </div>
+                        <h3 class="project-title">Plateforme de Blogging</h3>
+                        <p class="project-description">
+                            Une plateforme de blog moderne avec éditeur Markdown, système de commentaires et SEO optimisé.
                         </p>
-                    </div>
-
-                    <!-- Pilier 3 -->
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-rimuru-cyan rounded-lg flex items-center justify-center">
-                                <i class="fas fa-infinity text-white text-sm"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold text-rimuru-cyan">Évolution</h4>
+                        <div class="project-character">
+                            <i class="fas fa-water"></i>
+                            <span>Adapté et évolutif comme Rimuru</span>
                         </div>
-                        <p class="text-sm text-text-gray leading-relaxed">
-                            Comme Rimuru, j'évolue constamment.
-                            Chaque projet m'apprend quelque chose de nouveau.
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-category="design">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/FF5722/000?text=Projet+4" alt="Projet 4">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                <a href="#" class="project-icon"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">UI Design</span>
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">Animation</span>
+                        </div>
+                        <h3 class="project-title">Refonte UI d'Application Mobile</h3>
+                        <p class="project-description">
+                            Redesign complet d'une application mobile avec focus sur l'expérience utilisateur et l'accessibilité.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-20 px-6 relative z-10">
-    <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-display font-bold text-gradient-rimuru mb-4">Créons Ensemble</h2>
-            <div class="section-divider w-24 mx-auto mb-6"></div>
-            <p class="text-xl text-rimuru-silver max-w-3xl mx-auto">
-                Comme Rimuru accueille tous ceux qui viennent en paix, je suis ouvert à toute collaboration 🤝
-            </p>
-        </div>
-
-        <div class="grid lg:grid-cols-2 gap-12">
-            <div class="rimuru-card rounded-3xl p-8">
-                <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-6 flex items-center">
-                    <i class="fas fa-handshake mr-3 text-rimuru-cyan"></i>
-                    Connectons-nous
-                </h3>
-                <p class="text-rimuru-silver mb-8 leading-relaxed">
-                    Que ce soit pour un projet ambitieux ou une simple discussion sur la tech, ma porte est toujours ouverte !
-                </p>
-
-                <div class="space-y-4 mb-8">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-envelope text-white"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium text-white">Email</p>
-                            <p class="text-rimuru-silver">mr.tsubasa@vk.com</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-rimuru-cyan to-rimuru-blue rounded-2xl flex items-center justify-center">
-                            <i class="fas fa-map-marker-alt text-white"></i>
-                        </div>
-                        <div>
-                            <p class="font-medium text-white">Localisation</p>
-                            <p class="text-rimuru-silver">Paris, France 🇫🇷</p>
+                        <div class="project-character">
+                            <i class="fas fa-fire-alt"></i>
+                            <span>Créé avec la passion de Natsu</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex space-x-4">
-                    <a href="https://github.com/mrtsubasa" class="w-12 h-12 rimuru-card rounded-2xl flex items-center justify-center text-rimuru-cyan hover:bg-rimuru-blue hover:text-white transition-colors">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://x.com/_1Tsubasa" class="w-12 h-12 rimuru-card rounded-2xl flex items-center justify-center text-rimuru-cyan hover:bg-rimuru-cyan hover:text-white transition-colors">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="rimuru-card rounded-3xl p-8">
-                <h3 class="text-2xl font-display font-bold text-rimuru-blue mb-6 flex items-center">
-                    <i class="fas fa-heart mr-3 text-red-400"></i>
-                    Philosophie Rimuru
-                </h3>
-                <div class="space-y-4 text-rimuru-silver leading-relaxed">
-                    <p class="flex items-start">
-                        <span class="text-rimuru-cyan mr-2">🌟</span>
-                        <span>La vraie force vient de l'union des talents et de la bienveillance.</span>
-                    </p>
-                    <p class="flex items-start">
-                        <span class="text-rimuru-blue mr-2">⚡</span>
-                        <span>Chaque défi est une opportunité d'évolution et d'apprentissage.</span>
-                    </p>
-                    <p class="flex items-start">
-                        <span class="text-green-400 mr-2">🚀</span>
-                        <span>L'innovation naît de la combinaison entre sagesse et audace.</span>
-                    </p>
-                    <p class="flex items-start">
-                        <span class="text-yellow-400 mr-2">✨</span>
-                        <span>Ensemble, nous pouvons créer des merveilles qui dépassent nos rêves individuels.</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer amélioré -->
-<footer class="bg-gradient-to-t from-deep-dark to-card-dark border-t border-border-dark relative overflow-hidden">
-    <!-- Particules d'arrière-plan -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-10 left-10 w-2 h-2 bg-rimuru-cyan rounded-full animate-pulse"></div>
-        <div class="absolute top-20 right-20 w-1 h-1 bg-rimuru-blue rounded-full animate-ping"></div>
-        <div class="absolute bottom-10 left-1/4 w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse"></div>
-        <div class="absolute bottom-20 right-1/3 w-1 h-1 bg-green-400 rounded-full animate-ping"></div>
-    </div>
-
-    <div class="relative z-10">
-        <!-- Section principale du footer -->
-        <div class="max-w-6xl mx-auto px-6 py-16">
-            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-
-                <!-- À propos / Branding -->
-                <div class="lg:col-span-2">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-2xl flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">T</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-display font-bold text-gradient-rimuru">MrTsubasa</h3>
-                            <p class="text-sm text-rimuru-cyan">Développeur Multi-Talent</p>
-                        </div>
-                    </div>
-                    <p class="text-text-gray leading-relaxed mb-6 max-w-md">
-                        Passionné par l'innovation technologique, je crée des expériences numériques uniques
-                        en combinant développement, design et vision créative. Comme Rimuru, j'évolue constamment
-                        pour absorber de nouvelles compétences.
-                    </p>
-
-                    <!-- Stats rapides -->
-                    <div class="grid grid-cols-3 gap-4 mb-6">
-                        <div class="text-center">
-                            <div class="text-2xl font-cyber font-bold text-rimuru-cyan">15+</div>
-                            <div class="text-xs text-text-gray">Compétences</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-cyber font-bold text-pink-400">8</div>
-                            <div class="text-xs text-text-gray">Membres Équipe</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-cyber font-bold text-green-400">100%</div>
-                            <div class="text-xs text-text-gray">Passion</div>
-                        </div>
-                    </div>
-
-                    <!-- Réseaux sociaux -->
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/mrtsubasa" class="w-10 h-10 bg-border-dark hover:bg-rimuru-blue rounded-xl flex items-center justify-center text-text-gray hover:text-white transition-all duration-300 group">
-                            <i class="fab fa-github text-lg group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="https://x.com/_1Tsubasa" class="w-10 h-10 bg-border-dark hover:bg-blue-500 rounded-xl flex items-center justify-center text-text-gray hover:text-white transition-all duration-300 group">
-                            <i class="fab fa-twitter text-lg group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="https://discord.gg/claritycorp" class="w-10 h-10 bg-border-dark hover:bg-indigo-500 rounded-xl flex items-center justify-center text-text-gray hover:text-white transition-all duration-300 group">
-                            <i class="fab fa-discord text-lg group-hover:scale-110 transition-transform"></i>
-                        </a>
-                        <a href="mailto:mr.tsubasa@vk.com" class="w-10 h-10 bg-border-dark hover:bg-red-500 rounded-xl flex items-center justify-center text-text-gray hover:text-white transition-all duration-300 group">
-                            <i class="fas fa-envelope text-lg group-hover:scale-110 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Navigation rapide -->
-                <div>
-                    <h4 class="text-lg font-display font-semibold text-white mb-6">Navigation</h4>
-                    <nav class="space-y-3">
-                        <a href="#home" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-home w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            Accueil
-                        </a>
-                        <a href="#about" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-user w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            À Propos
-                        </a>
-                        <a href="#projects" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-folder w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            Projets
-                        </a>
-                        <a href="#team" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-users w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            Équipe
-                        </a>
-                        <a href="#relationships" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-heart w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            Relations
-                        </a>
-                        <a href="#quotes" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-quote-left w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            Citations
-                        </a>
-                        <a href="#contact" class="block text-text-gray hover:text-rimuru-cyan transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-envelope w-4 mr-3 text-rimuru-cyan/50 group-hover:text-rimuru-cyan transition-colors"></i>
-                            Contact
-                        </a>
-                    </nav>
-                </div>
-
-                <!-- Technologies & Services -->
-                <div>
-                    <h4 class="text-lg font-display font-semibold text-white mb-6">Technologies</h4>
-                    <div class="space-y-4">
-                        <!-- Frontend -->
-                        <div>
-                            <h5 class="text-sm font-medium text-rimuru-cyan mb-2">Frontend</h5>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-rimuru-blue hover:text-white transition-colors cursor-default">React</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-rimuru-blue hover:text-white transition-colors cursor-default">TypeScript</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-rimuru-blue hover:text-white transition-colors cursor-default">Tailwind</span>
+                <!-- Project 5 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/9C27B0/fff?text=Projet+5" alt="Projet 5">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                <a href="#" class="project-icon"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-icon"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Three.js</span>
+                            <span class="project-tag">WebGL</span>
+                            <span class="project-tag">GSAP</span>
+                        </div>
+                        <h3 class="project-title">Portfolio 3D Interactif</h3>
+                        <p class="project-description">
+                            Un portfolio immersif en 3D avec animations complexes et interactions innovantes.
+                        </p>
+                        <div class="project-character">
+                            <i class="fas fa-star"></i>
+                            <span>Mystérieux et captivant comme Aqua</span>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Backend -->
-                        <div>
-                            <h5 class="text-sm font-medium text-green-400 mb-2">Backend</h5>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-green-500 hover:text-white transition-colors cursor-default">Bun.js</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-green-500 hover:text-white transition-colors cursor-default">PHP</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-green-500 hover:text-white transition-colors cursor-default">Node.js</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-green-500 hover:text-white transition-colors cursor-default">Laravel</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-green-500 hover:text-white transition-colors cursor-default">Symfony</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-green-500 hover:text-white transition-colors cursor-default">Go</span>
+                <!-- Project 6 -->
+                <div class="project-card" data-category="app">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400/FFD700/000?text=Projet+6" alt="Projet 6">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                <a href="#" class="project-icon"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-icon"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
-
-                        <!-- Design -->
-                        <div>
-                            <h5 class="text-sm font-medium text-pink-400 mb-2">Design</h5>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-pink-500 hover:text-white transition-colors cursor-default">Figma</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-pink-500 hover:text-white transition-colors cursor-default">Photoshop</span>
-                                <span class="px-2 py-1 bg-border-dark text-xs text-text-gray rounded-lg hover:bg-pink-500 hover:text-white transition-colors cursor-default">UI/UX</span>
-                            </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag">Expo</span>
+                            <span class="project-tag">API</span>
+                        </div>
+                        <h3 class="project-title">Application Météo Interactive</h3>
+                        <p class="project-description">
+                            Application météo avec prévisions détaillées, alertes personnalisées et interface immersive.
+                        </p>
+                        <div class="project-character">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Protection et précision de Seiya</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Section équipe rapide -->
-        <div class="border-t border-border-dark">
-            <div class="max-w-6xl mx-auto px-6 py-8">
-                <h4 class="text-lg font-display font-semibold text-white mb-6 text-center">Mon Équipe</h4>
-                <div class="flex justify-center items-center space-x-4 flex-wrap gap-4">
-                    <!-- Tsubasa -->
-                    <div class="flex items-center space-x-2 group">
-                        <div class="w-8 h-8 rounded-full overflow-hidden border border-rimuru-cyan group-hover:border-rimuru-blue transition-colors">
-                            <img src="Src/Assets/Images/Team/tsubasa.gif" alt="Tsubasa" class="w-full h-full object-cover">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">
+                    <span class="title-icon"><i class="fas fa-envelope"></i></span>
+                    Contactez-Moi
+                </h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-intro">
+                <p>Prêt à créer quelque chose d'extraordinaire ensemble ?</p>
+                <p class="contact-subtitle">Que ce soit pour un projet, une collaboration ou simplement pour discuter</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <span class="text-sm text-rimuru-cyan group-hover:text-white transition-colors">Tsubasa</span>
-                        <i class="fas fa-crown text-yellow-400 text-xs"></i>
+                        <h3>Email</h3>
+                        <p>contact@mrtsubasa.com</p>
+                        <a href="mailto:contact@mrtsubasa.com" class="info-link">M'envoyer un email</a>
                     </div>
 
-                    <!-- Mikky -->
-                    <div class="flex items-center space-x-2 group">
-                        <div class="w-8 h-8 rounded-full overflow-hidden border border-pink-400 group-hover:border-pink-300 transition-colors">
-                            <img src="Src/Assets/Images/Team/Mikky.gif" alt="Mikky" class="w-full h-full object-cover">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <span class="text-sm text-pink-400 group-hover:text-white transition-colors">Mikky</span>
-                        <i class="fas fa-heart text-pink-400 text-xs"></i>
+                        <h3>Localisation</h3>
+                        <p>Paris, France</p>
+                        <p class="info-secondary">Disponible pour travail à distance</p>
                     </div>
 
-                    <!-- Aelialou -->
-                    <div class="flex items-center space-x-2 group">
-                        <div class="w-8 h-8 rounded-full overflow-hidden border border-blue-400 group-hover:border-blue-300 transition-colors">
-                            <img src="Src/Assets/Images/Team/Aelialou.jpg" alt="Aelialou" class="w-full h-full object-cover">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
                         </div>
-                        <span class="text-sm text-blue-400 group-hover:text-white transition-colors">Aelialou</span>
-                        <i class="fas fa-star text-blue-400 text-xs"></i>
+                        <h3>Disponibilité</h3>
+                        <p>Lun - Ven: 9h - 18h</p>
+                        <p class="info-secondary">Réponse sous 24h</p>
                     </div>
 
-                    <!-- Sparrow -->
-                    <div class="flex items-center space-x-2 group">
-                        <div class="w-8 h-8 rounded-full overflow-hidden border border-green-400 group-hover:border-green-300 transition-colors">
-                            <img src="Src/Assets/Images/Team/Sparrow.png" alt="Sparrow" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-sm text-green-400 group-hover:text-white transition-colors">Sparrow</span>
-                        <i class="fas fa-star text-green-400 text-xs"></i>
-                    </div>
-
-                    <!-- Autres membres -->
-                    <div class="flex items-center space-x-1">
-                        <div class="flex -space-x-1">
-                            <div class="w-6 h-6 rounded-full overflow-hidden border border-orange-400">
-                                <img src="Src/Assets/Images/Team/Swammy.jpg" alt="Swammy" class="w-full h-full object-cover">
-                            </div>
-                            <div class="w-6 h-6 rounded-full overflow-hidden border border-indigo-400">
-                                <img src="Src/Assets/Images/Team/Cocolennon.png" alt="Cocolennon" class="w-full h-full object-cover">
-                            </div>
-                            <div class="w-6 h-6 rounded-full overflow-hidden border border-red-400">
-                                <img src="Src/Assets/Images/Team/Mianzo.jpg" alt="Mianzo" class="w-full h-full object-cover">
-                            </div>
-                        </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
                     </div>
                 </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Votre Nom</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="input-border"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Votre Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="input-border"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                        <span class="input-border"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Votre Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <span class="input-border"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">
+                        <span>Envoyer le Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="contact-quote">
+                <p>"Chaque grand projet commence par une simple conversation"</p>
+                <span>- Une fusion de 5 légendes</span>
             </div>
         </div>
+    </section>
 
-        <!-- Copyright et informations légales -->
-        <div class="border-t border-border-dark bg-card-dark/50">
-            <div class="max-w-6xl mx-auto px-6 py-6">
-                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <!-- Copyright -->
-                    <div class="flex items-center space-x-4 text-sm text-text-gray">
-                        <span>© 2025 MrTsubasa. Tous droits réservés.</span>
-                        <span class="hidden md:inline">•</span>
-                        <span class="flex items-center space-x-1">
-                            <i class="fas fa-heart text-pink-400 text-xs"></i>
-                            <span>Fait avec passion</span>
-                        </span>
-                    </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">MrTsubasa</span>
+                <p>Fusion of Legends</p>
+            </div>
 
-                    <!-- Informations techniques -->
-                    <div class="flex items-center space-x-4 text-xs text-text-gray">
-                        <span class="flex items-center space-x-1">
-                            <i class="fas fa-code text-rimuru-cyan"></i>
-                            <span>HTML • CSS • JavaScript</span>
-                        </span>
-                        <span class="hidden md:inline">•</span>
-                        <span class="flex items-center space-x-1">
-                            <i class="fas fa-rocket text-green-400"></i>
-                            <span>Hébergé avec 💙</span>
-                        </span>
-                        <span class="hidden md:inline">•</span>
-                    </div>
+            <div class="footer-characters">
+                <div class="character-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Seiya</span>
                 </div>
-
-                <!-- Citation finale -->
-                <div class="mt-6 pt-6 border-t border-border-dark text-center">
-                    <blockquote class="text-sm text-rimuru-silver italic">
-                        "Comme Rimuru, nous évoluons ensemble vers de nouveaux horizons ✨"
-                    </blockquote>
+                <div class="character-badge">
+                    <i class="fas fa-brain"></i>
+                    <span>Ayanokoji</span>
+                </div>
+                <div class="character-badge">
+                    <i class="fas fa-water"></i>
+                    <span>Rimuru</span>
+                </div>
+                <div class="character-badge">
+                    <i class="fas fa-fire-alt"></i>
+                    <span>Natsu</span>
+                </div>
+                <div class="character-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Aqua</span>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Bouton retour en haut -->
-    <button onclick="scrollToTop()" class="btn-primary fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-rimuru-blue to-rimuru-cyan rounded-2xl flex items-center justify-center text-white shadow-2xl shadow-rimuru-blue/40 z-50 backdrop-blur-lg border border-white/10">
-        <i class="fas fa-arrow-up text-lg"></i>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MrTsubasa. Tous droits réservés.</p>
+                <p>Créé avec passion, stratégie, adaptabilité, énergie et mystère ✨</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
     </button>
-</footer>
 
-<script>
-    // Enhanced Navigation Scroll Effect
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
-
-    // Scroll Reveal Animation
-    const reveals = document.querySelectorAll('.reveal');
-
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        reveals.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const revealPoint = 150;
-
-            if (elementTop < windowHeight - revealPoint) {
-                element.classList.add('active');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-
-    // Parallax Effect for Background Blobs
-    document.addEventListener('mousemove', (e) => {
-        const blobs = document.querySelectorAll('.rimuru-blob');
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-
-        blobs.forEach((blob, index) => {
-            const speed = (index + 1) * 20;
-            const xMove = (x - 0.5) * speed;
-            const yMove = (y - 0.5) * speed;
-
-            blob.style.transform = `translate(${xMove}px, ${yMove}px)`;
-        });
-    });
-
-    // Smooth Scroll for Navigation Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // Enhanced Button Ripple Effect
-    document.querySelectorAll('.btn-primary').forEach(button => {
-        button.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-
-            this.appendChild(ripple);
-
-            setTimeout(() => ripple.remove(), 600);
-        });
-    });
-
-    // Add reveal class to sections on load
-    document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('section');
-        sections.forEach((section, index) => {
-            setTimeout(() => {
-                section.classList.add('reveal');
-            }, index * 100);
-        });
-    });
-
-    // Performance optimization: Throttle scroll and mousemove events
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-
-    // Apply throttling
-    window.addEventListener('scroll', throttle(revealOnScroll, 100));
-</script>
-
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-<script src="Src/Js/script.js"></script>
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script src="./Src/Js/script.js"></script>
 </body>
 </html>
