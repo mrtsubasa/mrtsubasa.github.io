@@ -598,53 +598,59 @@ function initSmoothScroll() {
     }
 }
 
-// ========== FORM HANDLING ==========
+// ========== FORM HANDLING (Removed - Replaced by Social Networks) ==========
 function initFormHandling() {
-    const form = document.querySelector('.contact-form');
-    if (!form) return;
+    // No longer needed - contact form replaced by social network cards
+    return;
+}
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Get form data
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-
-        // Validation
-        if (!name || !email || !subject || !message) {
-            alert('Veuillez remplir tous les champs !');
-            return;
-        }
-
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Veuillez entrer une adresse email valide !');
-            return;
-        }
-
-        // Success message (in a real app, you would send data to a server)
-        alert(`Merci ${name} ! Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais à ${email}.`);
-
-        // Reset form
-        form.reset();
-    });
-
-    // Input animation effects
-    const inputs = form.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.parentElement.classList.add('focused');
+// ========== COPY TO CLIPBOARD (Discord Username) ==========
+function copyToClipboard(text, button) {
+    // Modern clipboard API
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            showCopySuccess(button);
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+            fallbackCopyToClipboard(text, button);
         });
+    } else {
+        // Fallback for older browsers or non-secure contexts
+        fallbackCopyToClipboard(text, button);
+    }
+}
 
-        input.addEventListener('blur', () => {
-            if (!input.value) {
-                input.parentElement.classList.remove('focused');
-            }
-        });
-    });
+function fallbackCopyToClipboard(text, button) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+
+    try {
+        document.execCommand('copy');
+        showCopySuccess(button);
+    } catch (err) {
+        console.error('Failed to copy:', err);
+        alert('Impossible de copier automatiquement. Username: ' + text);
+    }
+
+    document.body.removeChild(textArea);
+}
+
+function showCopySuccess(button) {
+    const originalText = button.querySelector('span').textContent;
+
+    // Add success class
+    button.classList.add('copied');
+    button.querySelector('span').textContent = 'Copié !';
+
+    // Reset after 2 seconds
+    setTimeout(() => {
+        button.classList.remove('copied');
+        button.querySelector('span').textContent = originalText;
+    }, 2000);
 }
 
 // ========== MOUSE PARALLAX EFFECT ==========

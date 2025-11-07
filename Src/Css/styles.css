@@ -1421,179 +1421,201 @@ section {
     color: var(--text-muted);
 }
 
-.contact-content {
+/* Social Networks Grid */
+.social-networks-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
 }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.info-card {
-    padding: 2rem;
+.social-network-card {
+    padding: 2.5rem;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-align: center;
 }
 
-.info-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+.social-network-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
 }
 
-.info-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--seiya-gold), var(--rimuru-cyan));
+.social-network-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.social-network-card:hover::before {
+    left: 100%;
+}
+
+/* Discord Cards */
+.discord-card {
+    border-color: rgba(114, 137, 218, 0.3);
+}
+
+.discord-card:hover {
+    border-color: rgba(114, 137, 218, 0.6);
+    box-shadow: 0 20px 60px rgba(114, 137, 218, 0.3);
+}
+
+/* Telegram Cards */
+.telegram-card {
+    border-color: rgba(34, 139, 230, 0.3);
+}
+
+.telegram-card:hover {
+    border-color: rgba(34, 139, 230, 0.6);
+    box-shadow: 0 20px 60px rgba(34, 139, 230, 0.3);
+}
+
+/* Network Icon */
+.network-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.discord-card .network-icon {
+    background: linear-gradient(135deg, #7289da, #5865f2);
+    box-shadow: 0 10px 40px rgba(114, 137, 218, 0.4);
+}
+
+.telegram-card .network-icon {
+    background: linear-gradient(135deg, #229ed9, #0088cc);
+    box-shadow: 0 10px 40px rgba(34, 158, 217, 0.4);
+}
+
+.network-icon i {
+    color: white;
+}
+
+/* Network Content */
+.network-title {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 10px 30px var(--seiya-glow);
-}
-
-.info-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-    color: var(--text-primary);
-}
-
-.info-card p {
-    color: var(--text-secondary);
     margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
-.info-secondary {
+.network-username {
+    font-size: 1.2rem;
+    color: var(--rimuru-cyan);
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.network-server {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.network-description {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Network Button */
+.network-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.discord-card .network-btn:hover {
+    background: linear-gradient(135deg, #7289da, #5865f2);
+    border-color: #7289da;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(114, 137, 218, 0.4);
+}
+
+.telegram-card .network-btn:hover {
+    background: linear-gradient(135deg, #229ed9, #0088cc);
+    border-color: #229ed9;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(34, 158, 217, 0.4);
+}
+
+/* Network Character Badge */
+.network-character {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
     font-size: 0.9rem;
     color: var(--text-muted);
 }
 
-.info-link {
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--rimuru-cyan);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.info-link:hover {
-    color: var(--seiya-gold);
-    text-shadow: 0 0 10px var(--seiya-glow);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all 0.3s ease;
+.network-character i {
     font-size: 1.2rem;
 }
 
-.social-link:hover {
-    background: var(--rimuru-cyan);
-    color: var(--bg-dark);
-    transform: translateY(-5px) rotate(15deg);
-    box-shadow: 0 10px 30px var(--rimuru-glow);
+/* Character-specific styles */
+.character-seiya .network-character i {
+    color: var(--seiya-gold);
 }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.form-group {
-    position: relative;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.8rem;
+.character-ayanokoji .network-character i {
     color: var(--text-secondary);
-    font-weight: 500;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+.character-rimuru .network-character i {
+    color: var(--rimuru-cyan);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--rimuru-cyan);
-    box-shadow: 0 0 20px var(--rimuru-glow);
-    background: rgba(255, 255, 255, 0.08);
+.character-natsu .network-character i {
+    color: var(--natsu-red);
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 150px;
+.character-aqua .network-character i {
+    color: var(--aqua-purple);
 }
 
-.input-border {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--seiya-gold), var(--rimuru-cyan), var(--natsu-red));
-    transition: width 0.4s ease;
+/* Copy button success animation */
+.network-btn.copied {
+    background: linear-gradient(135deg, #43b581, #2ecc71) !important;
+    border-color: #43b581 !important;
 }
 
-.form-group input:focus ~ .input-border,
-.form-group textarea:focus ~ .input-border {
-    width: 100%;
-}
-
-.btn-submit {
-    padding: 1.2rem 3rem;
-    background: linear-gradient(135deg, var(--natsu-red), var(--natsu-orange));
-    border: none;
-    border-radius: 50px;
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.btn-submit:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px var(--natsu-glow);
+.network-btn.copied span::before {
+    content: '✓ ';
 }
 
 .contact-quote {
@@ -2144,5 +2166,29 @@ section {
         font-size: 2rem;
         width: 40px;
         height: 40px;
+    }
+
+    .social-networks-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .social-network-card {
+        padding: 2rem;
+    }
+
+    .network-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .network-title {
+        font-size: 1.3rem;
+    }
+
+    .network-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
