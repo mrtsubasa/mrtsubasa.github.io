@@ -4,6 +4,8 @@
 // ==================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🔥 DOMContentLoaded - Starting initialization...');
+
     // ========== CANVAS ANIMATIONS ==========
     initParticlesCanvas();
     initStarsCanvas();
@@ -31,16 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormHandling();
 
     // ========== LOAD GITHUB PROJECTS ==========
+    console.log('📦 Loading GitHub projects...');
     loadGitHubProjects();
 
     // ========== LOAD DESIGNS ==========
+    console.log('🎨 Loading designs...');
     loadDesigns();
 
     // ========== DESIGN MODAL ==========
     initDesignModal();
 
     // ========== LOAD TEAM ==========
+    console.log('👥 Loading team...');
     loadTeam();
+
+    console.log('✅ All initialization complete');
 });
 
 // ========== PARTICLES CANVAS (Natsu - Fire) ==========
@@ -389,14 +396,28 @@ function initStatsCounter() {
 
 // ========== GITHUB PROJECTS LOADER ==========
 async function loadGitHubProjects() {
+    console.log('🔍 loadGitHubProjects() started');
     const username = 'mrtsubasa'; // Votre nom d'utilisateur GitHub
     const projectsContainer = document.getElementById('github-projects');
     const reposCountEl = document.getElementById('repos-count');
     const starsCountEl = document.getElementById('stars-count');
     const forksCountEl = document.getElementById('forks-count');
 
+    console.log('📍 DOM elements:', {
+        projectsContainer: !!projectsContainer,
+        reposCountEl: !!reposCountEl,
+        starsCountEl: !!starsCountEl,
+        forksCountEl: !!forksCountEl
+    });
+
+    if (!projectsContainer) {
+        console.error('❌ github-projects container not found!');
+        return;
+    }
+
     try {
         // Récupérer tous les repos
+        console.log(`🌐 Fetching repos from GitHub for user: ${username}`);
         const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
 
         if (!response.ok) {
@@ -404,21 +425,26 @@ async function loadGitHubProjects() {
         }
 
         const repos = await response.json();
+        console.log(`✅ Received ${repos.length} repos from GitHub`);
 
         // Calculer les statistiques
         const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
         const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
 
+        console.log(`📊 Stats - Repos: ${repos.length}, Stars: ${totalStars}, Forks: ${totalForks}`);
+
         // Mettre à jour les stats
-        reposCountEl.textContent = repos.length;
-        starsCountEl.textContent = totalStars;
-        forksCountEl.textContent = totalForks;
+        if (reposCountEl) reposCountEl.textContent = repos.length;
+        if (starsCountEl) starsCountEl.textContent = totalStars;
+        if (forksCountEl) forksCountEl.textContent = totalForks;
 
         // Filtrer les repos (exclure les forks si souhaité)
         const filteredRepos = repos.filter(repo => !repo.fork);
+        console.log(`🔍 Filtered to ${filteredRepos.length} non-fork repos`);
 
         // Clear loading
         projectsContainer.innerHTML = '';
+        console.log('🧹 Cleared loading container');
 
         // Générer les cartes de projets
         filteredRepos.forEach((repo, index) => {
@@ -464,8 +490,17 @@ async function loadGitHubProjects() {
             projectsContainer.innerHTML += projectCard;
         });
 
+        console.log(`✅ GitHub projects loaded successfully! Added ${filteredRepos.length} project cards`);
+
+        // Force section to be visible after content is loaded
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+            projectsSection.style.opacity = '1';
+            projectsSection.style.transform = 'translateY(0)';
+        }
+
     } catch (error) {
-        console.error('Erreur:', error);
+        console.error('❌ Error loading GitHub projects:', error);
         projectsContainer.innerHTML = `
             <div class="loading-container">
                 <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--natsu-red); margin-bottom: 1rem;"></i>
@@ -729,6 +764,7 @@ window.addEventListener('resize', debounce(() => {
 
 // ========== DESIGNS LOADER ==========
 function loadDesigns() {
+    console.log('🔍 loadDesigns() started');
     const designsData = [
         { name: 'Aishu Banner', file: 'AishuBannerByTsu.png' },
         { name: 'Coco Final', file: 'Coco_Final.png' },
@@ -755,6 +791,14 @@ function loadDesigns() {
     ];
 
     const designsGrid = document.getElementById('designs-grid');
+    console.log(`📍 designs-grid element found: ${!!designsGrid}`);
+
+    if (!designsGrid) {
+        console.error('❌ designs-grid container not found!');
+        return;
+    }
+
+    console.log(`🎨 Loading ${designsData.length} designs...`);
 
     designsData.forEach((design, index) => {
         const designCard = document.createElement('div');
@@ -783,6 +827,15 @@ function loadDesigns() {
 
         designsGrid.appendChild(designCard);
     });
+
+    console.log(`✅ Designs loaded successfully! Added ${designsData.length} design cards`);
+
+    // Force section to be visible after content is loaded
+    const designsSection = document.getElementById('designs');
+    if (designsSection) {
+        designsSection.style.opacity = '1';
+        designsSection.style.transform = 'translateY(0)';
+    }
 }
 
 // ========== DESIGN MODAL ==========
@@ -826,6 +879,7 @@ function closeDesignModal() {
 
 // ========== TEAM LOADER ==========
 function loadTeam() {
+    console.log('🔍 loadTeam() started');
     const teamData = [
         {
             name: 'Tsubasa',
@@ -890,6 +944,14 @@ function loadTeam() {
     ];
 
     const teamGrid = document.getElementById('team-grid');
+    console.log(`📍 team-grid element found: ${!!teamGrid}`);
+
+    if (!teamGrid) {
+        console.error('❌ team-grid container not found!');
+        return;
+    }
+
+    console.log(`👥 Loading ${teamData.length} team members...`);
 
     teamData.forEach((member, index) => {
         const teamCard = document.createElement('div');
@@ -913,4 +975,13 @@ function loadTeam() {
 
         teamGrid.appendChild(teamCard);
     });
+
+    console.log(`✅ Team loaded successfully! Added ${teamData.length} team member cards`);
+
+    // Force section to be visible after content is loaded
+    const teamSection = document.getElementById('team');
+    if (teamSection) {
+        teamSection.style.opacity = '1';
+        teamSection.style.transform = 'translateY(0)';
+    }
 }
