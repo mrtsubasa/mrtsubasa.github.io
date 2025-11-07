@@ -926,7 +926,7 @@ function loadTeam() {
         {
             name: 'Swammy',
             file: 'Swammy.jpg',
-            role: 'Developer',
+            role: 'Sys Admin',
             character: { icon: 'fas fa-water', text: 'The cool sister', class: 'character-rimuru' }
         }
     ];
