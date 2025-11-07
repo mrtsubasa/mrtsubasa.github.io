@@ -1203,6 +1203,24 @@ section {
     margin-bottom: 1.5rem;
 }
 
+.project-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.project-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.project-stats i {
+    font-size: 0.85rem;
+}
+
 .project-character {
     display: flex;
     align-items: center;
@@ -1677,4 +1695,283 @@ section {
 
 .no-scroll {
     overflow: hidden;
+}
+
+/* ========== SECTION SUBTITLE ========== */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+/* ========== GITHUB STATS ========== */
+.github-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.github-stats .stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 150px;
+    transition: all 0.4s ease;
+}
+
+.github-stats .stat-item:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.github-stats .stat-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--seiya-gold), var(--rimuru-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.github-stats .stat-value {
+    display: block;
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--seiya-gold);
+    margin-bottom: 0.5rem;
+}
+
+.github-stats .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========== LOADING ========== */
+.loading-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    grid-column: 1 / -1;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--rimuru-cyan);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-container p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ========== DESIGNS SECTION ========== */
+.designs-section {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+}
+
+.designs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.design-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.design-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    border-color: var(--natsu-orange);
+}
+
+.design-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(255, 152, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.design-card:hover::before {
+    opacity: 1;
+}
+
+.design-image-wrapper {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: var(--ayanokoji-black);
+}
+
+.design-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.design-card:hover .design-image-wrapper img {
+    transform: scale(1.1);
+}
+
+.design-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.design-card:hover .design-overlay {
+    opacity: 1;
+}
+
+.design-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.design-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--natsu-orange);
+    font-size: 0.9rem;
+}
+
+.design-action i {
+    transition: transform 0.3s ease;
+}
+
+.design-card:hover .design-action i {
+    transform: translateX(5px);
+}
+
+/* ========== DESIGN MODAL ========== */
+.design-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.design-modal.active {
+    display: flex;
+}
+
+.modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    color: var(--natsu-red);
+    transform: rotate(90deg);
+    background: rgba(255, 87, 34, 0.2);
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    text-align: center;
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 152, 0, 0.3);
+}
+
+.modal-caption {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ========== RESPONSIVE UPDATES ========== */
+@media (max-width: 768px) {
+    .designs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .github-stats {
+        gap: 1.5rem;
+    }
+
+    .modal-content img {
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .design-image-wrapper {
+        height: 200px;
+    }
+
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        width: 40px;
+        height: 40px;
+    }
 }

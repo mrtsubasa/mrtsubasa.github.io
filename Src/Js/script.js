@@ -21,9 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========== STATS COUNTER ==========
     initStatsCounter();
 
-    // ========== PROJECTS FILTER ==========
-    initProjectsFilter();
-
     // ========== SCROLL TO TOP ==========
     initScrollToTop();
 
@@ -32,6 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========== FORM HANDLING ==========
     initFormHandling();
+
+    // ========== LOAD GITHUB PROJECTS ==========
+    loadGitHubProjects();
+
+    // ========== LOAD DESIGNS ==========
+    loadDesigns();
+
+    // ========== DESIGN MODAL ==========
+    initDesignModal();
 });
 
 // ========== PARTICLES CANVAS (Natsu - Fire) ==========
@@ -378,39 +384,124 @@ function initStatsCounter() {
     if (statsGrid) observer.observe(statsGrid);
 }
 
-// ========== PROJECTS FILTER ==========
-function initProjectsFilter() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+// ========== GITHUB PROJECTS LOADER ==========
+async function loadGitHubProjects() {
+    const username = 'mrtsubasa'; // Votre nom d'utilisateur GitHub
+    const projectsContainer = document.getElementById('github-projects');
+    const reposCountEl = document.getElementById('repos-count');
+    const starsCountEl = document.getElementById('stars-count');
+    const forksCountEl = document.getElementById('forks-count');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    try {
+        // Récupérer tous les repos
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
 
-            const filter = btn.getAttribute('data-filter');
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des projets GitHub');
+        }
 
-            // Filter projects
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
+        const repos = await response.json();
 
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
+        // Calculer les statistiques
+        const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+        const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
+
+        // Mettre à jour les stats
+        reposCountEl.textContent = repos.length;
+        starsCountEl.textContent = totalStars;
+        forksCountEl.textContent = totalForks;
+
+        // Filtrer les repos (exclure les forks si souhaité)
+        const filteredRepos = repos.filter(repo => !repo.fork);
+
+        // Clear loading
+        projectsContainer.innerHTML = '';
+
+        // Générer les cartes de projets
+        filteredRepos.forEach((repo, index) => {
+            const languages = repo.language || 'Code';
+            const description = repo.description || 'Aucune description disponible';
+
+            // Déterminer le character basé sur le langage
+            let character = getCharacterForLanguage(repo.language);
+
+            const projectCard = `
+                <div class="project-card" style="animation: fadeInUp 0.6s ease-out ${index * 0.1}s both;">
+                    <div class="project-image">
+                        <img src="https://opengraph.githubassets.com/1/${username}/${repo.name}"
+                             alt="${repo.name}"
+                             onerror="this.src='https://via.placeholder.com/600x400/26C6DA/000?text=${repo.name}'">
+                        <div class="project-overlay">
+                            <div class="project-icons">
+                                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener" class="project-icon"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                                <a href="${repo.html_url}" target="_blank" rel="noopener" class="project-icon"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            ${repo.language ? `<span class="project-tag">${repo.language}</span>` : ''}
+                            ${repo.topics.slice(0, 3).map(topic => `<span class="project-tag">${topic}</span>`).join('')}
+                        </div>
+                        <h3 class="project-title">${repo.name}</h3>
+                        <p class="project-description">${description}</p>
+                        <div class="project-stats">
+                            <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+                            ${repo.language ? `<span><i class="fas fa-circle" style="color: ${getLanguageColor(repo.language)}"></i> ${repo.language}</span>` : ''}
+                        </div>
+                        <div class="project-character">
+                            <i class="${character.icon}"></i>
+                            <span>${character.text}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            projectsContainer.innerHTML += projectCard;
         });
-    });
+
+    } catch (error) {
+        console.error('Erreur:', error);
+        projectsContainer.innerHTML = `
+            <div class="loading-container">
+                <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--natsu-red); margin-bottom: 1rem;"></i>
+                <p>Erreur lors du chargement des projets GitHub</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Veuillez vérifier votre connexion internet</p>
+            </div>
+        `;
+    }
+}
+
+function getCharacterForLanguage(language) {
+    const characters = {
+        'JavaScript': { icon: 'fas fa-water', text: 'Adapté comme Rimuru' },
+        'TypeScript': { icon: 'fas fa-brain', text: 'Structuré comme Ayanokoji' },
+        'Python': { icon: 'fas fa-shield-alt', text: 'Puissant comme Seiya' },
+        'HTML': { icon: 'fas fa-fire-alt', text: 'Énergique comme Natsu' },
+        'CSS': { icon: 'fas fa-palette', text: 'Créatif comme Natsu' },
+        'Java': { icon: 'fas fa-shield-alt', text: 'Robuste comme Seiya' },
+        'C++': { icon: 'fas fa-brain', text: 'Calculé comme Ayanokoji' },
+        'default': { icon: 'fas fa-star', text: 'Mystérieux comme Aqua' }
+    };
+
+    return characters[language] || characters['default'];
+}
+
+function getLanguageColor(language) {
+    const colors = {
+        'JavaScript': '#f1e05a',
+        'TypeScript': '#2b7489',
+        'Python': '#3572A5',
+        'HTML': '#e34c26',
+        'CSS': '#563d7c',
+        'Java': '#b07219',
+        'C++': '#f34b7d',
+        'Go': '#00ADD8',
+        'Rust': '#dea584'
+    };
+
+    return colors[language] || '#8b949e';
 }
 
 // ========== SCROLL TO TOP ==========
@@ -632,3 +723,100 @@ function throttle(func, limit) {
 window.addEventListener('resize', debounce(() => {
     console.log('Window resized');
 }, 250));
+
+// ========== DESIGNS LOADER ==========
+function loadDesigns() {
+    const designsData = [
+        { name: 'Aishu Banner', file: 'AishuBannerByTsu.png' },
+        { name: 'Coco Final', file: 'Coco_Final.png' },
+        { name: 'Coco Final 2', file: 'Coco_Final_2.png' },
+        { name: 'Drizz No BS', file: 'Drizz_No_BS.png' },
+        { name: 'Esdeath Banner', file: 'EsdeathbannerEirinByTsu.png' },
+        { name: 'Gilgamesh Banner', file: 'GilgameshTsuBanner.png' },
+        { name: 'Hentai Banner', file: 'HentaiBannerByTsu.png' },
+        { name: 'Kira Hiroto Banner', file: 'KiraHirotoBannerTsu.png' },
+        { name: 'Kiyo Banner', file: 'Kiyo_Banner.png' },
+        { name: 'Lucy Banner', file: 'LucyBannerExemple.png' },
+        { name: 'Ma Banner', file: 'MaBannerByMe.png' },
+        { name: 'Mianzo Banner', file: 'MianzoBanner.png' },
+        { name: 'Yoh Banner', file: 'NewBannerYoh.png' },
+        { name: 'Gilgamesh PP', file: 'PpGilgaMeshTsu.png' },
+        { name: 'Kaulder Final', file: 'SPOILER_Kaulder_Final.png' },
+        { name: 'Drizz Final', file: 'SPOILER_final-drizz.png' },
+        { name: 'Ma Banner Final', file: 'SPOILER_final_MaBanner.png' },
+        { name: 'Sxjic Banner', file: 'Spoiler_Sxjic-Banner.png' },
+        { name: 'Sxjic Trixma', file: 'Spoiler_Sxjic-Trixma.png' },
+        { name: 'The World Minia', file: 'TheWorldMinia.png' },
+        { name: 'Yoh Asakura Banner', file: 'TsuNewBannerYohAsakura.png' },
+        { name: 'Hao Final', file: 'hao_final.png' }
+    ];
+
+    const designsGrid = document.getElementById('designs-grid');
+
+    designsData.forEach((design, index) => {
+        const designCard = document.createElement('div');
+        designCard.className = 'design-card';
+        designCard.style.animation = `fadeInUp 0.6s ease-out ${index * 0.05}s both`;
+
+        designCard.innerHTML = `
+            <div class="design-image-wrapper">
+                <img src="./Src/Assets/Images/Designs/${design.file}"
+                     alt="${design.name}"
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/600x400/FF5722/fff?text=Image+non+disponible'">
+                <div class="design-overlay">
+                    <div class="design-name">${design.name}</div>
+                    <div class="design-action">
+                        <span>Voir en grand</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        designCard.addEventListener('click', () => {
+            openDesignModal(design.name, `./Src/Assets/Images/Designs/${design.file}`);
+        });
+
+        designsGrid.appendChild(designCard);
+    });
+}
+
+// ========== DESIGN MODAL ==========
+function initDesignModal() {
+    const modal = document.getElementById('design-modal');
+    const modalClose = document.querySelector('.modal-close');
+
+    // Close modal on click outside or on close button
+    modalClose.addEventListener('click', closeDesignModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeDesignModal();
+        }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeDesignModal();
+        }
+    });
+}
+
+function openDesignModal(name, imagePath) {
+    const modal = document.getElementById('design-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalCaption = document.getElementById('modal-caption');
+
+    modalImage.src = imagePath;
+    modalCaption.textContent = name;
+    modal.classList.add('active');
+    document.body.classList.add('no-scroll');
+}
+
+function closeDesignModal() {
+    const modal = document.getElementById('design-modal');
+    modal.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+}
