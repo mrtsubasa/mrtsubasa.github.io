@@ -902,7 +902,7 @@ function loadTeam() {
         {
             name: 'Mikky',
             file: 'Mikky.gif',
-            role: 'Community Manager',
+            role: 'Creative Designer',
             character: { icon: 'fas fa-star', text: 'The queen', class: 'character-aqua' }
         },
         {
