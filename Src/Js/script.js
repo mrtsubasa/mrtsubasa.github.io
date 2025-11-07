@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========== DESIGN MODAL ==========
     initDesignModal();
+
+    // ========== LOAD TEAM ==========
+    loadTeam();
 });
 
 // ========== PARTICLES CANVAS (Natsu - Fire) ==========
@@ -819,4 +822,95 @@ function closeDesignModal() {
     const modal = document.getElementById('design-modal');
     modal.classList.remove('active');
     document.body.classList.remove('no-scroll');
+}
+
+// ========== TEAM LOADER ==========
+function loadTeam() {
+    const teamData = [
+        {
+            name: 'Tsubasa',
+            file: 'Tsubasa.gif',
+            role: 'Leader & Founder',
+            character: { icon: 'fas fa-shield-alt', text: 'Déterminé comme Seiya', class: 'character-seiya' }
+        },
+        {
+            name: 'Aelialou',
+            file: 'Aelialou.png',
+            role: 'Creative Designer',
+            character: { icon: 'fas fa-fire-alt', text: 'Passionné comme Natsu', class: 'character-natsu' }
+        },
+        {
+            name: 'Cocolennon',
+            file: 'Cocolennon.png',
+            role: 'Developer',
+            character: { icon: 'fas fa-water', text: 'Adaptable comme Rimuru', class: 'character-rimuru' }
+        },
+        {
+            name: 'Hao',
+            file: 'Hao.jpg',
+            role: 'Strategist',
+            character: { icon: 'fas fa-brain', text: 'Stratégique comme Ayanokoji', class: 'character-ayanokoji' }
+        },
+        {
+            name: 'Mianzo',
+            file: 'Mianzo.jpg',
+            role: 'Artist',
+            character: { icon: 'fas fa-palette', text: 'Créatif comme Natsu', class: 'character-natsu' }
+        },
+        {
+            name: 'Mikky',
+            file: 'Mikky.gif',
+            role: 'Community Manager',
+            character: { icon: 'fas fa-star', text: 'Mystérieux comme Aqua', class: 'character-aqua' }
+        },
+        {
+            name: 'Sparrow',
+            file: 'Sparrow.png',
+            role: 'Developer',
+            character: { icon: 'fas fa-brain', text: 'Calculé comme Ayanokoji', class: 'character-ayanokoji' }
+        },
+        {
+            name: 'Sunny',
+            file: 'Sunny.png',
+            role: 'Designer',
+            character: { icon: 'fas fa-fire-alt', text: 'Énergique comme Natsu', class: 'character-natsu' }
+        },
+        {
+            name: 'Swammy',
+            file: 'Swammy.jpg',
+            role: 'Developer',
+            character: { icon: 'fas fa-water', text: 'Fluide comme Rimuru', class: 'character-rimuru' }
+        },
+        {
+            name: 'Tsu',
+            file: 'Tsu.gif',
+            role: 'Co-Founder',
+            character: { icon: 'fas fa-shield-alt', text: 'Noble comme Seiya', class: 'character-seiya' }
+        }
+    ];
+
+    const teamGrid = document.getElementById('team-grid');
+
+    teamData.forEach((member, index) => {
+        const teamCard = document.createElement('div');
+        teamCard.className = `team-member ${member.character.class}`;
+        teamCard.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s both`;
+
+        teamCard.innerHTML = `
+            <div class="team-member-image">
+                <img src="./Src/Assets/Images/Team/${member.file}"
+                     alt="${member.name}"
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/150/26C6DA/fff?text=${member.name[0]}'">
+            </div>
+            <h3 class="team-member-name">${member.name}</h3>
+            <p class="team-member-role">${member.role}</p>
+            <div class="team-member-character">
+                <i class="${member.character.icon}"></i>
+                <span>${member.character.text}</span>
+            </div>
+        `;
+
+        teamGrid.appendChild(teamCard);
+    });
 }

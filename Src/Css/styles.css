@@ -1234,6 +1234,172 @@ section {
     font-size: 1.2rem;
 }
 
+/* ========== TEAM SECTION ========== */
+.team-section {
+    background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--ayanokoji-gray) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05), transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.05), transparent 50%);
+    pointer-events: none;
+}
+
+.team-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.team-member {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg,
+        var(--seiya-gold),
+        var(--rimuru-cyan),
+        var(--natsu-red),
+        var(--aqua-purple),
+        var(--seiya-gold)
+    );
+    background-size: 300% 300%;
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    animation: gradientRotate 3s ease infinite;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes gradientRotate {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.team-member:hover::before {
+    opacity: 1;
+}
+
+.team-member:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+.team-member-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+}
+
+.team-member-image::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    background: linear-gradient(45deg, var(--seiya-gold), var(--rimuru-cyan), var(--natsu-red), var(--aqua-purple));
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.6;
+    filter: blur(15px);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.team-member-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+}
+
+.team-member:hover .team-member-image img {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--seiya-gold);
+    box-shadow: 0 0 30px var(--seiya-glow);
+}
+
+.team-member-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--seiya-gold), var(--rimuru-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.team-member-role {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.team-member-character {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.team-member-character i {
+    font-size: 1.2rem;
+}
+
+/* Character Colors for Team Members */
+.character-seiya .team-member-character i { color: var(--seiya-gold); }
+.character-ayanokoji .team-member-character i { color: var(--ayanokoji-silver); }
+.character-rimuru .team-member-character i { color: var(--rimuru-cyan); }
+.character-natsu .team-member-character i { color: var(--natsu-red); }
+.character-aqua .team-member-character i { color: var(--aqua-purple); }
+
 /* ========== CONTACT SECTION ========== */
 .contact-section {
     background: linear-gradient(180deg, var(--bg-dark) 0%, var(--ayanokoji-black) 100%);
@@ -1959,6 +2125,11 @@ section {
 
     .modal-content img {
         max-height: 70vh;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
     }
 }
 
