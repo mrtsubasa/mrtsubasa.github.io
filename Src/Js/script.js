@@ -492,6 +492,13 @@ async function loadGitHubProjects() {
 
         console.log(`✅ GitHub projects loaded successfully! Added ${filteredRepos.length} project cards`);
 
+        // Force section to be visible after content is loaded
+        const projectsSection = document.getElementById('projects');
+        if (projectsSection) {
+            projectsSection.style.opacity = '1';
+            projectsSection.style.transform = 'translateY(0)';
+        }
+
     } catch (error) {
         console.error('❌ Error loading GitHub projects:', error);
         projectsContainer.innerHTML = `
@@ -822,6 +829,13 @@ function loadDesigns() {
     });
 
     console.log(`✅ Designs loaded successfully! Added ${designsData.length} design cards`);
+
+    // Force section to be visible after content is loaded
+    const designsSection = document.getElementById('designs');
+    if (designsSection) {
+        designsSection.style.opacity = '1';
+        designsSection.style.transform = 'translateY(0)';
+    }
 }
 
 // ========== DESIGN MODAL ==========
@@ -963,4 +977,11 @@ function loadTeam() {
     });
 
     console.log(`✅ Team loaded successfully! Added ${teamData.length} team member cards`);
+
+    // Force section to be visible after content is loaded
+    const teamSection = document.getElementById('team');
+    if (teamSection) {
+        teamSection.style.opacity = '1';
+        teamSection.style.transform = 'translateY(0)';
+    }
 }
