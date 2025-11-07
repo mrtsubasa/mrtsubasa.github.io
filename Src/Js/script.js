@@ -885,61 +885,43 @@ function loadTeam() {
             name: 'Tsubasa',
             file: 'Tsubasa.gif',
             role: 'Leader & Founder',
-            character: { icon: 'fas fa-shield-alt', text: 'Déterminé comme Seiya', class: 'character-seiya' }
+            character: { icon: 'fas fa-shield-alt', text:'The honored king', class: 'character-seiya' }
         },
         {
             name: 'Aelialou',
             file: 'Aelialou.png',
             role: 'Creative Designer',
-            character: { icon: 'fas fa-fire-alt', text: 'Passionné comme Natsu', class: 'character-natsu' }
+            character: { icon: 'fas fa-fire-alt', text: 'The honored princess', class: 'character-natsu' }
         },
         {
             name: 'Cocolennon',
             file: 'Cocolennon.png',
             role: 'Developer',
-            character: { icon: 'fas fa-water', text: 'Adaptable comme Rimuru', class: 'character-rimuru' }
-        },
-        {
-            name: 'Hao',
-            file: 'Hao.jpg',
-            role: 'Strategist',
-            character: { icon: 'fas fa-brain', text: 'Stratégique comme Ayanokoji', class: 'character-ayanokoji' }
-        },
-        {
-            name: 'Mianzo',
-            file: 'Mianzo.jpg',
-            role: 'Artist',
-            character: { icon: 'fas fa-palette', text: 'Créatif comme Natsu', class: 'character-natsu' }
+            character: { icon: 'fas fa-water', text: 'The sage', class: 'character-rimuru' }
         },
         {
             name: 'Mikky',
             file: 'Mikky.gif',
             role: 'Community Manager',
-            character: { icon: 'fas fa-star', text: 'Mystérieux comme Aqua', class: 'character-aqua' }
+            character: { icon: 'fas fa-star', text: 'The queen', class: 'character-aqua' }
         },
         {
             name: 'Sparrow',
             file: 'Sparrow.png',
             role: 'Developer',
-            character: { icon: 'fas fa-brain', text: 'Calculé comme Ayanokoji', class: 'character-ayanokoji' }
+            character: { icon: 'fas fa-brain', text: 'The Instructor', class: 'character-ayanokoji' }
         },
         {
             name: 'Sunny',
             file: 'Sunny.png',
             role: 'Designer',
-            character: { icon: 'fas fa-fire-alt', text: 'Énergique comme Natsu', class: 'character-natsu' }
+            character: { icon: 'fas fa-fire-alt', text: 'The stupid brother', class: 'character-natsu' }
         },
         {
             name: 'Swammy',
             file: 'Swammy.jpg',
             role: 'Developer',
-            character: { icon: 'fas fa-water', text: 'Fluide comme Rimuru', class: 'character-rimuru' }
-        },
-        {
-            name: 'Tsu',
-            file: 'Tsu.gif',
-            role: 'Co-Founder',
-            character: { icon: 'fas fa-shield-alt', text: 'Noble comme Seiya', class: 'character-seiya' }
+            character: { icon: 'fas fa-water', text: 'The cool sister', class: 'character-rimuru' }
         }
     ];
 
