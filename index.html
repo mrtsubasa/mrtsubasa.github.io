@@ -17,6 +17,7 @@
 <body>
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
         <symbol id="i-mark" viewBox="0 0 32 32"><rect x="11.5" y="4" width="9" height="24" rx="1.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="14.5" r="1.9" fill="currentColor"/><path d="M11.5 21.5Q16 17.5 20.5 21.5V28h-9z" fill="currentColor"/></symbol>
+        <symbol id="i-crest" viewBox="0 0 100 100"><g fill="none" stroke="currentColor"><circle cx="50" cy="50" r="47" stroke-width="2.5"/><circle cx="50" cy="50" r="40" stroke-width="1" stroke-dasharray="3 3"/><path d="M50 3v7M50 90v7M3 50h7M90 50h7M16.8 16.8l5 5M78.2 78.2l5 5M83.2 16.8l-5 5M21.8 78.2l-5 5" stroke-width="2"/></g><text x="50" y="51" text-anchor="middle" dominant-baseline="central" font-family="Zen Antique, serif" font-size="42" fill="currentColor">翼</text></symbol>
         <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
         <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a1 1 0 0 1 1-1h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
         <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></symbol>
@@ -37,7 +38,8 @@
             <a href="#domaines" data-i18n="nav.domains">Domaines</a>
             <a href="#designs" data-i18n="nav.designs">Designs</a>
             <a href="#code" data-i18n="nav.code">Code</a>
-            <a href="#equipe" data-i18n="nav.team">Équipe</a>
+            <a href="#moi" data-i18n="nav.team">Moi</a>
+            <a href="#crew" data-i18n="nav.friends">Crew</a>
             <a href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Langue" data-i18n-aria="aria.lang">
@@ -55,13 +57,13 @@
             <p class="embroidery" aria-hidden="true">天上天下唯我独尊</p>
 
             <div class="hero-text">
-                <p class="eyebrow mono"><span class="dot"></span> <span data-i18n="hero.eyebrow">Clarity · 総長 · fondateur</span></p>
+                <p class="eyebrow mono"><span class="dot"></span> <span data-i18n="hero.eyebrow">総長 · autodidacte · builder &amp; creator</span></p>
                 <h1 class="hero-title" data-i18n-html="hero.title">Je touche<br>à <em>tout</em>.</h1>
-                <p class="hero-lede" data-i18n="hero.lede">
-                    Moi c'est Tsubasa. Bannières montées sous Photoshop, dev full-stack, bots Discord
-                    et Telegram, rice Linux, serveurs… Tant que c'est de l'informatique, j'y mets les mains.
-                </p>
-                <p class="hero-quote" data-i18n="hero.quote">« Personne ne m'a encore vu à 100&nbsp;%. »</p>
+                <div class="hero-lede" data-i18n-html="hero.lede">
+                    <p>Moi, c'est Tsubasa. Autodidacte, je suis tombé dans l'informatique par curiosité et j'en ai fait mon terrain de jeu. Du développement au design, de Linux aux infrastructures, j'aime comprendre, expérimenter et donner vie à mes idées.</p>
+                    <p>Je ne me limite pas à un domaine : quand quelque chose m'intéresse, je vais jusqu'au bout.</p>
+                </div>
+                <p class="hero-quote" data-i18n="hero.quote">« Personne ne voit tout le travail derrière ce qui paraît simple. »</p>
                 <div class="hero-actions">
                     <a href="#domaines" class="btn btn-solid" data-i18n="hero.cta">Ce que je fais</a>
                     <a href="#contact" class="btn btn-ghost"><span data-i18n="hero.contact">Me contacter</span> <svg><use href="#i-arrow"/></svg></a>
@@ -172,20 +174,38 @@ I don't chase hype — I absorb skills and craft solutions that last.
             </div>
         </section>
 
-        <!-- Clarity -->
-        <section id="equipe" class="section">
+        <!-- Moi -->
+        <section id="moi" class="section people" data-group="me">
             <header class="section-head">
                 <span class="section-index mono">肆 · 04</span>
-                <h2 data-i18n="team.title">Équipe</h2>
-                <p data-i18n="team.lede">Le crew. Ceux avec qui je construis tout ça, dans l'ombre.</p>
+                <h2 data-i18n="team.title">Moi</h2>
+                <p data-i18n="team.lede">Mon profil et ce que j'apporte à chaque projet.</p>
             </header>
-            <ul class="team" id="team-grid"></ul>
+            <div class="crew-bar">
+                <span class="crew-label mono" data-i18n="people.crew">Le crew</span>
+                <div class="filters" role="group" data-i18n-aria="aria.filter" aria-label="Filtrer par catégorie"></div>
+            </div>
+            <ul class="team"></ul>
+        </section>
+
+        <!-- Le crew -->
+        <section id="crew" class="section people" data-group="crew">
+            <header class="section-head">
+                <span class="section-index mono">伍 · 05</span>
+                <h2 data-i18n="friends.title">Le crew</h2>
+                <p data-i18n="friends.lede">Ceux avec qui je construis tout ça, dans l'ombre.</p>
+            </header>
+            <div class="crew-bar">
+                <span class="crew-label mono" data-i18n="people.crew">Le crew</span>
+                <div class="filters" role="group" data-i18n-aria="aria.filter" aria-label="Filtrer par catégorie"></div>
+            </div>
+            <ul class="team"></ul>
         </section>
 
         <!-- Contact -->
         <section id="contact" class="section contact">
             <header class="section-head">
-                <span class="section-index mono">伍 · 05</span>
+                <span class="section-index mono">陸 · 06</span>
                 <h2 data-i18n="contact.title">On parle ?</h2>
                 <p data-i18n="contact.lede">Une bannière, un projet, ou juste rejoindre la commu : choisis ton canal.</p>
             </header>
@@ -223,7 +243,7 @@ I don't chase hype — I absorb skills and craft solutions that last.
         <blockquote>“I stay in the shadows to shine brighter when it truly matters.”</blockquote>
         <div class="footer-bottom">
             <svg class="brand-mark"><use href="#i-mark"/></svg>
-            <p class="mono">© <span id="year">2026</span> Tsubasa · Clarity</p>
+            <p class="mono">© <span id="year">2026</span> Tsubasa</p>
             <a href="#top" class="mono" data-i18n="footer.top">retour en haut ↑</a>
         </div>
     </footer>

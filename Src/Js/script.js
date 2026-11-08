@@ -32,15 +32,27 @@ const DESIGNS = [
     { name: 'Gilgamesh — avatar', file: 'PpGilgaMeshTsu.png', fit: 'contain' }
 ];
 
-const TEAM = [
-    { name: 'Tsubasa', file: 'Tsubasa.gif', roleKey: 'team.founder', title: 'The honored king', lead: true },
-    { name: 'Aelialou', file: 'Aelialou.png', role: 'Creative Designer', title: 'The honored princess' },
-    { name: 'Cocolennon', file: 'Cocolennon.png', role: 'Developer', title: 'The sage' },
-    { name: 'Mikky', file: 'Mikky.gif', role: 'Creative Designer', title: 'The queen' },
-    { name: 'Sparrow', file: 'Sparrow.png', role: 'Developer', title: 'The Instructor' },
-    { name: 'Sunny', file: 'Sunny.png', role: 'Designer', title: 'The stupid brother' },
-    { name: 'Swammy', file: 'Swammy.jpg', role: 'Sys Admin', title: 'The cool sister' }
+// group : 'me' (section Moi) ou 'crew' (section Le crew)
+// cats  : une ou plusieurs catégories parmi CATEGORIES
+// Pour ajouter un pote : mets sa photo dans Src/Assets/Images/Team/ puis ajoute une ligne ici, ex. :
+// { name: 'Pseudo', file: 'Pseudo.png', role: 'Developer', title: 'The legend', group: 'crew', cats: ['info'] },
+const PEOPLE = [
+    { name: 'Tsubasa', file: 'Tsu.gif', title: 'The honored king', lead: true, group: 'me', cats: ['design', 'info'] },
+    { name: 'Aelialou', file: 'Aelialou.png', role: 'Creative Designer', title: 'The honored princess', group: 'crew', cats: ['design'] },
+  { name: 'Lain', file: 'Lain.png', role: 'Miahou.Ai', title: 'The Honored Cat/Boy', group: 'crew', cats: ['info'] },
+  { name: 'Zanarelkov', file: 'Zanarelkov.png', role: 'Developer', title: 'The Shadowy Mastermind', group: 'crew', cats: ['info']},
+    { name: 'Cocolennon', file: 'Cocolennon.png', role: 'Developer', title: 'The sage', group: 'crew', cats: ['info'] },
+    { name: 'Mikky', file: 'Mikky.gif', role: 'Creative Designer', title: 'The queen', group: 'crew', cats: ['design'] },
+    { name: 'Sparrow', file: 'Sparrow.png', role: 'Developer', title: 'The Instructor', group: 'crew', cats: ['info'] },
+    { name: 'Sunny', file: 'Sunny.png', role: 'Designer', title: 'The stupid brother', group: 'crew', cats: ['design'] },
+    { name: 'Swammy', file: 'Swammy.jpg', role: 'Sys Admin', title: 'The cool sister', group: 'crew', cats: ['info'] },
+  { name: 'Hc', file: 'Hc.jpg', role: 'Slave', title: 'The SysSlav', group: 'crew', cats: ['info']},
+  { name: 'Jacky', file: 'Jacky.jpeg', role: 'Designer', title: 'The idiot of crew', group: 'crew', cats: ['design'] },
+  
 ];
+
+// Ordre d'affichage des filtres ; chaque clé a sa traduction 'cat.<clé>'
+const CATEGORIES = ['design', 'info', 'gaming', 'autre'];
 
 // ---------- Traductions ----------
 const I18N = {
@@ -58,12 +70,13 @@ const I18N = {
         'nav.domains': 'Domaines',
         'nav.designs': 'Designs',
         'nav.code': 'Code',
-        'nav.team': 'Équipe',
+        'nav.team': 'Moi',
         'nav.contact': 'Contact',
-        'hero.eyebrow': 'Clarity · 総長 · fondateur',
+        'hero.eyebrow': '総長 · autodidacte · builder & creator',
         'hero.title': 'Je touche<br>à <em>tout</em>.',
-        'hero.lede': "Moi c'est Tsubasa. Bannières montées sous Photoshop, dev full-stack, bots Discord et Telegram, rice Linux, serveurs… Tant que c'est de l'informatique, j'y mets les mains.",
-        'hero.quote': '« Personne ne m\'a encore vu à 100 %. »',
+        'hero.lede': `<p>Moi, c'est Tsubasa. Autodidacte, je suis tombé dans l'informatique par curiosité et j'en ai fait mon terrain de jeu. Du développement au design, de Linux aux infrastructures, j'aime comprendre, expérimenter et donner vie à mes idées.</p>
+<p>Je ne me limite pas à un domaine : quand quelque chose m'intéresse, je vais jusqu'au bout.</p>`,
+        'hero.quote': '« Personne ne voit tout le travail derrière ce qui paraît simple. »',
         'hero.cta': 'Ce que je fais',
         'hero.contact': 'Me contacter',
         'hero.alt': 'Sano Manjirō (Mikey), de dos',
@@ -89,9 +102,34 @@ const I18N = {
         'code.noDesc': 'Pas de description.',
         'code.error': 'impossible de joindre GitHub —',
         'code.errorLink': 'voir le profil directement',
-        'team.title': 'Équipe',
-        'team.lede': "Le crew. Ceux avec qui je construis tout ça, dans l'ombre.",
-        'team.founder': 'Fondateur',
+        'team.title': 'Moi',
+        'team.lede': 'Mon profil et ce que j\'apporte à chaque projet.',
+        'friends.title': 'Le crew',
+        'friends.lede': "Ceux avec qui je construis tout ça, dans l'ombre.",
+        'people.empty': 'personne ici pour le moment.',
+        'people.all': 'Tous',
+        'people.crew': 'Le crew',
+        'people.seeAll': 'Tout voir',
+        'people.scroll': 'Défiler',
+        'dossier.file': 'Dossier membre',
+        'dossier.member': 'Membre',
+        'dossier.role': 'Rôle',
+        'dossier.classified': 'confidentiel',
+        'dossier.rank': 'Rang',
+        'dossier.alias': 'Surnom',
+        'dossier.fields': 'Domaines',
+        'dossier.status': 'Statut',
+        'dossier.active': 'Actif',
+        'dossier.notes': 'Notes',
+        'team.leadText': `<p>Autodidacte et passionné par la technologie, je construis mes projets de l'idée à la réalisation. Développement web, applications, automatisation, infrastructure ou design : j'aime explorer, apprendre et trouver des solutions concrètes aux problèmes.</p>
+<p>À travers des projets comme Vybe et Clarity Studio, j'ai développé une approche polyvalente, mêlant technique, créativité et gestion de projets. Je privilégie l'autonomie, la rigueur et les solutions pensées pour durer.</p>
+<p>Je ne cherche pas simplement à utiliser les technologies, mais à comprendre comment elles fonctionnent et ce qu'il est possible d'en faire.</p>`,
+        'cat.design': 'Design',
+        'cat.info': 'Info',
+        'cat.gaming': 'Gaming',
+        'cat.autre': 'Autre',
+        'aria.filter': 'Filtrer par catégorie',
+        'nav.friends': 'Crew',
         'contact.title': 'On parle ?',
         'contact.lede': 'Une bannière, un projet, ou juste rejoindre la commu : choisis ton canal.',
         'contact.dm': 'Message privé',
@@ -120,12 +158,13 @@ const I18N = {
         'nav.domains': 'Fields',
         'nav.designs': 'Designs',
         'nav.code': 'Code',
-        'nav.team': 'Team',
+        'nav.team': 'Me',
         'nav.contact': 'Contact',
-        'hero.eyebrow': 'Clarity · 総長 · founder',
+        'hero.eyebrow': '総長 · self-taught · builder & creator',
         'hero.title': 'I touch<br>it <em>all</em>.',
-        'hero.lede': "I'm Tsubasa. Banners made in Photoshop, full-stack dev, Discord and Telegram bots, Linux ricing, servers… If it's tech, I get my hands on it.",
-        'hero.quote': '“No one has seen me at 100% yet.”',
+        'hero.lede': `<p>I'm Tsubasa. Self-taught, I got into computers out of curiosity and turned them into my playground. From development to design, from Linux to infrastructure, I love to understand, experiment and bring my ideas to life.</p>
+<p>I don't limit myself to one field: when something interests me, I see it through to the end.</p>`,
+        'hero.quote': '“No one sees all the work behind what looks simple.”',
         'hero.cta': 'What I do',
         'hero.contact': 'Contact me',
         'hero.alt': 'Sano Manjiro (Mikey), seen from behind',
@@ -151,9 +190,34 @@ const I18N = {
         'code.noDesc': 'No description.',
         'code.error': "can't reach GitHub —",
         'code.errorLink': 'see the profile directly',
-        'team.title': 'Team',
-        'team.lede': 'The crew. The people I build all this with, in the shadows.',
-        'team.founder': 'Founder',
+        'team.title': 'Me',
+        'team.lede': 'My profile and what I bring to every project.',
+        'friends.title': 'The crew',
+        'friends.lede': 'The people I build all this with, in the shadows.',
+        'people.empty': 'nobody here yet.',
+        'people.all': 'All',
+        'people.crew': 'The crew',
+        'people.seeAll': 'See all',
+        'people.scroll': 'Scroll',
+        'dossier.file': 'Member file',
+        'dossier.member': 'Member',
+        'dossier.role': 'Role',
+        'dossier.classified': 'classified',
+        'dossier.rank': 'Rank',
+        'dossier.alias': 'Alias',
+        'dossier.fields': 'Fields',
+        'dossier.status': 'Status',
+        'dossier.active': 'Active',
+        'dossier.notes': 'Notes',
+        'team.leadText': `<p>Self-taught and passionate about technology, I take my projects from idea to delivery. Web development, applications, automation, infrastructure or design: I love to explore, learn and find concrete solutions to problems.</p>
+<p>Through projects like Vybe and Clarity Studio, I've built a versatile approach that blends technical skills, creativity and project management. I value autonomy, rigor and solutions built to last.</p>
+<p>I don't just want to use technologies — I want to understand how they work and what they make possible.</p>`,
+        'cat.design': 'Design',
+        'cat.info': 'IT',
+        'cat.gaming': 'Gaming',
+        'cat.autre': 'Other',
+        'aria.filter': 'Filter by category',
+        'nav.friends': 'Crew',
         'contact.title': "Let's talk",
         'contact.lede': 'A banner, a project, or just joining the community: pick your channel.',
         'contact.dm': 'Direct message',
@@ -182,11 +246,11 @@ const LANG_COLORS = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    renderPeople();
     initLang();
     initHeader();
     renderDesigns();
     initLightbox();
-    renderTeam();
     initCopyButtons();
     loadRepos();
     initReveal();
@@ -332,19 +396,244 @@ function closeLightbox() {
     lbReturnFocus?.focus();
 }
 
-// ---------- Team ----------
-function renderTeam() {
-    const grid = document.getElementById('team-grid');
-    TEAM.forEach((member) => {
-        const li = document.createElement('li');
-        li.className = 'member reveal' + (member.lead ? ' lead' : '');
-        li.innerHTML = `
-            <div class="member-photo"><img src="${TEAM_DIR}${member.file}" alt="${escapeHTML(member.name)}" loading="lazy"></div>
-            <h3>${escapeHTML(member.name)}</h3>
-            <p class="member-role"${member.roleKey ? ` data-role-key="${member.roleKey}"` : ''}>${escapeHTML(member.roleKey ? t(member.roleKey) : member.role)}</p>
-            <span class="member-title mono">${escapeHTML(member.title)}</span>
-        `;
-        grid.appendChild(li);
+// ---------- Équipe & Potes ----------
+const catBadges = (cats) => cats.map((c) => `<span class="cat cat-${c} mono" data-i18n="cat.${c}"></span>`).join('');
+const roleTag = (person, cls) => person.roleKey
+    ? `<p class="${cls}" data-role-key="${person.roleKey}"></p>`
+    : `<p class="${cls}">${escapeHTML(person.role)}</p>`;
+
+// Fiche « dossier de membre » du chef
+function leadCard(person) {
+    const field = (jp, key, value) => `
+        <div>
+            <dt><span class="jp">${jp}</span><span data-i18n="${key}"></span></dt>
+            <dd>${value}</dd>
+        </div>
+    `;
+    return `
+        <article class="dossier reveal">
+            <svg class="dossier-crest-bg" aria-hidden="true"><use href="#i-crest"/></svg>
+
+            <header class="dossier-top mono">
+                <svg class="dossier-crest"><use href="#i-crest"/></svg>
+                <span class="dossier-file" data-i18n="dossier.file"></span>
+                <span class="dossier-no">No. 001</span>
+                <span class="dossier-sep" aria-hidden="true"></span>
+                <span class="dossier-ref">TSU-001 · 翼</span>
+            </header>
+
+            <div class="dossier-body">
+                <p class="dossier-band" aria-hidden="true">天下無敵 · 総長</p>
+
+                <figure class="dossier-portrait">
+                    <div class="dossier-photo">
+                        <img src="${TEAM_DIR}${person.file}" alt="${escapeHTML(person.name)}" loading="lazy">
+                        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                    </div>
+                    <span class="hanko hanko-sm" aria-hidden="true">総長</span>
+                    <figcaption class="mono"><span class="jp">翼</span><span>${escapeHTML(person.name)}</span></figcaption>
+                </figure>
+
+                <div class="dossier-info">
+                    <span class="dossier-stamp" aria-hidden="true">極秘<small class="mono" data-i18n="dossier.classified"></small></span>
+                    <p class="dossier-kana">ツバサ</p>
+                    <h3>${escapeHTML(person.name)}</h3>
+
+                    <dl class="dossier-fields">
+                        ${field('階級', 'dossier.rank', '総長 <span class="mono">sōchō</span>')}
+                        ${field('異名', 'dossier.alias', escapeHTML(person.title))}
+                        ${field('専門', 'dossier.fields', `<span class="member-cats">${catBadges(person.cats)}</span>`)}
+                        ${field('状態', 'dossier.status', '<span class="status-dot"></span><span data-i18n="dossier.active"></span>')}
+                    </dl>
+
+                    <div class="dossier-notes">
+                        <p class="dossier-label mono"><span class="jp">備考</span> <span data-i18n="dossier.notes"></span></p>
+                        <div class="lead-text" data-i18n-html="team.leadText"></div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="dossier-bottom mono">
+                <span class="barcode" aria-hidden="true"></span>
+                <span class="dossier-motto">“I don't chase hype — I absorb skills and craft solutions that last.”</span>
+            </footer>
+        </article>
+    `;
+}
+
+// Carte d'identité de membre du crew (même univers que le dossier du chef)
+function memberCard(person, index) {
+    const no = String(index + 1).padStart(2, '0');
+    return `
+        <li class="member" data-cats="${person.cats.join(' ')}">
+            <article class="member-card">
+                <header class="id-top mono">
+                    <svg class="id-crest"><use href="#i-crest"/></svg>
+                    <span><span class="jp">隊員</span> <span data-i18n="dossier.member"></span></span>
+                    <span class="id-no">No. ${no}</span>
+                </header>
+
+                <div class="id-photo">
+                    <img src="${TEAM_DIR}${person.file}" alt="${escapeHTML(person.name)}" loading="lazy">
+                    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                </div>
+
+                <div class="id-body">
+                    <h3>${escapeHTML(person.name)}</h3>
+                    <dl class="id-fields">
+                        <div>
+                            <dt><span class="jp">役職</span><span data-i18n="dossier.role"></span></dt>
+                            ${person.roleKey ? `<dd data-role-key="${person.roleKey}"></dd>` : `<dd>${escapeHTML(person.role)}</dd>`}
+                        </div>
+                        <div>
+                            <dt><span class="jp">異名</span><span data-i18n="dossier.alias"></span></dt>
+                            <dd class="id-alias">${escapeHTML(person.title)}</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <footer class="id-bottom">
+                    <span class="member-cats">${catBadges(person.cats)}</span>
+                    <span class="barcode barcode-sm" aria-hidden="true"></span>
+                </footer>
+                <span class="member-glare" aria-hidden="true"></span>
+            </article>
+        </li>
+    `;
+}
+
+// Inclinaison 3D qui suit la souris (purement visuel, ne bouge pas la mise en page)
+function initTilt(grid) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    grid.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse') return;
+        const card = e.target.closest('.member-card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--ry', `${(x - .5) * 14}deg`);
+        card.style.setProperty('--rx', `${(.5 - y) * 14}deg`);
+        card.style.setProperty('--mx', `${x * 100}%`);
+        card.style.setProperty('--my', `${y * 100}%`);
+    });
+    grid.addEventListener('pointerout', (e) => {
+        const card = e.target.closest('.member-card');
+        if (card && !card.contains(e.relatedTarget)) {
+            card.style.removeProperty('--rx');
+            card.style.removeProperty('--ry');
+        }
+    });
+}
+
+// Carrousel avec boutons ‹ ›, et bouton « Tout voir » pour passer en grille
+function initCarousel(bar, grid) {
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    controls.innerHTML = `
+        <span class="carousel-count mono"></span>
+        <button type="button" class="lb-btn carousel-btn" data-dir="-1" data-i18n-aria="aria.prev"><svg><use href="#i-left"/></svg></button>
+        <button type="button" class="lb-btn carousel-btn" data-dir="1" data-i18n-aria="aria.next"><svg><use href="#i-right"/></svg></button>
+        <button type="button" class="chip mono carousel-view" aria-pressed="false" data-i18n="people.seeAll"></button>
+    `;
+    bar.appendChild(controls);
+
+    const count = controls.querySelector('.carousel-count');
+    const [prev, next] = controls.querySelectorAll('.carousel-btn');
+    const view = controls.querySelector('.carousel-view');
+
+    const visible = () => [...grid.querySelectorAll('.member:not([hidden])')];
+    const update = () => {
+        const items = visible();
+        const box = grid.getBoundingClientRect();
+        const shown = items.filter((m) => {
+            const r = m.getBoundingClientRect();
+            return r.left >= box.left - 2 && r.right <= box.right + 2;
+        });
+        const first = items.indexOf(shown[0]) + 1;
+        const last = items.indexOf(shown[shown.length - 1]) + 1;
+        const pad = (n) => String(n).padStart(2, '0');
+        const range = first === last ? pad(first) : `${pad(first)}–${pad(last)}`;
+        count.textContent = shown.length ? `${range} / ${pad(items.length)}` : '';
+        prev.disabled = grid.scrollLeft <= 2;
+        next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 2;
+        controls.classList.toggle('no-scroll', prev.disabled && next.disabled);
+    };
+
+    controls.addEventListener('click', (e) => {
+        const btn = e.target.closest('.carousel-btn');
+        if (btn) grid.scrollBy({ left: Number(btn.dataset.dir) * grid.clientWidth, behavior: 'smooth' });
+    });
+    view.addEventListener('click', () => {
+        const isGrid = grid.classList.toggle('is-grid');
+        controls.classList.toggle('is-grid', isGrid);
+        view.setAttribute('aria-pressed', isGrid);
+        view.dataset.i18n = isGrid ? 'people.scroll' : 'people.seeAll';
+        view.textContent = t(view.dataset.i18n);
+        grid.scrollLeft = 0;
+        update();
+    });
+    grid.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    const reset = () => { grid.scrollLeft = 0; update(); };
+    requestAnimationFrame(update);
+    return reset;
+}
+
+function renderPeople() {
+    document.querySelectorAll('.people').forEach((section) => {
+        const people = PEOPLE.filter((p) => p.group === section.dataset.group);
+        const lead = people.find((p) => p.lead);
+        const crew = people.filter((p) => !p.lead);
+        const grid = section.querySelector('.team');
+        const bar = section.querySelector('.crew-bar');
+        const filters = section.querySelector('.filters');
+
+        // Le chef en haut, puis une séparation avant le reste du crew
+        if (lead) {
+            grid.insertAdjacentHTML('beforebegin', leadCard(lead));
+            section.querySelector('.dossier').after(bar);
+        } else {
+            bar.querySelector('.crew-label').remove();
+            bar.classList.add('crew-bar--solo');
+        }
+
+        if (!crew.length) {
+            if (lead) {
+                bar.remove();
+                grid.remove();
+                return;
+            }
+            grid.innerHTML = '<li class="people-empty mono" data-i18n="people.empty"></li>';
+            filters.remove();
+            return;
+        }
+        grid.innerHTML = crew.map(memberCard).join('');
+        grid.classList.add('carousel');
+        initTilt(grid);
+        const resetCarousel = initCarousel(bar, grid);
+
+        // Filtres : seulement s'il y a au moins 2 catégories dans le crew
+        const used = CATEGORIES.filter((c) => crew.some((p) => p.cats.includes(c)));
+        if (used.length < 2) {
+            filters.remove();
+            return;
+        }
+        filters.innerHTML = ['all', ...used].map((c) => `
+            <button type="button" class="chip mono" data-filter="${c}" aria-pressed="${c === 'all'}"
+                data-i18n="${c === 'all' ? 'people.all' : `cat.${c}`}"></button>
+        `).join('');
+        filters.addEventListener('click', (e) => {
+            const chip = e.target.closest('[data-filter]');
+            if (!chip) return;
+            const cat = chip.dataset.filter;
+            filters.querySelectorAll('[data-filter]').forEach((b) => b.setAttribute('aria-pressed', b === chip));
+            grid.querySelectorAll('.member').forEach((m) => {
+                m.hidden = cat !== 'all' && !m.dataset.cats.split(' ').includes(cat);
+            });
+            resetCarousel();
+        });
     });
 }
 
