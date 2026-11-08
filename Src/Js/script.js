@@ -39,8 +39,8 @@ const DESIGNS = [
 const PEOPLE = [
     { name: 'Tsubasa', file: 'Tsu.gif', title: 'The honored king', lead: true, group: 'me', cats: ['design', 'info'] },
     { name: 'Aelialou', file: 'Aelialou.png', role: 'Creative Designer', title: 'The honored princess', group: 'crew', cats: ['design'] },
-  { name: 'Lain', file: 'Lain.png', role: 'Miahou.Ai', title: 'The Honored Cat/Boy', group: 'crew', cats: ['info'] },
-  { name: 'Zanarelkov', file: 'Zanarelkov.png', role: 'Developer', title: 'The Shadowy Mastermind', group: 'crew', cats: ['info']},
+  { name: 'Lain', file: 'Lain.png', role: 'Miahou.AI,Hacker', title: 'The Honored Cat/Boy', group: 'crew', cats: ['info'] },
+  { name: 'Zanarelkov', file: 'Zanarelkov.png', role: 'Hacker', title: 'The Shadowy Mastermind', group: 'crew', cats: ['info']},
     { name: 'Cocolennon', file: 'Cocolennon.png', role: 'Developer', title: 'The sage', group: 'crew', cats: ['info'] },
     { name: 'Mikky', file: 'Mikky.gif', role: 'Creative Designer', title: 'The queen', group: 'crew', cats: ['design'] },
     { name: 'Sparrow', file: 'Sparrow.png', role: 'Developer', title: 'The Instructor', group: 'crew', cats: ['info'] },
@@ -48,7 +48,7 @@ const PEOPLE = [
     { name: 'Swammy', file: 'Swammy.jpg', role: 'Sys Admin', title: 'The cool sister', group: 'crew', cats: ['info'] },
   { name: 'Hc', file: 'Hc.jpg', role: 'Slave', title: 'The SysSlav', group: 'crew', cats: ['info']},
   { name: 'Jacky', file: 'Jacky.jpeg', role: 'Designer', title: 'The idiot of crew', group: 'crew', cats: ['design'] },
-  
+
 ];
 
 // Ordre d'affichage des filtres ; chaque clé a sa traduction 'cat.<clé>'
