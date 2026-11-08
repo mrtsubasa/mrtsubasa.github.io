@@ -39,17 +39,19 @@ const DESIGNS = [
 const PEOPLE = [
     { name: 'Tsubasa', file: 'Tsu.gif', title: 'The honored king', lead: true, group: 'me', cats: ['design', 'info'] },
     { name: 'Aelialou', file: 'Aelialou.png', role: 'Creative Designer', title: 'The honored princess', group: 'crew', cats: ['design'] },
-  { name: 'Lain', file: 'Lain.png', role: 'Miahou.AI,Hacker', title: 'The Honored Cat/Boy', group: 'crew', cats: ['info'] },
-  { name: 'Zanarelkov', file: 'Zanarelkov.png', role: 'Hacker', title: 'The Shadowy Mastermind', group: 'crew', cats: ['info']},
+    { name: 'Lain', file: 'Lain.png', role: 'Miahou.AI,Hacker', title: 'The Honored Cat/Boy', group: 'crew', cats: ['info'] },
+    { name: 'Zanarelkov', file: 'Zanarelkov.png', role: 'Hacker', title: 'The Shadowy Mastermind', group: 'crew', cats: ['info']},
     { name: 'Cocolennon', file: 'Cocolennon.png', role: 'Developer', title: 'The sage', group: 'crew', cats: ['info'] },
     { name: 'Mikky', file: 'Mikky.gif', role: 'Creative Designer', title: 'The queen', group: 'crew', cats: ['design'] },
     { name: 'Sparrow', file: 'Sparrow.png', role: 'Developer', title: 'The Instructor', group: 'crew', cats: ['info'] },
     { name: 'Sunny', file: 'Sunny.png', role: 'Designer', title: 'The stupid brother', group: 'crew', cats: ['design'] },
     { name: 'Swammy', file: 'Swammy.jpg', role: 'Sys Admin', title: 'The cool sister', group: 'crew', cats: ['info'] },
-  { name: 'Hc', file: 'Hc.jpg', role: 'DrinkOps Engineer,Sys-Admin', title: 'The SysSlav', group: 'crew', cats: ['autre']},
-  { name: 'Jacky', file: 'Jacky.jpeg', role: 'Designer', title: 'The idiot of crew', group: 'crew', cats: ['design'] },
-  { name: 'Zeno', file: 'Zeno.jpg', role: 'Dev/Pentester', title: 'The D€ad0ps', group: 'crew', cats: ['info'] },
-
+    { name: 'Hc', file: 'Hc.jpg', role: 'DrinkOps Engineer,Sys-Admin', title: 'The SysSlav', group: 'crew', cats: ['autre']},
+    { name: 'Jacky', file: 'Jacky.jpeg', role: 'Designer', title: 'The idiot of crew', group: 'crew', cats: ['design'] },
+    { name: 'Zeno', file: 'Zeno.jpg', role: 'Dev/Pentester', title: 'The D€ad0ps', group: 'crew', cats: ['info'] },
+    { name: 'Amelksrr', file: 'Amel.jpg', role: 'NetMommy', title: 'The Cyber Mommy', group: 'crew', cats: ['autre']},
+  { name: 'Clearnet', file: 'Clearnet.gif', role: 'CyberGooner', title: 'The Cyber Bugs Bunny', group: 'crew', cats: ['info'] },
+        { name: 'Nxrox', file: 'Nxrox.png', role: 'Meow', title: 'Happy Cat', group: 'crew', cats: ['autre']},
 ];
 
 // Ordre d'affichage des filtres ; chaque clé a sa traduction 'cat.<clé>'
