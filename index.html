@@ -1,580 +1,245 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='icon' href='./favicon.ico'>
-    <title>MrTsubasa | Portfolio - Fusion des Légendes</title>
-    <link rel="stylesheet" href="./Src/Css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Tsubasa — bannières sous Photoshop, dev full-stack, bots, rice Linux. Je touche à tout en informatique.">
+    <meta name="theme-color" content="#0a0a0b">
+    <link rel="icon" href="./Src/Assets/Images/Profile/mark.svg" type="image/svg+xml">
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="./Src/Assets/Images/Profile/apple-touch-icon.png">
+    <title>Tsubasa — 総長</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Antique&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Src/Css/styles.css">
 </head>
 <body>
-    <!-- Canvas pour les effets de particules -->
-    <canvas id="particles-canvas"></canvas>
-    <canvas id="stars-canvas"></canvas>
-    <canvas id="constellation-canvas"></canvas>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-mark" viewBox="0 0 32 32"><rect x="11.5" y="4" width="9" height="24" rx="1.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="14.5" r="1.9" fill="currentColor"/><path d="M11.5 21.5Q16 17.5 20.5 21.5V28h-9z" fill="currentColor"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a1 1 0 0 1 1-1h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="currentColor"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></symbol>
+        <symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M19.3 5.3A16.5 16.5 0 0 0 15.2 4l-.5 1a15 15 0 0 0-5.4 0L8.8 4a16.4 16.4 0 0 0-4.1 1.3C2.1 9.2 1.4 13 1.7 16.7a16.6 16.6 0 0 0 5 2.6l1.1-1.7a10.7 10.7 0 0 1-1.7-.8l.4-.3a11.8 11.8 0 0 0 11 0l.4.3-1.7.8 1.1 1.7a16.5 16.5 0 0 0 5-2.6c.4-4.3-.7-8-2.9-11.4ZM8.7 14.5c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+        <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </svg>
 
-    <!-- Navigation -->
-    <header class="main-header">
-        <nav class="nav-container">
-            <div class="logo-container">
-                <span class="logo-text">MrTsubasa</span>
-                <span class="logo-subtitle">Fusion of Legends</span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Accueil</a></li>
-                <li><a href="#about" class="nav-link">À Propos</a></li>
-                <li><a href="#skills" class="nav-link">Compétences</a></li>
-                <li><a href="#projects" class="nav-link">Dev</a></li>
-                <li><a href="#designs" class="nav-link">Designs</a></li>
-                <li><a href="#team" class="nav-link">Team</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    <header class="site-header">
+        <a href="#top" class="brand" aria-label="Accueil" data-i18n-aria="aria.home">
+            <svg class="brand-mark"><use href="#i-mark"/></svg>
+            <span class="brand-name">tsubasa</span>
+            <span class="brand-rank">総長</span>
+        </a>
+        <nav class="nav" id="nav" aria-label="Navigation principale">
+            <a href="#domaines" data-i18n="nav.domains">Domaines</a>
+            <a href="#designs" data-i18n="nav.designs">Designs</a>
+            <a href="#code" data-i18n="nav.code">Code</a>
+            <a href="#equipe" data-i18n="nav.team">Équipe</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
+        <div class="lang-switch" role="group" aria-label="Langue" data-i18n-aria="aria.lang">
+            <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" data-i18n-aria="aria.menu" aria-expanded="false" aria-controls="nav">
+            <span></span><span></span>
+        </button>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-background">
-            <div class="fire-particle" style="--delay: 0s; --duration: 3s;"></div>
-            <div class="fire-particle" style="--delay: 0.5s; --duration: 3.5s;"></div>
-            <div class="fire-particle" style="--delay: 1s; --duration: 4s;"></div>
-            <div class="fire-particle" style="--delay: 1.5s; --duration: 3.2s;"></div>
-            <div class="fire-particle" style="--delay: 2s; --duration: 3.8s;"></div>
-            <div class="slime-blob slime-blob-1"></div>
-            <div class="slime-blob slime-blob-2"></div>
-            <div class="slime-blob slime-blob-3"></div>
+    <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+            <p class="embroidery" aria-hidden="true">天上天下唯我独尊</p>
+
+            <div class="hero-text">
+                <p class="eyebrow mono"><span class="dot"></span> <span data-i18n="hero.eyebrow">Clarity · 総長 · fondateur</span></p>
+                <h1 class="hero-title" data-i18n-html="hero.title">Je touche<br>à <em>tout</em>.</h1>
+                <p class="hero-lede" data-i18n="hero.lede">
+                    Moi c'est Tsubasa. Bannières montées sous Photoshop, dev full-stack, bots Discord
+                    et Telegram, rice Linux, serveurs… Tant que c'est de l'informatique, j'y mets les mains.
+                </p>
+                <p class="hero-quote" data-i18n="hero.quote">« Personne ne m'a encore vu à 100&nbsp;%. »</p>
+                <div class="hero-actions">
+                    <a href="#domaines" class="btn btn-solid" data-i18n="hero.cta">Ce que je fais</a>
+                    <a href="#contact" class="btn btn-ghost"><span data-i18n="hero.contact">Me contacter</span> <svg><use href="#i-arrow"/></svg></a>
+                </div>
+            </div>
+
+            <figure class="hero-portrait">
+                <div class="portrait-frame">
+                    <img src="./Src/Assets/Images/Profile/mikey.webp" alt="Sano Manjirō (Mikey), de dos" data-i18n-alt="hero.alt" width="736" height="736">
+                </div>
+                <span class="hanko" aria-hidden="true">翼</span>
+                <figcaption><span class="jp">佐野万次郎</span><span class="mono" data-i18n="hero.caption">Mikey — l'icône</span></figcaption>
+            </figure>
+        </section>
+
+        <div class="terminal" aria-label="Terminal décoratif" data-i18n-aria="aria.terminal">
+            <div class="terminal-bar"><i></i><i></i><i></i><span class="mono">tsu@cachyos — hyprland</span></div>
+            <pre class="mono"><span class="t-prompt">❯</span> whoami
+tsubasa — 総長 @ clarity
+<span class="t-prompt">❯</span> cat ~/.bio
+I don't chase hype — I absorb skills and craft solutions that last.
+<span class="t-prompt">❯</span> ls ~/designs | wc -l
+<span id="designs-count">22</span>
+<span class="t-prompt">❯</span> <span class="t-cursor"></span></pre>
         </div>
 
-        <div class="hero-content">
-            <div class="hero-stars-container">
-                <i class="hero-star fas fa-star"></i>
-                <i class="hero-star fas fa-star"></i>
-                <i class="hero-star fas fa-star"></i>
+        <!-- Domaines -->
+        <section id="domaines" class="section">
+            <header class="section-head">
+                <span class="section-index mono">壱 · 01</span>
+                <h2 data-i18n="domains.title">Domaines</h2>
+                <p data-i18n="domains.lede">Pas une spécialité, un terrain de jeu. Voilà où je traîne.</p>
+            </header>
+
+            <div class="patches">
+                <article class="patch reveal">
+                    <span class="patch-kanji" aria-hidden="true">画</span>
+                    <h3>Design</h3>
+                    <p data-i18n="d1.text">Bannières Discord, PP et miniatures, montées sous Photoshop : compo, light, typo, effets.</p>
+                    <ul class="tags"><li>Photoshop</li><li data-i18n="d1.banners">Bannières 3000×1000</li><li>PP</li><li data-i18n="d1.thumbs">Miniatures</li></ul>
+                    <a class="patch-link mono" href="#designs"><span data-i18n="d1.link">voir les créas</span> <svg><use href="#i-arrow"/></svg></a>
+                </article>
+                <article class="patch reveal">
+                    <span class="patch-kanji" aria-hidden="true">開</span>
+                    <h3>Dev full-stack</h3>
+                    <p data-i18n="d2.text">Du back au front, en passant par les API. TypeScript au quotidien, Go et Rust pour ce qui doit aller vite.</p>
+                    <ul class="tags"><li>TypeScript</li><li>Go</li><li>Rust</li><li>React / Next.js</li><li>Angular</li><li>Laravel</li><li>Symfony</li><li>Node · Bun · Deno</li></ul>
+                    <a class="patch-link mono" href="https://github.com/mrtsubasa/Git_Cloner_Rs" target="_blank" rel="noopener">Git_Cloner_Rs <svg><use href="#i-arrow"/></svg></a>
+                </article>
+                <article class="patch reveal">
+                    <span class="patch-kanji" aria-hidden="true">機</span>
+                    <h3>Bots</h3>
+                    <p data-i18n="d3.text">Bots Discord et Telegram, outils d'automatisation, scripts d'init pour les serveurs de la commu.</p>
+                    <ul class="tags"><li>Discord</li><li>Telegram</li><li>TypeScript</li><li>Shell</li></ul>
+                    <a class="patch-link mono" href="https://github.com/mrtsubasa/Telegram_Bot" target="_blank" rel="noopener">Telegram_Bot <svg><use href="#i-arrow"/></svg></a>
+                </article>
+                <article class="patch reveal">
+                    <span class="patch-kanji" aria-hidden="true">核</span>
+                    <h3>Linux &amp; rice</h3>
+                    <p data-i18n="d4.text">CachyOS sous Hyprland, rice maison en Quickshell, Neovim réglé aux petits oignons.</p>
+                    <ul class="tags"><li>CachyOS</li><li>Hyprland</li><li>Quickshell / QML</li><li>Neovim</li><li>Lua</li></ul>
+                    <a class="patch-link mono" href="https://github.com/mrtsubasa/tsu-dots" target="_blank" rel="noopener">tsu-dots <svg><use href="#i-arrow"/></svg></a>
+                </article>
+                <article class="patch reveal">
+                    <span class="patch-kanji" aria-hidden="true">守</span>
+                    <h3 data-i18n="d5.title">Infra &amp; sécu</h3>
+                    <p data-i18n="d5.text">Conteneurs, bases de données, et l'œil pour repérer la clé laissée sous le paillasson.</p>
+                    <ul class="tags"><li>Docker</li><li>PostgreSQL</li><li>MongoDB</li><li>Prisma</li><li>Git</li></ul>
+                    <a class="patch-link mono" href="https://github.com/mrtsubasa/cle-sous-le-paillasson" target="_blank" rel="noopener">cle-sous-le-paillasson <svg><use href="#i-arrow"/></svg></a>
+                </article>
             </div>
+        </section>
 
-            <h1 class="hero-title">
-                <span class="title-line" data-text="Bienvenue dans">Bienvenue dans</span>
-                <span class="title-line main-title" data-text="Mon Univers">Mon Univers</span>
-            </h1>
+        <!-- Designs -->
+        <section id="designs" class="section">
+            <header class="section-head">
+                <span class="section-index mono">弐 · 02</span>
+                <h2>Designs</h2>
+                <p data-i18n="designs.lede">Bannières, PP et miniatures, faites sous Photoshop. Clique pour ouvrir en grand.</p>
+            </header>
+            <div class="gallery" id="gallery"></div>
+        </section>
 
-            <p class="hero-subtitle">
-                Où la <span class="highlight-seiya">Détermination</span>,
-                l'<span class="highlight-ayanokoji">Intelligence</span>,
-                l'<span class="highlight-rimuru">Adaptabilité</span>,
-                la <span class="highlight-natsu">Passion</span> et
-                le <span class="highlight-aqua">Mystère</span> se rencontrent
-            </p>
+        <!-- Code -->
+        <section id="code" class="section">
+            <header class="section-head">
+                <span class="section-index mono">参 · 03</span>
+                <h2>Code</h2>
+                <p data-i18n="code.lede">Mes dépôts publics, chargés en direct depuis GitHub.</p>
+            </header>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fas fa-fire"></i>
-                    Voir mes Projets
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <i class="fas fa-star"></i>
-                    Me Contacter
-                </a>
+            <div class="code-layout">
+                <aside class="code-side">
+                    <dl class="gh-stats mono">
+                        <div><dt data-i18n="code.repos">dépôts</dt><dd id="repos-count">—</dd></div>
+                        <div><dt data-i18n="code.stars">étoiles</dt><dd id="stars-count">—</dd></div>
+                        <div><dt>forks</dt><dd id="forks-count">—</dd></div>
+                    </dl>
+                    <p class="side-note" data-i18n-html="code.ihorizon">Contributeur sur <a href="https://github.com/iHorizon" target="_blank" rel="noopener">iHorizon</a>.</p>
+                    <a class="btn btn-ghost" href="https://github.com/mrtsubasa" target="_blank" rel="noopener">
+                        <svg><use href="#i-github"/></svg> github.com/mrtsubasa
+                    </a>
+                </aside>
+
+                <ol class="repo-list" id="repo-list">
+                    <li class="repo-empty mono" data-i18n="code.loading">chargement des dépôts…</li>
+                </ol>
             </div>
+        </section>
 
-            <div class="hero-scroll">
-                <span>Découvrir</span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </div>
-    </section>
+        <!-- Clarity -->
+        <section id="equipe" class="section">
+            <header class="section-head">
+                <span class="section-index mono">肆 · 04</span>
+                <h2 data-i18n="team.title">Équipe</h2>
+                <p data-i18n="team.lede">Le crew. Ceux avec qui je construis tout ça, dans l'ombre.</p>
+            </header>
+            <ul class="team" id="team-grid"></ul>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fas fa-user-circle"></i></span>
-                    À Propos de Moi
-                </h2>
-                <div class="section-line"></div>
-            </div>
+        <!-- Contact -->
+        <section id="contact" class="section contact">
+            <header class="section-head">
+                <span class="section-index mono">伍 · 05</span>
+                <h2 data-i18n="contact.title">On parle ?</h2>
+                <p data-i18n="contact.lede">Une bannière, un projet, ou juste rejoindre la commu : choisis ton canal.</p>
+            </header>
 
-            <div class="about-content">
-                <div class="about-image-container">
-                    <div class="about-image-frame">
-                        <img src="./Src/Assets/Images/Team/tsubasa.gif" alt="Profile" class="about-image">
-                        <div class="image-glow"></div>
-                    </div>
-                    <div class="constellation-decoration">
-                        <div class="constellation-point"></div>
-                        <div class="constellation-point"></div>
-                        <div class="constellation-point"></div>
-                        <div class="constellation-line"></div>
-                    </div>
-                </div>
-
-                <div class="about-text">
-                    <h3 class="about-subtitle">Stratège · Créateur · Visionnaire</h3>
-
-                    <div class="personality-traits">
-                        <div class="trait-card trait-seiya">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Déterminé comme Seiya</span>
-                        </div>
-                        <div class="trait-card trait-ayanokoji">
-                            <i class="fas fa-brain"></i>
-                            <span>Stratégique comme Ayanokoji</span>
-                        </div>
-                        <div class="trait-card trait-rimuru">
-                            <i class="fas fa-water"></i>
-                            <span>Adaptable comme Rimuru</span>
-                        </div>
-                        <div class="trait-card trait-natsu">
-                            <i class="fas fa-fire-alt"></i>
-                            <span>Passionné comme Natsu</span>
-                        </div>
-                        <div class="trait-card trait-aqua">
-                            <i class="fas fa-star"></i>
-                            <span>Mystérieux comme Aqua</span>
-                        </div>
-                    </div>
-
-                    <p class="about-description">
-                        Comme Seiya qui protège Athéna, je défends chaque projet avec détermination.
-                        Tel Ayanokoji qui calcule chaque mouvement, j'approche le développement avec stratégie.
-                        À l'image de Rimuru qui évolue constamment, je m'adapte aux nouvelles technologies.
-                        Avec la passion de Natsu pour ses amis, je mets mon cœur dans chaque création.
-                        Et comme Aqua Hoshino qui cache ses véritables intentions, mes projets révèlent des profondeurs inattendues.
-                    </p>
-
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <span class="stat-number" data-target="50">0</span>
-                            <span class="stat-label">Projets Réalisés</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number" data-target="3">0</span>
-                            <span class="stat-label">Années d'Expérience</span>
-                        </div>
-                        <div class="stat-box">
-                            <span class="stat-number" data-target="100">0</span>
-                            <span class="stat-label">% Engagement</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fas fa-code"></i></span>
-                    Compétences & Évolution
-                </h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="skills-intro">
-                <p>Comme Rimuru qui absorbe de nouvelles capacités, mes compétences évoluent constamment</p>
-            </div>
-
-            <div class="skills-grid">
-                <!-- Seiya - Front-End -->
-                <div class="skill-category category-seiya">
-                    <div class="category-header">
-                        <i class="fas fa-crown"></i>
-                        <h3>Front-End - Le Chevalier</h3>
-                        <p>Noble et protecteur de l'expérience utilisateur</p>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">HTML5 / CSS3</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript / TypeScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">React / Next.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ayanokoji - Back-End -->
-                <div class="skill-category category-ayanokoji">
-                    <div class="category-header">
-                        <i class="fas fa-brain"></i>
-                        <h3>Back-End - Le Stratège</h3>
-                        <p>Calculateur et architecte de systèmes</p>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js / Express</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Python / Django</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="82"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Bases de données</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rimuru - Full-Stack -->
-                <div class="skill-category category-rimuru">
-                    <div class="category-header">
-                        <i class="fas fa-layer-group"></i>
-                        <h3>Full-Stack - L'Adaptable</h3>
-                        <p>Fluide entre toutes les technologies</p>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Architecture & Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">API REST / GraphQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="87"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">DevOps / CI/CD</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Natsu - Creative -->
-                <div class="skill-category category-natsu">
-                    <div class="category-header">
-                        <i class="fas fa-palette"></i>
-                        <h3>Design - Le Passionné</h3>
-                        <p>Énergique dans la création visuelle</p>
-                    </div>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">UI/UX Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Figma / Adobe XD</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Animation / Motion</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="82"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aqua - Special Skills -->
-            <div class="special-skills">
-                <h3 class="special-title">
-                    <i class="fas fa-star"></i>
-                    Compétences Spéciales - Le Mystère
-                </h3>
-                <div class="special-tags">
-                    <span class="tag tag-aqua">Problem Solving</span>
-                    <span class="tag tag-aqua">Leadership</span>
-                    <span class="tag tag-aqua">Communication</span>
-                    <span class="tag tag-aqua">Travail d'Équipe</span>
-                    <span class="tag tag-aqua">Gestion de Projet</span>
-                    <span class="tag tag-aqua">Mentorat</span>
-                    <span class="tag tag-aqua">Innovation</span>
-                    <span class="tag tag-aqua">Résilience</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dev Projects Section (GitHub Auto) -->
-    <section id="projects" class="projects-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fab fa-github"></i></span>
-                    Projets Dev
-                </h2>
-                <div class="section-line"></div>
-                <p class="section-subtitle">Automatiquement chargés depuis GitHub</p>
-            </div>
-
-            <div id="github-stats" class="github-stats">
-                <div class="stat-item">
-                    <i class="fab fa-github"></i>
-                    <span class="stat-value" id="repos-count">...</span>
-                    <span class="stat-label">Repositories</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-star"></i>
-                    <span class="stat-value" id="stars-count">...</span>
-                    <span class="stat-label">Stars</span>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-code-branch"></i>
-                    <span class="stat-value" id="forks-count">...</span>
-                    <span class="stat-label">Forks</span>
-                </div>
-            </div>
-
-            <div id="github-projects" class="projects-grid">
-                <!-- Projects will be loaded dynamically from GitHub -->
-                <div class="loading-container">
-                    <div class="loading-spinner"></div>
-                    <p>Chargement des projets GitHub...</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Design Section (Auto from folder) -->
-    <section id="designs" class="designs-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fas fa-palette"></i></span>
-                    Mes Designs
-                </h2>
-                <div class="section-line"></div>
-                <p class="section-subtitle">Créations graphiques et bannières</p>
-            </div>
-
-            <div id="designs-grid" class="designs-grid">
-                <!-- Designs will be loaded dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Design Modal -->
-    <div id="design-modal" class="design-modal">
-        <span class="modal-close">&times;</span>
-        <div class="modal-content">
-            <img id="modal-image" src="" alt="Design">
-            <div class="modal-caption" id="modal-caption"></div>
-        </div>
-    </div>
-
-    <!-- Team Section -->
-    <section id="team" class="team-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-number">05</span>
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fas fa-users"></i></span>
-                    Mon Équipe
-                </h2>
-                <div class="section-line"></div>
-                <p class="section-subtitle">Les légendes qui m'accompagnent dans cette aventure</p>
-            </div>
-
-            <div class="team-intro">
-                <p>Comme les chevaliers de Seiya unis pour protéger Athéna, nous formons une équipe soudée où chacun apporte sa force unique</p>
-            </div>
-
-            <div id="team-grid" class="team-grid">
-                <!-- Team members will be loaded dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-number">06</span>
-                <h2 class="section-title">
-                    <span class="title-icon"><i class="fas fa-comments"></i></span>
-                    Rejoignez-Moi
-                </h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="contact-intro">
-                <p>Rejoignez la communauté et restons connectés !</p>
-                <p class="contact-subtitle">Discord, Telegram - Choisissez votre plateforme préférée</p>
-            </div>
-
-            <div class="social-networks-grid">
-                <!-- Discord User -->
-                <div class="social-network-card discord-card character-ayanokoji">
-                    <div class="network-icon">
-                        <i class="fab fa-discord"></i>
-                    </div>
-                    <h3 class="network-title">Discord Personnel</h3>
-                    <p class="network-username">1tsubasa</p>
-                    <p class="network-description">Contactez-moi directement sur Discord</p>
-                    <button class="network-btn" onclick="copyToClipboard('1tsubasa', this)">
-                        <i class="fas fa-copy"></i>
-                        <span>Copier le pseudo</span>
+            <ul class="links">
+                <li>
+                    <button class="link-row" type="button" data-copy="1tsubasa">
+                        <svg class="link-icon"><use href="#i-discord"/></svg>
+                        <span class="link-label">Discord<small data-i18n="contact.dm">Message privé</small></span>
+                        <span class="link-value mono">1tsubasa</span>
+                        <span class="link-action mono"><svg><use href="#i-copy"/></svg><span data-i18n="contact.copy">copier</span></span>
                     </button>
-                    <div class="network-character">
-                        <i class="fas fa-brain"></i>
-                        <span>Stratégique comme Ayanokoji</span>
-                    </div>
-                </div>
-
-                <!-- Clarity Studio Discord -->
-                <div class="social-network-card discord-card character-seiya">
-                    <div class="network-icon">
-                        <i class="fab fa-discord"></i>
-                    </div>
-                    <h3 class="network-title">Clarity Studio</h3>
-                    <p class="network-server">Serveur Discord</p>
-                    <p class="network-description">Rejoignez notre studio créatif</p>
-                    <a href="https://discord.gg/clarity-studio" target="_blank" rel="noopener" class="network-btn">
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Rejoindre le serveur</span>
+                </li>
+                <li>
+                    <a class="link-row" href="https://discord.gg/eimei" target="_blank" rel="noopener">
+                        <svg class="link-icon"><use href="#i-discord"/></svg>
+                        <span class="link-label">Eimei<small data-i18n="contact.server">Serveur Discord</small></span>
+                        <span class="link-value mono">discord.gg/eimei</span>
+                        <span class="link-action mono"><svg><use href="#i-arrow"/></svg><span data-i18n="contact.join">rejoindre</span></span>
                     </a>
-                    <div class="network-character">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Noble comme Seiya</span>
-                    </div>
-                </div>
-
-                <!-- Tsubasa Discord -->
-                <div class="social-network-card discord-card character-natsu">
-                    <div class="network-icon">
-                        <i class="fab fa-discord"></i>
-                    </div>
-                    <h3 class="network-title">Tsubasa</h3>
-                    <p class="network-server">Serveur Discord</p>
-                    <p class="network-description">Ma communauté principale</p>
-                    <a href="https://discord.gg/tsubasa" target="_blank" rel="noopener" class="network-btn">
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Rejoindre le serveur</span>
+                </li>
+                <li>
+                    <a class="link-row" href="https://discord.gg/NbBGsPKFjP" target="_blank" rel="noopener">
+                        <svg class="link-icon"><use href="#i-discord"/></svg>
+                        <span class="link-label">Clarity<small data-i18n="contact.server">Serveur Discord</small></span>
+                        <span class="link-value mono">discord.gg/NbBGsPKFjP</span>
+                        <span class="link-action mono"><svg><use href="#i-arrow"/></svg><span data-i18n="contact.join">rejoindre</span></span>
                     </a>
-                    <div class="network-character">
-                        <i class="fas fa-fire-alt"></i>
-                        <span>Passionné comme Natsu</span>
-                    </div>
-                </div>
+                </li>
+            </ul>
+        </section>
+    </main>
 
-                <!-- Telegram User -->
-                <div class="social-network-card telegram-card character-rimuru">
-                    <div class="network-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3 class="network-title">Telegram Personnel</h3>
-                    <p class="network-username">@tsubabadev</p>
-                    <p class="network-description">Contactez-moi sur Telegram</p>
-                    <a href="https://t.me/tsubabadev" target="_blank" rel="noopener" class="network-btn">
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Ouvrir dans Telegram</span>
-                    </a>
-                    <div class="network-character">
-                        <i class="fas fa-water"></i>
-                        <span>Adaptable comme Rimuru</span>
-                    </div>
-                </div>
-
-                <!-- Telegram Channel -->
-                <div class="social-network-card telegram-card character-aqua">
-                    <div class="network-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3 class="network-title">Chez Tsu</h3>
-                    <p class="network-server">Canal Telegram</p>
-                    <p class="network-description">Actualités et partages</p>
-                    <a href="https://t.me/cheztsu" target="_blank" rel="noopener" class="network-btn">
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Rejoindre le canal</span>
-                    </a>
-                    <div class="network-character">
-                        <i class="fas fa-star"></i>
-                        <span>Mystérieux comme Aqua</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-quote">
-                <p>"La vraie force réside dans les liens que nous créons"</p>
-                <span>- Une fusion de 5 légendes</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <span class="logo-text">MrTsubasa</span>
-                <p>Fusion of Legends</p>
-            </div>
-
-            <div class="footer-characters">
-                <div class="character-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Seiya</span>
-                </div>
-                <div class="character-badge">
-                    <i class="fas fa-brain"></i>
-                    <span>Ayanokoji</span>
-                </div>
-                <div class="character-badge">
-                    <i class="fas fa-water"></i>
-                    <span>Rimuru</span>
-                </div>
-                <div class="character-badge">
-                    <i class="fas fa-fire-alt"></i>
-                    <span>Natsu</span>
-                </div>
-                <div class="character-badge">
-                    <i class="fas fa-star"></i>
-                    <span>Aqua</span>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 MrTsubasa. Tous droits réservés.</p>
-                <p>Créé avec passion, stratégie, adaptabilité, énergie et mystère ✨</p>
-            </div>
+    <footer class="site-footer">
+        <blockquote>“I stay in the shadows to shine brighter when it truly matters.”</blockquote>
+        <div class="footer-bottom">
+            <svg class="brand-mark"><use href="#i-mark"/></svg>
+            <p class="mono">© <span id="year">2026</span> Tsubasa · Clarity</p>
+            <a href="#top" class="mono" data-i18n="footer.top">retour en haut ↑</a>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu du design" data-i18n-aria="aria.preview" hidden>
+        <button class="lb-btn lb-close" id="lb-close" aria-label="Fermer" data-i18n-aria="aria.close"><svg><use href="#i-close"/></svg></button>
+        <button class="lb-btn lb-prev" id="lb-prev" aria-label="Précédent" data-i18n-aria="aria.prev"><svg><use href="#i-left"/></svg></button>
+        <figure>
+            <img id="lb-img" src="" alt="">
+            <figcaption class="mono"><span id="lb-caption"></span><span id="lb-pos"></span></figcaption>
+        </figure>
+        <button class="lb-btn lb-next" id="lb-next" aria-label="Suivant" data-i18n-aria="aria.next"><svg><use href="#i-right"/></svg></button>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
     <script src="./Src/Js/script.js"></script>
 </body>
