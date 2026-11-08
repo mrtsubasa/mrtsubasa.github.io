@@ -48,7 +48,7 @@ const PEOPLE = [
     { name: 'Swammy', file: 'Swammy.jpg', role: 'Sys Admin', title: 'The cool sister', group: 'crew', cats: ['info'] },
     { name: 'Hc', file: 'Hc.jpg', role: 'DrinkOps Engineer,Sys-Admin', title: 'The SysSlav', group: 'crew', cats: ['autre']},
     { name: 'Jacky', file: 'Jacky.jpeg', role: 'Designer', title: 'The idiot of crew', group: 'crew', cats: ['design'] },
-    { name: 'Zeno', file: 'Zeno.jpg', role: 'Dev/Pentester', title: 'The D€ad0ps', group: 'crew', cats: ['info'] },
+    { name: 'Zeno', file: 'Zeno.gif', role: 'Dev/Pentester', title: 'The D€ad0ps', group: 'crew', cats: ['info'] },
     { name: 'Amelksrr', file: 'Amel.jpg', role: 'NetMommy', title: 'The Cyber Mommy', group: 'crew', cats: ['autre']},
   { name: 'Clearnet', file: 'Clearnet.gif', role: 'CyberGooner', title: 'The Cyber Bugs Bunny', group: 'crew', cats: ['info'] },
         { name: 'Nxrox', file: 'Nxrox.png', role: 'Meow', title: 'Happy Cat', group: 'crew', cats: ['autre']},
