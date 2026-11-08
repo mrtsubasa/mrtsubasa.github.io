@@ -46,7 +46,7 @@ const PEOPLE = [
     { name: 'Sparrow', file: 'Sparrow.png', role: 'Developer', title: 'The Instructor', group: 'crew', cats: ['info'] },
     { name: 'Sunny', file: 'Sunny.png', role: 'Designer', title: 'The stupid brother', group: 'crew', cats: ['design'] },
     { name: 'Swammy', file: 'Swammy.jpg', role: 'Sys Admin', title: 'The cool sister', group: 'crew', cats: ['info'] },
-  { name: 'Hc', file: 'Hc.jpg', role: 'DrinkOps Engineer', title: 'The SysSlav', group: 'crew', cats: ['autre']},
+  { name: 'Hc', file: 'Hc.jpg', role: 'DrinkOps Engineer,Sys-Admin', title: 'The SysSlav', group: 'crew', cats: ['autre']},
   { name: 'Jacky', file: 'Jacky.jpeg', role: 'Designer', title: 'The idiot of crew', group: 'crew', cats: ['design'] },
 
 ];
