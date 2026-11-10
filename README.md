@@ -1,8 +1,6 @@
 <div align="center">
 
-# 翼 tsubasa — 総長
-
-**Je touche à tout.** Design, dev full-stack, bots, Linux et infra.
+<a href="https://mrtsubasa.github.io"><img src="./Src/Assets/Images/Profile/readme-banner.webp" alt="tsubasa — 総長 · Je touche à tout. Illustration de Mikey (Tokyo Revengers)." width="100%"></a>
 
 [**mrtsubasa.github.io**](https://mrtsubasa.github.io) · [GitHub](https://github.com/mrtsubasa) · [Discord Eimei](https://discord.gg/eimei) · [Discord Clarity](https://discord.gg/NbBGsPKFjP)
 
@@ -104,5 +102,7 @@ Chaque push sur `main` est publié automatiquement par GitHub Pages en quelques 
 <div align="center">
 
 <sub>“I stay in the shadows to shine brighter when it truly matters.”</sub>
+
+<sub>Illustration de la bannière : fan-art de Mikey via <a href="https://wallhaven.cc/w/57r8z9">Wallhaven</a>, tous droits à son auteur.</sub>
 
 </div>
