@@ -52,6 +52,7 @@ const PEOPLE = [
     { name: 'Amelksrr', file: 'Amel.jpg', role: 'NetMommy', title: 'The Cyber Mommy', group: 'crew', cats: ['autre']},
   { name: 'Clearnet', file: 'Clearnet.gif', role: 'CyberGooner', title: 'The Cyber Bugs Bunny', group: 'crew', cats: ['info'] },
         { name: 'Nxrox', file: 'Nxrox.png', role: 'Meow', title: 'Happy Cat', group: 'crew', cats: ['autre']},
+  { name: 'Xaineur', file: 'Xaineur.png', role: 'Ghost Protocol', title: 'The Unknown Signal', group: 'crew', cats: ['info']}
 ];
 
 // Ordre d'affichage des filtres ; chaque clé a sa traduction 'cat.<clé>'
