@@ -1,5 +1,5 @@
 // ==========================================================
-// Tsubasa — 総長
+// Tsubasa — 銀狼
 // ==========================================================
 
 const GITHUB_USER = 'mrtsubasa';
@@ -37,7 +37,7 @@ const DESIGNS = [
 // Pour ajouter un pote : mets sa photo dans Src/Assets/Images/Team/ puis ajoute une ligne ici, ex. :
 // { name: 'Pseudo', file: 'Pseudo.png', role: 'Developer', title: 'The legend', group: 'crew', cats: ['info'] },
 const PEOPLE = [
-    { name: 'Tsubasa', file: 'Tsu.gif', title: 'The honored king', lead: true, group: 'me', cats: ['design', 'info'] },
+    { name: 'Tsubasa', file: 'Tsu-silverwolf.webp', title: 'The honored king', lead: true, group: 'me', cats: ['design', 'info'] },
     { name: 'Aelialou', file: 'Aelialou.png', role: 'Creative Designer', title: 'The honored princess', group: 'crew', cats: ['design'] },
     { name: 'Lain', file: 'Lain.png', role: 'Miahou.AI,Hacker', title: 'The Honored Cat/Boy', group: 'crew', cats: ['info'] },
     { name: 'Zanarelkov', file: 'Zanarelkov.png', role: 'Hacker', title: 'The Shadowy Mastermind', group: 'crew', cats: ['info']},
@@ -61,7 +61,7 @@ const CATEGORIES = ['design', 'info', 'gaming', 'autre'];
 // ---------- Traductions ----------
 const I18N = {
     fr: {
-        'meta.title': 'Tsubasa — 総長',
+        'meta.title': 'Tsubasa — 銀狼',
         'meta.description': 'Tsubasa — bannières sous Photoshop, dev full-stack, bots, rice Linux. Je touche à tout en informatique.',
         'aria.home': 'Accueil',
         'aria.menu': 'Menu',
@@ -76,15 +76,15 @@ const I18N = {
         'nav.code': 'Code',
         'nav.team': 'Moi',
         'nav.contact': 'Contact',
-        'hero.eyebrow': '総長 · autodidacte · builder & creator',
+        'hero.eyebrow': 'LV.99 · autodidacte · builder & creator',
         'hero.title': 'Je touche<br>à <em>tout</em>.',
         'hero.lede': `<p>Moi, c'est Tsubasa. Autodidacte, je suis tombé dans l'informatique par curiosité et j'en ai fait mon terrain de jeu. Du développement au design, de Linux aux infrastructures, j'aime comprendre, expérimenter et donner vie à mes idées.</p>
 <p>Je ne me limite pas à un domaine : quand quelque chose m'intéresse, je vais jusqu'au bout.</p>`,
         'hero.quote': '« Personne ne voit tout le travail derrière ce qui paraît simple. »',
         'hero.cta': 'Ce que je fais',
         'hero.contact': 'Me contacter',
-        'hero.alt': 'Sano Manjirō (Mikey), de dos',
-        'hero.caption': "Mikey — l'icône",
+        'hero.alt': 'Silver Wolf, fan art par taesui',
+        'hero.caption': 'Silver Wolf — art : taesui',
         'domains.title': 'Domaines',
         'domains.lede': 'Pas une spécialité, un terrain de jeu. Voilà où je traîne.',
         'd1.text': 'Bannières Discord, PP et miniatures, montées sous Photoshop : compo, light, typo, effets.',
@@ -142,14 +142,14 @@ const I18N = {
         'contact.copied': 'copié ✓',
         'contact.join': 'rejoindre',
         'footer.top': 'retour en haut ↑',
-        'mikey': [
-            "無敵のマイキー — Mikey t'offre un dorayaki.",
-            'Bab est garée devant. On part en ride ?',
-            'Le Toman ne recule pas. Clarity non plus.'
+        'egg': [
+            'ACCÈS ACCORDÉ — pare-feu contourné en 0,3 s.',
+            'Nouvelle partie chargée. Difficulté : cauchemar.',
+            "Le script s'exécute comme prévu. Clarity aussi."
         ]
     },
     en: {
-        'meta.title': 'Tsubasa — 総長',
+        'meta.title': 'Tsubasa — 銀狼',
         'meta.description': 'Tsubasa — Photoshop banners, full-stack dev, bots, Linux ricing. If it runs on a computer, I touch it.',
         'aria.home': 'Home',
         'aria.menu': 'Menu',
@@ -164,15 +164,15 @@ const I18N = {
         'nav.code': 'Code',
         'nav.team': 'Me',
         'nav.contact': 'Contact',
-        'hero.eyebrow': '総長 · self-taught · builder & creator',
+        'hero.eyebrow': 'LV.99 · self-taught · builder & creator',
         'hero.title': 'I touch<br>it <em>all</em>.',
         'hero.lede': `<p>I'm Tsubasa. Self-taught, I got into computers out of curiosity and turned them into my playground. From development to design, from Linux to infrastructure, I love to understand, experiment and bring my ideas to life.</p>
 <p>I don't limit myself to one field: when something interests me, I see it through to the end.</p>`,
         'hero.quote': '“No one sees all the work behind what looks simple.”',
         'hero.cta': 'What I do',
         'hero.contact': 'Contact me',
-        'hero.alt': 'Sano Manjiro (Mikey), seen from behind',
-        'hero.caption': 'Mikey — the icon',
+        'hero.alt': 'Silver Wolf, fan art by taesui',
+        'hero.caption': 'Silver Wolf — art: taesui',
         'domains.title': 'Fields',
         'domains.lede': "Not a specialty, a playground. Here's where I hang out.",
         'd1.text': 'Discord banners, profile pictures and thumbnails, made in Photoshop: composition, lighting, type, effects.',
@@ -230,10 +230,10 @@ const I18N = {
         'contact.copied': 'copied ✓',
         'contact.join': 'join',
         'footer.top': 'back to top ↑',
-        'mikey': [
-            '無敵のマイキー — Mikey hands you a dorayaki.',
-            "Bab is parked outside. Going for a ride?",
-            "Toman never backs down. Neither does Clarity."
+        'egg': [
+            'ACCESS GRANTED — firewall bypassed in 0.3 s.',
+            'New game loaded. Difficulty: nightmare.',
+            'The script runs as planned. So does Clarity.'
         ]
     }
 };
@@ -258,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCopyButtons();
     loadRepos();
     initReveal();
-    initMikey();
+    initEgg();
     document.getElementById('year').textContent = new Date().getFullYear();
 });
 
@@ -423,19 +423,19 @@ function leadCard(person) {
                 <span class="dossier-file" data-i18n="dossier.file"></span>
                 <span class="dossier-no">No. 001</span>
                 <span class="dossier-sep" aria-hidden="true"></span>
-                <span class="dossier-ref">TSU-001 · 翼</span>
+                <span class="dossier-ref">TSU-001 · 銀狼</span>
             </header>
 
             <div class="dossier-body">
-                <p class="dossier-band" aria-hidden="true">天下無敵 · 総長</p>
+                <p class="dossier-band" aria-hidden="true">銀狼 · ハッカー</p>
 
                 <figure class="dossier-portrait">
                     <div class="dossier-photo">
                         <img src="${TEAM_DIR}${person.file}" alt="${escapeHTML(person.name)}" loading="lazy">
                         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
                     </div>
-                    <span class="hanko hanko-sm" aria-hidden="true">総長</span>
-                    <figcaption class="mono"><span class="jp">翼</span><span>${escapeHTML(person.name)}</span></figcaption>
+                    <span class="hanko hanko-sm" aria-hidden="true">LV.99</span>
+                    <figcaption class="mono"><span class="jp">銀狼</span><span>${escapeHTML(person.name)}</span></figcaption>
                 </figure>
 
                 <div class="dossier-info">
@@ -444,7 +444,7 @@ function leadCard(person) {
                     <h3>${escapeHTML(person.name)}</h3>
 
                     <dl class="dossier-fields">
-                        ${field('階級', 'dossier.rank', '総長 <span class="mono">sōchō</span>')}
+                        ${field('階級', 'dossier.rank', 'LV.99 <span class="mono">hacker</span>')}
                         ${field('異名', 'dossier.alias', escapeHTML(person.title))}
                         ${field('専門', 'dossier.fields', `<span class="member-cats">${catBadges(person.cats)}</span>`)}
                         ${field('状態', 'dossier.status', '<span class="status-dot"></span><span data-i18n="dossier.active"></span>')}
@@ -725,9 +725,9 @@ function initReveal() {
     items.forEach((el) => observer.observe(el));
 }
 
-// ---------- Easter egg : tape « mikey » ----------
-function initMikey() {
-    const secret = 'mikey';
+// ---------- Easter egg : tape « wolf » ----------
+function initEgg() {
+    const secret = 'wolf';
     const toast = document.getElementById('toast');
     let buffer = '';
     let count = 0;
@@ -737,7 +737,7 @@ function initMikey() {
         if (e.target.closest('input, textarea') || e.key.length !== 1) return;
         buffer = (buffer + e.key.toLowerCase()).slice(-secret.length);
         if (buffer !== secret) return;
-        const lines = t('mikey');
+        const lines = t('egg');
         toast.textContent = lines[count++ % lines.length];
         toast.hidden = false;
         clearTimeout(timer);
