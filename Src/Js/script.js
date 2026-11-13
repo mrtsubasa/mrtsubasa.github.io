@@ -115,10 +115,10 @@ const I18N = {
         'people.crew': 'Le crew',
         'people.seeAll': 'Tout voir',
         'people.scroll': 'Défiler',
-        'dossier.file': 'Dossier membre',
-        'dossier.member': 'Membre',
+        'dossier.file': 'Fiche joueur',
+        'dossier.member': 'Joueur',
         'dossier.role': 'Rôle',
-        'dossier.classified': 'confidentiel',
+        'dossier.classified': 'accès root',
         'dossier.rank': 'Rang',
         'dossier.alias': 'Surnom',
         'dossier.fields': 'Domaines',
@@ -143,9 +143,9 @@ const I18N = {
         'contact.join': 'rejoindre',
         'footer.top': 'retour en haut ↑',
         'egg': [
-            'ACCÈS ACCORDÉ — pare-feu contourné en 0,3 s.',
-            'Nouvelle partie chargée. Difficulté : cauchemar.',
-            "Le script s'exécute comme prévu. Clarity aussi."
+            '🎮 ACCÈS ACCORDÉ — pare-feu contourné en 0,3 s.',
+            '👾 Nouvelle partie chargée. Difficulté : cauchemar.',
+            "🫧 Le script s'exécute comme prévu. Clarity aussi."
         ]
     },
     en: {
@@ -203,10 +203,10 @@ const I18N = {
         'people.crew': 'The crew',
         'people.seeAll': 'See all',
         'people.scroll': 'Scroll',
-        'dossier.file': 'Member file',
-        'dossier.member': 'Member',
+        'dossier.file': 'Player file',
+        'dossier.member': 'Player',
         'dossier.role': 'Role',
-        'dossier.classified': 'classified',
+        'dossier.classified': 'root access',
         'dossier.rank': 'Rank',
         'dossier.alias': 'Alias',
         'dossier.fields': 'Fields',
@@ -231,9 +231,9 @@ const I18N = {
         'contact.join': 'join',
         'footer.top': 'back to top ↑',
         'egg': [
-            'ACCESS GRANTED — firewall bypassed in 0.3 s.',
-            'New game loaded. Difficulty: nightmare.',
-            'The script runs as planned. So does Clarity.'
+            '🎮 ACCESS GRANTED — firewall bypassed in 0.3 s.',
+            '👾 New game loaded. Difficulty: nightmare.',
+            '🫧 The script runs as planned. So does Clarity.'
         ]
     }
 };
@@ -439,19 +439,19 @@ function leadCard(person) {
                 </figure>
 
                 <div class="dossier-info">
-                    <span class="dossier-stamp" aria-hidden="true">極秘<small class="mono" data-i18n="dossier.classified"></small></span>
+                    <span class="dossier-stamp" aria-hidden="true">ハック済<small class="mono" data-i18n="dossier.classified"></small></span>
                     <p class="dossier-kana">ツバサ</p>
                     <h3>${escapeHTML(person.name)}</h3>
 
                     <dl class="dossier-fields">
-                        ${field('階級', 'dossier.rank', 'LV.99 <span class="mono">hacker</span>')}
-                        ${field('異名', 'dossier.alias', escapeHTML(person.title))}
-                        ${field('専門', 'dossier.fields', `<span class="member-cats">${catBadges(person.cats)}</span>`)}
-                        ${field('状態', 'dossier.status', '<span class="status-dot"></span><span data-i18n="dossier.active"></span>')}
+                        ${field('レベル', 'dossier.rank', 'LV.99 <span class="mono">hacker</span>')}
+                        ${field('コードネーム', 'dossier.alias', escapeHTML(person.title))}
+                        ${field('スキル', 'dossier.fields', `<span class="member-cats">${catBadges(person.cats)}</span>`)}
+                        ${field('ステータス', 'dossier.status', '<span class="status-dot"></span><span data-i18n="dossier.active"></span>')}
                     </dl>
 
                     <div class="dossier-notes">
-                        <p class="dossier-label mono"><span class="jp">備考</span> <span data-i18n="dossier.notes"></span></p>
+                        <p class="dossier-label mono"><span class="jp">ログ</span> <span data-i18n="dossier.notes"></span></p>
                         <div class="lead-text" data-i18n-html="team.leadText"></div>
                     </div>
                 </div>
@@ -473,7 +473,7 @@ function memberCard(person, index) {
             <article class="member-card">
                 <header class="id-top mono">
                     <svg class="id-crest"><use href="#i-crest"/></svg>
-                    <span><span class="jp">隊員</span> <span data-i18n="dossier.member"></span></span>
+                    <span><span class="jp">プレイヤー</span> <span data-i18n="dossier.member"></span></span>
                     <span class="id-no">No. ${no}</span>
                 </header>
 
@@ -486,11 +486,11 @@ function memberCard(person, index) {
                     <h3>${escapeHTML(person.name)}</h3>
                     <dl class="id-fields">
                         <div>
-                            <dt><span class="jp">役職</span><span data-i18n="dossier.role"></span></dt>
+                            <dt><span class="jp">クラス</span><span data-i18n="dossier.role"></span></dt>
                             ${person.roleKey ? `<dd data-role-key="${person.roleKey}"></dd>` : `<dd>${escapeHTML(person.role)}</dd>`}
                         </div>
                         <div>
-                            <dt><span class="jp">異名</span><span data-i18n="dossier.alias"></span></dt>
+                            <dt><span class="jp">コードネーム</span><span data-i18n="dossier.alias"></span></dt>
                             <dd class="id-alias">${escapeHTML(person.title)}</dd>
                         </div>
                     </dl>

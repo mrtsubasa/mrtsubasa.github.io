@@ -1389,3 +1389,18 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 @media (prefers-reduced-motion: reduce) {
     .hero-title:hover { animation: none; }
 }
+
+/* Icônes pixel des cartes de domaine (remplacent les kanji brodés) */
+svg.patch-kanji {
+    top: 18px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    font-size: 0;
+    color: var(--violet);
+    opacity: .35;
+    transition: opacity .3s, color .3s, filter .3s;
+}
+.patch:hover svg.patch-kanji { color: var(--gold); opacity: .9; filter: drop-shadow(0 0 10px rgba(94, 242, 255, .7)); text-shadow: none; }
+.dossier-crest-bg { color: var(--violet); opacity: .08; }
+.dossier-crest, .id-crest { color: var(--gold); }
