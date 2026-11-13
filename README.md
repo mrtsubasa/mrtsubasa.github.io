@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://mrtsubasa.github.io"><img src="./Src/Assets/Images/Profile/readme-banner.webp" alt="tsubasa — 総長 · Je touche à tout. Illustration de Mikey (Tokyo Revengers)." width="100%"></a>
+<a href="https://mrtsubasa.github.io"><img src="./Src/Assets/Images/Profile/readme-banner.webp" alt="tsubasa — 銀狼 · Je touche à tout. Fan art de Silver Wolf (Honkai: Star Rail) par taesui." width="100%"></a>
 
 [**mrtsubasa.github.io**](https://mrtsubasa.github.io) · [GitHub](https://github.com/mrtsubasa) · [Discord Eimei](https://discord.gg/eimei) · [Discord Clarity](https://discord.gg/NbBGsPKFjP)
 
@@ -8,7 +8,7 @@
 
 ---
 
-Mon portfolio perso, dans un thème inspiré de Mikey (Tokyo Revengers) : fond sombre, accents or, kanji brodés et fiches du crew façon dossier classé.
+Mon portfolio perso, dans un thème inspiré de Silver Wolf et Kafka (Honkai: Star Rail) : nuit violette, néon cyan, accents magenta, HUD de jeu vidéo, icônes en pixel art et fiches du crew façon profil de joueur.
 
 Le site est entièrement statique, en HTML, CSS et JavaScript vanilla, sans framework ni build, et il est servi directement par GitHub Pages.
 
@@ -16,12 +16,12 @@ Le site est entièrement statique, en HTML, CSS et JavaScript vanilla, sans fram
 
 | # | Section | Contenu |
 |---|---------|---------|
-| 壱 | **Domaines** | Design, dev full-stack, bots, Linux & rice, infra & sécu |
-| 弐 | **Designs** | Galerie de bannières, PP et miniatures Photoshop, avec une lightbox navigable au clavier |
-| 参 | **Code** | Dépôts publics chargés en direct via l'API GitHub, avec les totaux de dépôts, d'étoiles et de forks |
-| 肆 | **Moi** | Ma fiche « dossier » |
-| 伍 | **Le crew** | Les potes, en carrousel ou en grille, filtrables par catégorie |
-| 陸 | **Contact** | Discord en MP (pseudo copiable) et les serveurs de la commu |
+| LV.01 | **Domaines** | Design, dev full-stack, bots, Linux & rice, infra & sécu |
+| LV.02 | **Designs** | Galerie de bannières, PP et miniatures Photoshop, avec une lightbox navigable au clavier |
+| LV.03 | **Code** | Dépôts publics chargés en direct via l'API GitHub, avec les totaux de dépôts, d'étoiles et de forks |
+| LV.04 | **Moi** | Ma fiche « joueur » |
+| LV.05 | **Le crew** | Les potes, en carrousel ou en grille, filtrables par catégorie |
+| LV.06 | **Contact** | Discord en MP (pseudo copiable) et les serveurs de la commu |
 
 Le site est bilingue **FR / EN**. La langue choisie est mémorisée dans le navigateur.
 
@@ -103,6 +103,6 @@ Chaque push sur `main` est publié automatiquement par GitHub Pages en quelques 
 
 <sub>“I stay in the shadows to shine brighter when it truly matters.”</sub>
 
-<sub>Illustration de la bannière : fan-art de Mikey via <a href="https://wallhaven.cc/w/57r8z9">Wallhaven</a>, tous droits à son auteur.</sub>
+<sub>Illustration de la bannière et du hero : fan art de Silver Wolf par <b>taesui</b> (HoYoLAB), tous droits à son autrice ou son auteur. Silver Wolf © HoYoverse.</sub>
 
 </div>
